@@ -1,0 +1,324 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About Mahmoud Ayman, fourth-year physiotherapy student at Kafrelsheikh University and founder of Pure Physio.">
+  <title>About Me | Pure Physio</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f9f9;
+      color: #243746;
+      line-height: 1.8;
+    }
+
+    header {
+      background: #087f83;
+      color: white;
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 18px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 55px auto;
+      padding: 20px;
+    }
+
+    .about-card {
+      background: white;
+      padding: 45px;
+      border-radius: 22px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.06);
+    }
+
+    .tag {
+      color: #087f83;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+
+    h1 {
+      color: #123b4a;
+      font-size: 38px;
+      margin: 12px 0;
+    }
+
+    .subtitle {
+      color: #087f83;
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #087f83;
+      font-size: 23px;
+      margin: 30px 0 12px;
+    }
+
+    p {
+      margin-bottom: 15px;
+      color: #526572;
+    }
+
+    .interests {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .interest {
+      background: #edf7f7;
+      padding: 15px;
+      border-radius: 12px;
+      color: #24515a;
+      font-weight: bold;
+    }
+
+    .arabic {
+      direction: rtl;
+      text-align: right;
+      border-top: 1px solid #e5eeee;
+      margin-top: 35px;
+      padding-top: 30px;
+    }
+
+    .disclaimer {
+      background: #fff8e9;
+      padding: 18px;
+      border-radius: 12px;
+      margin-top: 30px;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #71818a;
+    }
+
+    .lang-btn {
+      background: white;
+      color: #087f83;
+      border: none;
+      border-radius: 20px;
+      padding: 9px 17px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        justify-content: center;
+        text-align: center;
+      }
+
+      nav a {
+        margin: 0 7px;
+        font-size: 14px;
+      }
+
+      .container {
+        margin: 25px auto;
+      }
+
+      .about-card {
+        padding: 25px 20px;
+      }
+
+      h1 {
+        font-size: 29px;
+      }
+
+      .interests {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">Pure Physio</div>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="about.html">About Me</a>
+    </nav>
+
+    <button class="lang-btn" onclick="toggleLanguage()">
+      العربية
+    </button>
+  </header>
+
+  <main class="container">
+    <section class="about-card">
+
+      <div id="englishContent">
+        <span class="tag">GET TO KNOW ME</span>
+
+        <h1>Mahmoud Ayman</h1>
+
+        <div class="subtitle">
+          Physiotherapy Student – Fourth Year
+        </div>
+
+        <p>
+          Faculty of Physical Therapy,
+          Kafrelsheikh University.
+        </p>
+
+        <h2>About Me</h2>
+
+        <p>
+          I am Mahmoud Ayman, a fourth-year physiotherapy
+          student at Kafrelsheikh University. I am interested
+          in physiotherapy and physical rehabilitation, and
+          I am continuously working to develop my scientific
+          and practical knowledge.
+        </p>
+
+        <p>
+          I created Pure Physio as an educational platform
+          dedicated to simplifying medical information and
+          raising awareness about musculoskeletal conditions,
+          physiotherapy approaches, and rehabilitation.
+        </p>
+
+        <h2>My Interests</h2>
+
+        <div class="interests">
+          <div class="interest">Musculoskeletal Physiotherapy</div>
+          <div class="interest">Sports Rehabilitation</div>
+          <div class="interest">Spine and Joint Conditions</div>
+          <div class="interest">Therapeutic Exercises</div>
+          <div class="interest">Physical Rehabilitation</div>
+        </div>
+
+        <div class="disclaimer">
+          <strong>Disclaimer:</strong>
+          All content is for educational purposes only
+          and does not replace professional medical
+          assessment or treatment.
+        </div>
+      </div>
+
+      <div id="arabicContent" class="arabic" style="display:none">
+        <span class="tag">تعرف عليّ</span>
+
+        <h1>محمود أيمن</h1>
+
+        <div class="subtitle">
+          طالب علاج طبيعي – الفرقة الرابعة
+        </div>
+
+        <p>
+          كلية العلاج الطبيعي – جامعة كفر الشيخ.
+        </p>
+
+        <h2>من أنا؟</h2>
+
+        <p>
+          أنا محمود أيمن، طالب بالفرقة الرابعة بكلية العلاج
+          الطبيعي – جامعة كفر الشيخ. مهتم بمجال العلاج
+          الطبيعي والتأهيل الحركي، وأسعى باستمرار إلى تطوير
+          معرفتي العلمية والعملية.
+        </p>
+
+        <p>
+          أنشأت Pure Physio ليكون منصة تعليمية تهدف إلى
+          تبسيط المعلومات الطبية والتوعية بالإصابات
+          العضلية والمفصلية وأساليب العلاج الطبيعي والتأهيل.
+        </p>
+
+        <h2>مجالات اهتمامي</h2>
+
+        <div class="interests">
+          <div class="interest">العلاج الطبيعي العضلي الهيكلي</div>
+          <div class="interest">التأهيل الرياضي</div>
+          <div class="interest">مشكلات العمود الفقري والمفاصل</div>
+          <div class="interest">التمارين العلاجية</div>
+          <div class="interest">التأهيل الحركي</div>
+        </div>
+
+        <div class="disclaimer">
+          <strong>تنويه طبي:</strong>
+          جميع المعلومات المقدمة لأغراض التثقيف فقط،
+          ولا تغني عن التقييم أو العلاج الطبي المتخصص.
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <footer>
+    Pure Physio – Learn. Move. Recover.
+    <br>
+    © <span id="year"></span> All Rights Reserved.
+  </footer>
+
+  <script>
+    let currentLanguage = "en";
+
+    function toggleLanguage() {
+      const english = document.getElementById("englishContent");
+      const arabic = document.getElementById("arabicContent");
+      const button = document.querySelector(".lang-btn");
+
+      if (currentLanguage === "en") {
+        currentLanguage = "ar";
+        english.style.display = "none";
+        arabic.style.display = "block";
+        document.documentElement.lang = "ar";
+        document.documentElement.dir = "rtl";
+        button.textContent = "English";
+      } else {
+        currentLanguage = "en";
+        english.style.display = "block";
+        arabic.style.display = "none";
+        document.documentElement.lang = "en";
+        document.documentElement.dir = "ltr";
+        button.textContent = "العربية";
+      }
+    }
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
