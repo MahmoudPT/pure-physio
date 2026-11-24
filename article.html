@@ -2,616 +2,874 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pure Physio | Articles</title>
-<style>
-*{box-sizing:border-box}
-body{margin:0;background:#f5f8fa;color:#243746;font-family:Arial,sans-serif;line-height:1.8}
-header{background:#123b50;color:white;padding:22px 6%;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
-.logo{font-size:24px;font-weight:bold;letter-spacing:1px}
-button{cursor:pointer;border:0;border-radius:8px;padding:11px 18px;font-size:15px}
-#languageButton{background:#fff;color:#123b50;font-weight:bold}
-main{max-width:900px;margin:45px auto;padding:0 20px}
-.article-card{background:white;border-radius:16px;padding:35px;box-shadow:0 5px 25px #17394a12}
-.category{color:#168b88;font-weight:bold;font-size:13px;letter-spacing:1.5px}
-h1{color:#123b50;font-size:32px;line-height:1.35;margin:12px 0 28px}
-h2{color:#176b70;font-size:22px;margin:30px 0 8px}
-p{font-size:16px;line-height:1.9;margin:8px 0 18px}
-.actions{margin-top:30px;border-top:1px solid #e5ecef;padding-top:20px}
-a{color:#176b70;text-decoration:none;font-weight:bold}
-footer{text-align:center;padding:25px;color:#71818b;font-size:13px}
-@media(max-width:600px){
-main{margin:20px auto}
-.article-card{padding:22px}
-h1{font-size:26px}
-h2{font-size:20px}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pure Physio - Physiotherapy and rehabilitation educational articles">
+  <title>Pure Physio | Articles</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f8f8;
+      color: #24343b;
+      line-height: 1.8;
+    }
+
+    header {
+      background: #123f46;
+      color: white;
+      padding: 22px 16px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 1px;
+    }
+
+    header p {
+      margin: 5px 0 0;
+      color: #d4e7e5;
+    }
+
+    .container {
+      width: min(900px, 92%);
+      margin: 35px auto;
+    }
+
+    .article-card {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 5px 25px rgba(0,0,0,.06);
+    }
+
+    .top-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 25px;
+    }
+
+    button {
+      background: #168477;
+      color: white;
+      border: none;
+      padding: 11px 20px;
+      border-radius: 8px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #106b61;
+    }
+
+    #category {
+      color: #168477;
+      font-size: 13px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    #title {
+      color: #123f46;
+      font-size: 30px;
+      line-height: 1.4;
+      margin: 12px 0 25px;
+    }
+
+    #content h2 {
+      color: #126e68;
+      font-size: 21px;
+      margin: 30px 0 8px;
+      border-bottom: 1px solid #e5eeee;
+      padding-bottom: 8px;
+    }
+
+    #content p {
+      font-size: 16px;
+      margin: 0;
+      color: #45565c;
+    }
+
+    .disclaimer {
+      margin-top: 30px;
+      padding: 15px;
+      background: #f0f7f6;
+      border-left: 4px solid #168477;
+      border-radius: 7px;
+      font-size: 14px;
+    }
+
+    html[dir="rtl"] .disclaimer {
+      border-left: none;
+      border-right: 4px solid #168477;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 25px;
+      color: #168477;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      color: #718186;
+      font-size: 14px;
+    }
+
+    @media (max-width: 600px) {
+      .article-card {
+        padding: 20px;
+      }
+
+      #title {
+        font-size: 24px;
+      }
+
+      #content h2 {
+        font-size: 19px;
+      }
+
+      #content p {
+        font-size: 15px;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <header>
-<div class="logo">PURE PHYSIO</div>
-<button id="languageButton" type="button">العربية</button>
+  <h1>PURE PHYSIO</h1>
+  <p>Physiotherapy • Rehabilitation • Better Movement</p>
 </header>
 
-<main>
-<article class="article-card">
-<div class="category" id="category"></div>
-<h1 id="title">Loading article...</h1>
-<div id="content"></div>
-<div class="actions">
-<a id="backLink" href="index.html#articles">← Back to articles</a>
-</div>
-</article>
+<main class="container">
+  <article class="article-card">
+
+    <div class="top-actions">
+      <span id="category"></span>
+      <button id="languageButton" type="button">العربية</button>
+    </div>
+
+    <h1 id="title">Loading article...</h1>
+
+    <div id="content"></div>
+
+    <div class="disclaimer" id="disclaimer"></div>
+
+    <a class="back-link" id="backLink" href="index.html#articles">
+      ← Back to articles
+    </a>
+
+  </article>
 </main>
 
-<footer>© <span id="year"></span> Pure Physio — Better Movement, Healthier Living</footer>
+<footer>
+  © <span id="year"></span> Pure Physio. All rights reserved.
+</footer>
 
 <script>
+/* =====================================================
+   PURE PHYSIO - BILINGUAL ARTICLES
+   Language: English / Arabic
+   Article IDs:
+   back-pain, knee-pain, shoulder-pain,
+   sports-injuries, rehabilitation, posture
+===================================================== */
+
 const articles = {
+
+/* =====================================================
+   1. BACK PAIN - آلام الظهر
+===================================================== */
+
 "back-pain": {
   category: ["BACK PAIN", "آلام الظهر"],
+
   title: [
-    "Back Pain: Complete Guide to Causes, Assessment, Physiotherapy and Rehabilitation",
-    "آلام الظهر: الدليل الشامل للأسباب والتقييم والعلاج الطبيعي والتأهيل"
+    "Back Pain: Causes, Assessment, Physiotherapy and Rehabilitation",
+    "آلام الظهر: الأسباب والتقييم والعلاج الطبيعي والتأهيل"
   ],
+
   sections: [
 
     [
-      "1. Introduction to Back Pain",
-      "1. مقدمة عن آلام الظهر",
-      "Back pain is one of the most common musculoskeletal complaints worldwide. It may affect the lower, middle or upper back and can range from mild discomfort to severe pain that limits daily activities. Most episodes of acute low back pain improve with appropriate activity, education and conservative management. Back pain is a symptom rather than a diagnosis, so identifying its pattern and possible cause is an important part of assessment.",
-      "تُعد آلام الظهر من أكثر مشكلات الجهاز العضلي الهيكلي شيوعًا حول العالم. وقد تصيب أسفل الظهر أو منتصفه أو الجزء العلوي منه، وتتراوح شدتها من انزعاج بسيط إلى ألم شديد يؤثر على الأنشطة اليومية. تتحسن معظم حالات آلام أسفل الظهر الحادة مع النشاط المناسب والتثقيف الصحي والعلاج التحفظي. آلام الظهر عرض وليست تشخيصًا بحد ذاتها، لذلك يُعد فهم طبيعة الألم وأسبابه المحتملة جزءًا مهمًا من التقييم."
+      "Introduction to Back Pain",
+      "مقدمة عن آلام الظهر",
+      "Back pain is one of the most common musculoskeletal problems. It may affect the lower, middle or upper back and can range from mild discomfort to severe pain that limits daily activities. Most episodes of uncomplicated low back pain improve with appropriate activity, education and conservative care. Back pain is a symptom, not a diagnosis, and proper assessment helps identify possible causes and suitable management.",
+      "تُعد آلام الظهر من أكثر مشكلات الجهاز العضلي الهيكلي شيوعًا. وقد تصيب أسفل الظهر أو منتصفه أو الجزء العلوي منه، وتتراوح من انزعاج بسيط إلى ألم شديد يؤثر على الأنشطة اليومية. تتحسن معظم حالات آلام أسفل الظهر غير المعقدة مع النشاط المناسب والتثقيف الصحي والعلاج التحفظي. آلام الظهر عرض وليست تشخيصًا، ويساعد التقييم الصحيح على تحديد الأسباب المحتملة وطريقة التعامل المناسبة."
     ],
 
     [
-      "2. Anatomy of the Spine",
-      "2. تشريح العمود الفقري",
-      "The spine is made up of vertebrae separated by intervertebral discs. It is divided into cervical, thoracic, lumbar, sacral and coccygeal regions. The lumbar spine consists of five vertebrae and carries a significant proportion of the body's load. Facet joints, ligaments, muscles and nerves work together to provide stability, movement and protection. The spinal cord and nerve roots are important neurological structures that may be involved in certain spinal conditions.",
-      "يتكون العمود الفقري من فقرات يفصل بينها الغضاريف أو الأقراص بين الفقرية. وينقسم إلى المناطق العنقية والصدرية والقطنية والعجزية والعصعصية. تتكون المنطقة القطنية من خمس فقرات وتتحمل جزءًا كبيرًا من وزن الجسم. تعمل المفاصل الخلفية والأربطة والعضلات والأعصاب معًا لتوفير الثبات والحركة والحماية. ويُعد الحبل الشوكي وجذور الأعصاب من التراكيب العصبية المهمة التي قد تتأثر في بعض أمراض العمود الفقري."
+      "Spinal Anatomy",
+      "تشريح العمود الفقري",
+      "The spine consists of vertebrae separated by intervertebral discs. It includes cervical, thoracic, lumbar, sacral and coccygeal regions. The lumbar spine contains five vertebrae and carries a considerable amount of body load. Muscles, ligaments, joints and discs work together to provide movement and stability while protecting important neurological structures.",
+      "يتكون العمود الفقري من فقرات تفصل بينها الأقراص الغضروفية. وينقسم إلى المناطق العنقية والصدرية والقطنية والعجزية والعصعصية. تحتوي المنطقة القطنية على خمس فقرات وتتحمل جزءًا كبيرًا من وزن الجسم. تعمل العضلات والأربطة والمفاصل والغضاريف معًا لتوفير الحركة والثبات وحماية التراكيب العصبية المهمة."
     ],
 
     [
-      "3. Types of Back Pain",
-      "3. أنواع آلام الظهر",
-      "Back pain can be classified according to duration and location. Acute pain usually lasts less than six weeks. Subacute pain lasts approximately six to twelve weeks, while chronic pain persists for more than twelve weeks. Pain may be localized to the back or may radiate into the buttock or leg. Some people experience mechanical pain that changes with movement or posture, while others may have nerve-related symptoms such as tingling, numbness or weakness.",
-      "يمكن تصنيف آلام الظهر حسب مدة الألم ومكانه. يستمر الألم الحاد عادةً أقل من ستة أسابيع، بينما يستمر الألم تحت الحاد من ستة إلى اثني عشر أسبوعًا تقريبًا، ويُسمى الألم مزمنًا عندما يستمر أكثر من اثني عشر أسبوعًا. قد يكون الألم موضعيًا في الظهر أو يمتد إلى الأرداف أو الساق. يعاني بعض الأشخاص من ألم ميكانيكي يتغير مع الحركة أو الوضعيات، بينما قد تظهر لدى آخرين أعراض مرتبطة بالأعصاب مثل التنميل أو الوخز أو الضعف."
+      "Types of Back Pain",
+      "أنواع آلام الظهر",
+      "Back pain may be classified by duration. Acute pain generally lasts less than six weeks, subacute pain lasts approximately six to twelve weeks, and chronic pain persists for more than twelve weeks. Pain may remain in the back or spread to the buttock or leg. Some pain is mechanical and changes with movement, while nerve-related pain may include tingling, numbness or weakness.",
+      "يمكن تصنيف آلام الظهر حسب المدة؛ فالألم الحاد يستمر عادة أقل من ستة أسابيع، وتحت الحاد من ستة إلى اثني عشر أسبوعًا تقريبًا، والمزمن أكثر من اثني عشر أسبوعًا. وقد يظل الألم في الظهر أو يمتد إلى الأرداف أو الساق. بعض الآلام ميكانيكية وتتغير مع الحركة، بينما قد يصاحب الألم المرتبط بالأعصاب تنميل أو وخز أو ضعف."
     ],
 
     [
-      "4. Common Causes of Back Pain",
-      "4. الأسباب الشائعة لآلام الظهر",
-      "Common causes include muscle or ligament strain, reduced physical activity, repetitive lifting, sudden increases in training load, prolonged static postures and poor load management. Other possible causes include degenerative changes in spinal joints or discs, disc herniation, spinal stenosis and some inflammatory conditions. In many cases, back pain is multifactorial and cannot be attributed to one single structure.",
-      "تشمل الأسباب الشائعة إجهاد العضلات أو الأربطة، وقلة النشاط البدني، ورفع الأشياء بصورة متكررة، والزيادة المفاجئة في أحمال التدريب، والجلوس أو الوقوف لفترات طويلة دون تغيير الوضعية، وسوء توزيع الأحمال على الجسم. ومن الأسباب الأخرى المحتملة التغيرات التنكسية في مفاصل أو غضاريف العمود الفقري، والانزلاق الغضروفي، وضيق القناة الشوكية وبعض الأمراض الالتهابية. وفي كثير من الحالات تكون آلام الظهر متعددة العوامل ولا يمكن إرجاعها إلى تركيب واحد فقط."
+      "Common Causes",
+      "الأسباب الشائعة",
+      "Common causes include muscle or ligament strain, repetitive lifting, sudden increases in training load, reduced physical activity and prolonged static positions. Other possible causes include disc herniation, spinal joint changes, spinal stenosis and inflammatory conditions. Back pain is often multifactorial, and it is not always possible to identify one single painful structure.",
+      "تشمل الأسباب الشائعة إجهاد العضلات أو الأربطة، ورفع الأشياء بصورة متكررة، والزيادة المفاجئة في أحمال التدريب، وقلة النشاط البدني والبقاء في وضعية ثابتة لفترات طويلة. ومن الأسباب الأخرى المحتملة الانزلاق الغضروفي وتغيرات مفاصل العمود الفقري وضيق القناة الشوكية وبعض الحالات الالتهابية. وغالبًا ما تكون آلام الظهر متعددة العوامل، ولا يمكن دائمًا تحديد تركيب واحد مسؤول عن الألم."
     ],
 
     [
-      "5. Risk Factors",
-      "5. عوامل الخطورة",
-      "Factors associated with back pain include low physical fitness, weak or poorly conditioned trunk muscles, smoking, excess body weight, occupational physical demands, repetitive movements, poor sleep and psychological stress. Previous episodes of back pain may also increase the likelihood of recurrence. These factors do not mean that pain is inevitable; many can be improved through gradual exercise, healthy habits and appropriate activity modification.",
-      "تشمل العوامل المرتبطة بآلام الظهر انخفاض اللياقة البدنية، وضعف أو انخفاض كفاءة عضلات الجذع، والتدخين، وزيادة وزن الجسم، والمجهود البدني المرتبط بالعمل، والحركات المتكررة، واضطرابات النوم والضغوط النفسية. كما قد تزيد الإصابة السابقة بآلام الظهر من احتمالية تكرارها. لا تعني هذه العوامل أن الألم أمر حتمي، إذ يمكن تحسين كثير منها من خلال التمارين التدريجية والعادات الصحية وتعديل النشاط بصورة مناسبة."
+      "Risk Factors",
+      "عوامل الخطورة",
+      "Factors associated with back pain include low fitness, smoking, excess body weight, physically demanding work, repetitive movements, poor sleep and psychological stress. Previous episodes may increase the chance of recurrence. Regular activity, gradual strengthening and healthy lifestyle habits may help improve physical capacity and reduce the impact of future episodes.",
+      "تشمل العوامل المرتبطة بآلام الظهر انخفاض اللياقة البدنية، والتدخين، وزيادة الوزن، والأعمال التي تتطلب مجهودًا بدنيًا، والحركات المتكررة، واضطرابات النوم والضغوط النفسية. وقد تزيد النوبات السابقة من احتمالية تكرار الألم. يساعد النشاط المنتظم والتقوية التدريجية والعادات الصحية على تحسين القدرة البدنية وتقليل تأثير النوبات المستقبلية."
     ],
 
     [
-      "6. Signs and Symptoms",
-      "6. العلامات والأعراض",
-      "Symptoms may include localized pain, stiffness, muscle spasm, reduced range of motion and difficulty bending, lifting, walking or sitting. Pain may be worse after prolonged inactivity or during certain movements. If a nerve root is irritated, symptoms may extend into the buttock or leg and may include tingling, numbness or weakness. The pattern of symptoms and their progression should be assessed rather than relying on pain intensity alone.",
-      "قد تشمل الأعراض ألمًا موضعيًا، وتيبسًا، وتقلصًا عضليًا، ونقصًا في مدى الحركة، وصعوبة في الانحناء أو حمل الأشياء أو المشي أو الجلوس. وقد يزداد الألم بعد فترات طويلة من عدم الحركة أو أثناء حركات معينة. إذا حدث تهيج لجذر عصبي، فقد يمتد الألم إلى الأرداف أو الساق وقد يصاحبه وخز أو تنميل أو ضعف. يجب تقييم نمط الأعراض وتطورها، وليس الاعتماد على شدة الألم وحدها."
+      "Signs and Symptoms",
+      "العلامات والأعراض",
+      "Symptoms may include localized pain, stiffness, muscle spasm, reduced movement and difficulty bending, lifting, walking or sitting. Some people experience pain extending into the buttock or leg. Nerve involvement may cause tingling, numbness or weakness. Symptoms should be assessed according to their location, pattern, severity and progression.",
+      "قد تشمل الأعراض ألمًا موضعيًا وتيبسًا وتقلصًا عضليًا ونقصًا في الحركة وصعوبة في الانحناء أو حمل الأشياء أو المشي أو الجلوس. وقد يشعر بعض الأشخاص بامتداد الألم إلى الأرداف أو الساق. ويمكن أن يسبب تأثر الأعصاب وخزًا أو تنميلًا أو ضعفًا. يجب تقييم مكان الأعراض ونمطها وشدتها وتطورها."
     ],
 
     [
-      "7. Common Back Conditions",
-      "7. أشهر الحالات المرتبطة بآلام الظهر",
-      "Muscle strain involves overstretching or overloading muscles and surrounding tissues. Disc herniation occurs when disc material moves beyond its normal boundary and may irritate nearby nerves. Sciatica describes pain associated with irritation of the sciatic nerve or its roots, commonly extending from the buttock down the leg. Spinal stenosis refers to narrowing of spaces around the spinal nerves. These conditions can have overlapping symptoms and require clinical assessment for appropriate management.",
-      "يحدث الشد العضلي نتيجة تمدد العضلات أو تحميلها بأكثر من قدرتها. أما الانزلاق الغضروفي فيحدث عندما تتحرك بعض أنسجة الغضروف خارج حدودها الطبيعية وقد تسبب تهيجًا للأعصاب المجاورة. ويشير عرق النسا إلى ألم مرتبط بتهيج العصب الوركي أو جذوره، وغالبًا ما يمتد من الأرداف إلى أسفل الساق. أما ضيق القناة الشوكية فيشير إلى تضيق المساحات المحيطة بالأعصاب. وقد تتشابه أعراض هذه الحالات، لذلك يلزم التقييم السريري لتحديد طريقة التعامل المناسبة."
+      "Common Spinal Conditions",
+      "أشهر مشكلات العمود الفقري",
+      "Muscle strain affects muscles and surrounding tissues. Disc herniation occurs when disc material moves beyond its usual boundary and may irritate nearby nerves. Sciatica describes pain associated with irritation of the sciatic nerve or its roots. Spinal stenosis is narrowing around spinal nerves. Similar symptoms may occur in different conditions, so clinical assessment is important.",
+      "يؤثر الشد العضلي على العضلات والأنسجة المحيطة بها. ويحدث الانزلاق الغضروفي عندما تتحرك أنسجة الغضروف خارج حدودها المعتادة وقد تسبب تهيج الأعصاب المجاورة. ويشير عرق النسا إلى ألم مرتبط بتهيج العصب الوركي أو جذوره. أما ضيق القناة الشوكية فيعني تضيق المساحات المحيطة بالأعصاب. وقد تتشابه الأعراض بين حالات مختلفة، لذلك يُعد التقييم الإكلينيكي مهمًا."
     ],
 
     [
-      "8. Physiotherapy Assessment",
-      "8. التقييم في العلاج الطبيعي",
-      "A physiotherapy assessment begins with a detailed history, including pain location, onset, duration, aggravating and relieving factors, previous episodes, medical history and functional limitations. The physical examination may include observation, movement assessment, lumbar range of motion, hip mobility, muscle performance, neurological screening, sensation, reflexes and selected clinical tests when indicated. The assessment should also explore work demands, daily activities, sleep and the patient's goals. Imaging is not routinely required for uncomplicated low back pain and should be considered when clinically indicated.",
-      "يبدأ تقييم العلاج الطبيعي بأخذ تاريخ مرضي مفصل يشمل مكان الألم وبدايته ومدته والعوامل التي تزيده أو تقلله والإصابات السابقة والتاريخ الطبي والأنشطة التي تأثرت بالألم. وقد يشمل الفحص البدني ملاحظة الحركة، وتقييم مدى حركة أسفل الظهر، وحركة مفصل الفخذ، وكفاءة العضلات، والفحص العصبي، والإحساس وردود الأفعال العصبية وبعض الاختبارات الإكلينيكية عند الحاجة. كما يجب تقييم متطلبات العمل والأنشطة اليومية والنوم وأهداف المريض. لا تكون الأشعة أو الرنين ضروريين بصورة روتينية في حالات آلام أسفل الظهر غير المعقدة، ويُنظر في طلبهما عند وجود داعٍ إكلينيكي."
+      "Physiotherapy Assessment",
+      "التقييم في العلاج الطبيعي",
+      "Assessment includes a detailed history of pain location, onset, duration, aggravating and relieving factors, previous episodes and functional limitations. Physical examination may include posture observation, spinal and hip movement, muscle strength, walking, sensation, reflexes and neurological screening. Imaging is not routinely required for uncomplicated low back pain and should be considered when clinically indicated.",
+      "يشمل التقييم أخذ تاريخ مرضي مفصل عن مكان الألم وبدايته ومدته والعوامل التي تزيده أو تقلله والنوبات السابقة والأنشطة المتأثرة. وقد يشمل الفحص ملاحظة الوضعية وحركة العمود الفقري والفخذ وقوة العضلات والمشي والإحساس وردود الأفعال والفحص العصبي. لا تكون الأشعة ضرورية بصورة روتينية في حالات آلام أسفل الظهر غير المعقدة، ويُنظر في طلبها عند وجود داعٍ إكلينيكي."
     ],
 
     [
-      "9. Physiotherapy Treatment",
-      "9. العلاج الطبيعي",
-      "Physiotherapy management is individualized according to the assessment findings and the patient's goals. It may include education, reassurance, graded activity, therapeutic exercise, mobility training, strengthening, movement retraining and functional rehabilitation. Manual therapy may be used as an adjunct when appropriate, but it should be combined with active treatment rather than used as the only intervention. Treatment should be adjusted according to symptoms, function and progress.",
-      "يتم تصميم برنامج العلاج الطبيعي وفقًا لنتائج التقييم وأهداف المريض. وقد يشمل التثقيف الصحي، والطمأنة، والعودة التدريجية للنشاط، والتمارين العلاجية، وتحسين الحركة، وتقوية العضلات، وإعادة تدريب أنماط الحركة والتأهيل الوظيفي. يمكن استخدام العلاج اليدوي كوسيلة مساعدة عند الحاجة، ولكن يُفضل دمجه مع العلاج النشط وعدم الاعتماد عليه وحده. ويجب تعديل البرنامج حسب الأعراض والقدرة الوظيفية ومدى التقدم."
+      "Physiotherapy Management",
+      "العلاج الطبيعي",
+      "Physiotherapy may include education, reassurance, activity modification, graded exercise, mobility training, strengthening and functional movement training. Manual therapy may be used as an additional option when appropriate, but active rehabilitation should remain an important part of care. Treatment is individualized according to assessment findings and patient goals.",
+      "قد يشمل العلاج الطبيعي التثقيف الصحي والطمأنة وتعديل الأنشطة والتمارين التدريجية وتحسين الحركة وتقوية العضلات والتدريب على الحركات الوظيفية. ويمكن استخدام العلاج اليدوي كوسيلة إضافية عند الحاجة، مع الاهتمام بالتأهيل النشط. ويتم تصميم العلاج وفقًا لنتائج التقييم وأهداف المريض."
     ],
 
     [
-      "10. Therapeutic Exercises",
-      "10. التمارين العلاجية",
-      "Exercise selection depends on the individual's presentation and tolerance. Common options may include gentle walking, pelvic tilts, knee-to-chest movements when comfortable, bridges, bird-dog, modified side planks and hip mobility exercises. Exercises should begin at a manageable level and progress gradually. No single exercise is suitable for everyone, and movements that consistently worsen symptoms should be reviewed with a physiotherapist. Stop exercising and seek assessment if new neurological symptoms or significant worsening occurs.",
-      "يعتمد اختيار التمارين على حالة الشخص وقدرته على تحمل الحركة. ومن الخيارات الشائعة المشي الخفيف، وتمرين إمالة الحوض، وتقريب الركبة إلى الصدر إذا كان مريحًا، وتمرين رفع الحوض، وتمرين الطائر والكلب، والبلانك الجانبي المعدل وتمارين حركة مفصل الفخذ. يجب البدء بمستوى مناسب ثم زيادة الحمل تدريجيًا. لا يوجد تمرين واحد يناسب الجميع، ويجب مراجعة أخصائي العلاج الطبيعي إذا كانت حركة معينة تزيد الأعراض بصورة مستمرة. أوقف التمرين واطلب التقييم إذا ظهرت أعراض عصبية جديدة أو حدث تدهور ملحوظ."
+      "Therapeutic Exercises",
+      "التمارين العلاجية",
+      "Depending on symptoms and assessment, exercises may include walking, pelvic tilts, bridges, bird-dog variations, modified side planks and hip mobility exercises. Begin at a tolerable level and progress gradually. No single exercise is suitable for everyone. Exercises that consistently worsen symptoms should be reviewed with a physiotherapist.",
+      "وفقًا للأعراض والتقييم، قد تشمل التمارين المشي وإمالة الحوض ورفع الحوض وتمرين الطائر والكلب والبلانك الجانبي المعدل وتمارين حركة مفصل الفخذ. ابدأ بمستوى يمكن تحمله ثم زد الصعوبة تدريجيًا. لا يوجد تمرين واحد يناسب الجميع، ويجب مراجعة أخصائي العلاج الطبيعي إذا كانت التمارين تزيد الأعراض باستمرار."
     ],
 
     [
-      "11. Core Stability and Strengthening",
-      "11. ثبات وتقوية عضلات الجذع",
-      "The trunk muscles help control movement and transfer loads between the upper and lower body. A rehabilitation program may include abdominal bracing, bridges, bird-dog variations, side planks and progressive resistance exercises. The aim is not simply to make the abdominal muscles stronger, but to improve coordination, endurance and the ability to perform daily tasks. Progression should be based on movement quality and tolerance rather than a fixed timeline.",
-      "تساعد عضلات الجذع على التحكم في الحركة ونقل الأحمال بين الجزء العلوي والسفلي من الجسم. وقد يتضمن برنامج التأهيل تمارين شد عضلات البطن، ورفع الحوض، وتمرين الطائر والكلب، والبلانك الجانبي وتمارين المقاومة المتدرجة. لا يقتصر الهدف على زيادة قوة عضلات البطن فقط، بل يشمل تحسين التناسق العضلي والتحمل والقدرة على أداء الأنشطة اليومية. ويجب أن يعتمد التدرج على جودة الحركة ومدى تحمل الجسم، وليس على مدة زمنية ثابتة."
+      "Core Strength and Stability",
+      "تقوية وثبات عضلات الجذع",
+      "Trunk muscles help control movement and transfer loads between the upper and lower body. Rehabilitation may include abdominal bracing, bridges, bird-dog exercises, side planks and progressive resistance training. The goal is to improve coordination, endurance and functional capacity rather than simply strengthening one muscle group.",
+      "تساعد عضلات الجذع على التحكم في الحركة ونقل الأحمال بين الجزء العلوي والسفلي من الجسم. وقد يشمل التأهيل تمارين شد عضلات البطن ورفع الحوض والطائر والكلب والبلانك الجانبي وتمارين المقاومة المتدرجة. والهدف هو تحسين التناسق والتحمل والقدرة الوظيفية، وليس مجرد تقوية مجموعة عضلية واحدة."
     ],
 
     [
-      "12. Posture and Ergonomics",
-      "12. وضعية الجسم وبيئة العمل",
-      "There is no single perfect posture that prevents all back pain. Changing positions regularly, adjusting the workstation, keeping frequently used objects within easy reach and taking movement breaks may improve comfort. When lifting, keep the load close to the body, use the hips and knees as appropriate and avoid sudden twisting under heavy load. The best strategy is to build tolerance for different positions and movements rather than trying to maintain one rigid posture all day.",
-      "لا توجد وضعية مثالية واحدة تمنع جميع حالات آلام الظهر. قد يساعد تغيير الوضعيات بانتظام، وضبط مكان العمل، ووضع الأدوات المستخدمة بالقرب منك، وأخذ فترات قصيرة للحركة على تحسين الراحة. عند رفع الأشياء، حاول إبقاء الحمل قريبًا من الجسم واستخدام مفصلَي الفخذ والركبة بالطريقة المناسبة وتجنب الالتفاف المفاجئ أثناء حمل وزن ثقيل. الأفضل هو تحسين قدرة الجسم على تحمل مختلف الوضعيات والحركات بدلًا من محاولة الثبات على وضعية جامدة طوال اليوم."
+      "Posture and Daily Activities",
+      "الوضعية والأنشطة اليومية",
+      "There is no single perfect posture that prevents all back pain. Changing positions regularly, taking movement breaks and adjusting the workstation may improve comfort. During lifting, keep the load close to the body and avoid sudden twisting under heavy loads. Building tolerance for different movements is more useful than maintaining one rigid posture all day.",
+      "لا توجد وضعية مثالية واحدة تمنع جميع آلام الظهر. قد يساعد تغيير الوضعيات بانتظام وأخذ فترات للحركة وضبط مكان العمل على تحسين الراحة. عند رفع الأشياء، حاول إبقاء الحمل قريبًا من الجسم وتجنب الالتفاف المفاجئ أثناء حمل أوزان ثقيلة. تحسين قدرة الجسم على تحمل الحركات المختلفة أفضل من الثبات على وضعية واحدة طوال اليوم."
     ],
 
     [
-      "13. Rehabilitation and Return to Activities",
-      "13. التأهيل والعودة إلى الأنشطة",
-      "Rehabilitation aims to restore confidence, mobility, strength and participation in daily activities. Early management often focuses on maintaining tolerable activity and reducing unnecessary fear of movement. Later stages may include progressive resistance training, lifting practice, walking or running progression and work-specific conditioning. Return to sport or demanding work should be gradual and based on function, symptom response and individual requirements.",
-      "يهدف التأهيل إلى استعادة الثقة والحركة والقوة والقدرة على المشاركة في الأنشطة اليومية. تركز المراحل الأولى غالبًا على الحفاظ على النشاط الذي يمكن تحمله وتقليل الخوف غير الضروري من الحركة. وقد تشمل المراحل التالية تمارين مقاومة متدرجة، والتدريب على رفع الأشياء، والتدرج في المشي أو الجري، وتحسين القدرة البدنية المطلوبة للعمل. يجب أن تكون العودة إلى الرياضة أو الأعمال البدنية الشاقة تدريجية وتعتمد على القدرة الوظيفية واستجابة الأعراض ومتطلبات كل شخص."
+      "Rehabilitation and Return to Activity",
+      "التأهيل والعودة للنشاط",
+      "Rehabilitation aims to restore confidence, mobility, strength and daily function. Progress may include walking, resistance training, lifting practice and work- or sport-specific conditioning. Return to demanding activities should be gradual and based on function, symptom response and individual requirements.",
+      "يهدف التأهيل إلى استعادة الثقة والحركة والقوة والقدرة على أداء الأنشطة اليومية. وقد يشمل التدرج في المشي وتمارين المقاومة والتدريب على رفع الأشياء والتمارين الخاصة بالعمل أو الرياضة. يجب أن تكون العودة للأنشطة الشاقة تدريجية وتعتمد على القدرة الوظيفية واستجابة الأعراض واحتياجات كل شخص."
     ],
 
     [
-      "14. Lifestyle and Prevention",
-      "14. نمط الحياة والوقاية",
-      "Regular physical activity, adequate sleep, gradual training progression, healthy weight management and avoiding smoking can support spinal health. A balanced program may combine aerobic activity, strength training and mobility exercises. It is also helpful to avoid sudden increases in workload and to build capacity gradually. Although back pain cannot always be prevented, maintaining general fitness and healthy movement habits may reduce the impact of future episodes.",
-      "يساعد النشاط البدني المنتظم والنوم الكافي والتدرج في التدريب والحفاظ على وزن صحي وتجنب التدخين في دعم صحة العمود الفقري. ويمكن أن يجمع البرنامج المتوازن بين النشاط الهوائي وتمارين القوة وتمارين الحركة والمرونة. ومن المفيد أيضًا تجنب الزيادة المفاجئة في المجهود وبناء القدرة البدنية تدريجيًا. ورغم أنه لا يمكن منع جميع حالات آلام الظهر، فإن الحفاظ على اللياقة العامة والعادات الحركية الصحية قد يقلل من تأثير النوبات المستقبلية."
+      "Red Flags and Medical Attention",
+      "علامات الخطر وطلب الرعاية الطبية",
+      "Seek urgent medical care if back pain is accompanied by new loss of bladder or bowel control, numbness around the groin or saddle area, or severe or progressive weakness in both legs. Prompt assessment is also important after significant trauma or with fever, a history of cancer, unexplained weight loss or severe unusual persistent pain.",
+      "اطلب الرعاية الطبية العاجلة إذا صاحب ألم الظهر فقدان جديد للتحكم في البول أو البراز، أو تنميل حول منطقة الأعضاء التناسلية وبين الفخذين، أو ضعف شديد أو متزايد في الساقين. كما يلزم التقييم السريع بعد الإصابات القوية أو عند وجود حمى أو تاريخ مرضي للسرطان أو فقدان وزن غير مبرر أو ألم شديد ومستمر وغير معتاد."
     ],
 
     [
-      "15. Red Flags: When to Seek Medical Attention",
-      "15. علامات الخطر: متى يجب طلب المساعدة الطبية؟",
-      "Seek urgent medical assessment if back pain is accompanied by new difficulty controlling bladder or bowel function, numbness around the groin or saddle area, or severe or progressive weakness in both legs. Prompt medical review is also important with fever or feeling seriously unwell, significant trauma, a history of cancer, unexplained weight loss, or severe pain that is persistent and unusual. These symptoms do not automatically mean a serious condition is present, but they require appropriate assessment. Do not delay emergency care when cauda equina syndrome is suspected.",
-      "اطلب تقييمًا طبيًا عاجلًا إذا صاحب ألم الظهر صعوبة جديدة في التحكم في البول أو البراز، أو فقدان الإحساس حول منطقة الأعضاء التناسلية وبين الفخذين، أو ضعف شديد أو متزايد في الساقين. كما يجب طلب التقييم الطبي سريعًا عند وجود حمى أو شعور عام شديد بالمرض، أو إصابة قوية، أو تاريخ مرضي للسرطان، أو فقدان وزن غير مبرر، أو ألم شديد ومستمر وغير معتاد. لا تعني هذه الأعراض بالضرورة وجود مرض خطير، لكنها تستدعي تقييمًا مناسبًا. لا تؤخر طلب الطوارئ عند الاشتباه في متلازمة ذيل الفرس."
-    ],
-
-    [
-      "16. Frequently Asked Questions",
-      "16. الأسئلة الشائعة",
-      "Does bed rest help back pain? Prolonged bed rest is generally not recommended; maintaining tolerable daily activity is usually more helpful. Should I get an MRI? Imaging is not routinely needed for uncomplicated back pain, but a clinician may request it when red flags or specific clinical indications are present. Is exercise safe? Many people benefit from appropriately selected and gradually progressed exercise. Can back pain return? Yes, episodes can recur, but education, physical activity and self-management strategies can help reduce their impact.",
-      "هل الراحة التامة في السرير تساعد آلام الظهر؟ لا يُنصح عادةً بالراحة الطويلة في السرير؛ فالحفاظ على النشاط اليومي الذي يمكن تحمله يكون أكثر فائدة في أغلب الحالات. هل أحتاج إلى رنين مغناطيسي؟ لا يُطلب التصوير بصورة روتينية في حالات آلام الظهر غير المعقدة، لكن قد يطلبه الطبيب عند وجود علامات خطر أو أسباب إكلينيكية محددة. هل التمارين آمنة؟ يستفيد كثير من الأشخاص من التمارين المناسبة التي تتم زيادتها تدريجيًا. هل يمكن أن تعود آلام الظهر؟ نعم، قد تتكرر النوبات، لكن التثقيف الصحي والنشاط البدني واستراتيجيات التعامل الذاتي تساعد على تقليل تأثيرها."
-    ],
-
-    [
-      "17. Scientific References and Further Reading",
-      "17. المراجع العلمية ومصادر القراءة",
-      "1. World Health Organization (WHO). WHO guideline for non-surgical management of chronic primary low back pain in adults in primary and community care settings, 2023. 2. National Institute for Health and Care Excellence (NICE). Low back pain and sciatica in over 16s: assessment and management (NG59). 3. American College of Radiology (ACR). Appropriateness Criteria: Low Back Pain. 4. George SZ et al. Interventions for the Management of Acute and Chronic Low Back Pain: Revision 2021. Journal of Orthopaedic & Sports Physical Therapy.",
-      "1. منظمة الصحة العالمية (WHO). إرشادات التدخلات غير الجراحية للتعامل مع آلام أسفل الظهر الأولية المزمنة لدى البالغين، 2023. 2. المعهد الوطني البريطاني للصحة وجودة الرعاية (NICE). تقييم وعلاج آلام أسفل الظهر وعرق النسا للأشخاص فوق 16 عامًا (NG59). 3. الكلية الأمريكية للأشعة (ACR). معايير ملاءمة التصوير في حالات آلام أسفل الظهر. 4. جورج وزملاؤه. التدخلات العلاجية لإدارة آلام أسفل الظهر الحادة والمزمنة: تحديث 2021، مجلة العلاج الطبيعي للعظام والرياضة."
-    ],
-
-    [
-      "18. Medical Disclaimer",
-      "18. إخلاء المسؤولية الطبية",
-      "This article is intended for general educational purposes only. It does not replace an individual medical assessment, diagnosis or treatment plan. Exercise selection and rehabilitation should be adapted to each person's condition, symptoms and clinical findings. Consult a qualified healthcare professional for personalized advice.",
-      "هذا المقال مخصص للتثقيف الصحي العام فقط، ولا يُغني عن التقييم الطبي الفردي أو التشخيص أو الخطة العلاجية. يجب اختيار التمارين وبرنامج التأهيل بما يتناسب مع حالة كل شخص وأعراضه ونتائج الفحص الإكلينيكي. يُرجى استشارة متخصص صحي مؤهل للحصول على التوجيه المناسب لحالتك."
+      "References and Further Reading",
+      "المراجع ومصادر القراءة",
+      "World Health Organization (WHO), 2023: Guideline for non-surgical management of chronic primary low back pain. NICE Guideline NG59: Low back pain and sciatica in over 16s. American College of Radiology: Appropriateness Criteria for Low Back Pain.",
+      "منظمة الصحة العالمية، 2023: إرشادات التدخلات غير الجراحية لآلام أسفل الظهر الأولية المزمنة. إرشادات NICE رقم NG59 لتقييم وعلاج آلام أسفل الظهر وعرق النسا. الكلية الأمريكية للأشعة: معايير التصوير المناسبة لآلام أسفل الظهر."
     ]
-
   ]
 },
+
+/* =====================================================
+   2. KNEE PAIN - آلام الركبة
+===================================================== */
+
 "knee-pain": {
-category:["KNEE PAIN","آلام الركبة"],
-title:[
-"Knee Pain: Complete Guide to Causes, Assessment and Physiotherapy",
-"دليل شامل لآلام الركبة: الأسباب والتقييم والعلاج الطبيعي"
-],
-sections:[
-[
-"Introduction to Knee Pain",
-"مقدمة عن آلام الركبة",
-"Knee pain is one of the most common musculoskeletal problems. It can affect people of all ages and may develop gradually due to overuse or joint changes, or suddenly following an injury. Pain may interfere with walking, running, climbing stairs, squatting and everyday activities.",
-"تُعد آلام الركبة من أكثر مشكلات الجهاز العضلي الهيكلي شيوعًا. وقد تصيب مختلف الأعمار، وتظهر تدريجيًا بسبب الإجهاد المتكرر أو تغيرات المفصل، أو بصورة مفاجئة بعد الإصابة. وقد تؤثر على المشي والجري وصعود السلالم والقرفصاء والأنشطة اليومية."
-],
-[
-"Knee Joint Anatomy and Function",
-"تشريح مفصل الركبة ووظيفته",
-"The knee joint is formed mainly by the femur, tibia and patella. Articular cartilage helps reduce friction, while the menisci distribute loads. Ligaments provide stability, and muscles and tendons control movement and support the joint during daily and sporting activities.",
-"يتكون مفصل الركبة بشكل أساسي من عظمة الفخذ وعظمة الساق وصابونة الركبة. ويساعد الغضروف المفصلي على تقليل الاحتكاك، بينما يساهم الغضروف الهلالي في توزيع الأحمال. وتوفر الأربطة الثبات، وتتحكم العضلات والأوتار في الحركة وتدعم المفصل أثناء الأنشطة اليومية والرياضية."
-],
-[
-"Common Causes of Knee Pain",
-"الأسباب الشائعة لآلام الركبة",
-"Common causes include muscle weakness, repetitive overloading, sudden increases in exercise intensity, sports injuries, twisting movements, ligament injuries, meniscus tears, tendon disorders and osteoarthritis. Previous injuries and reduced movement control may also contribute.",
-"تشمل الأسباب الشائعة ضعف العضلات، وزيادة الأحمال المتكررة، والزيادة المفاجئة في شدة التمارين، والإصابات الرياضية، والحركات الالتوائية، وإصابات الأربطة، وتمزق الغضروف الهلالي، ومشكلات الأوتار وخشونة المفصل. وقد تساهم الإصابات السابقة وضعف التحكم الحركي أيضًا في ظهور الألم."
-],
-[
-"Common Knee Conditions",
-"أشهر مشكلات الركبة",
-"Knee osteoarthritis: Joint changes that may cause pain and stiffness. Meniscus tear: Injury to the cartilage that helps distribute loads. ACL injury: Damage to the anterior cruciate ligament, often following twisting or sudden direction changes. Patellofemoral pain: Pain around or behind the kneecap. Patellar tendinopathy: Pain in the tendon below the kneecap. Bursitis: Irritation of a fluid-filled sac around the joint.",
-"خشونة الركبة: تغيرات في المفصل قد تسبب الألم والتيبس. تمزق الغضروف الهلالي: إصابة في الغضروف الذي يساعد على توزيع الأحمال. إصابة الرباط الصليبي الأمامي: تلف الرباط وقد يحدث بعد الالتواء أو تغيير الاتجاه المفاجئ. ألم مفصل الرضفة والفخذ: ألم حول أو خلف صابونة الركبة. اعتلال وتر الرضفة: ألم في الوتر أسفل الصابونة. التهاب الجراب: تهيج كيس مملوء بالسائل حول المفصل."
-],
-[
-"Signs and Symptoms",
-"العلامات والأعراض",
-"Symptoms may include pain during activity, swelling, stiffness after rest, reduced range of motion, clicking sensations, weakness, difficulty climbing stairs, and a feeling of instability or locking. Symptoms depend on the underlying condition and should be assessed individually.",
-"قد تشمل الأعراض الألم أثناء النشاط، والتورم، والتيبس بعد الراحة، ونقص مدى الحركة، والطقطقة، والضعف العضلي، وصعوبة صعود السلالم، والشعور بعدم الثبات أو انغلاق الركبة. وتختلف الأعراض حسب المشكلة الأساسية ويجب تقييم كل حالة بصورة فردية."
-],
-[
-"Physiotherapy Assessment",
-"التقييم في العلاج الطبيعي",
-"Assessment may include medical history, injury mechanism, pain location and severity, swelling, joint alignment, range of motion, muscle strength, walking pattern, stair climbing, balance and functional movement. Specific clinical tests may be used when indicated. Imaging may be requested by a medical professional when necessary.",
-"قد يشمل التقييم التاريخ المرضي، وكيفية حدوث الإصابة، ومكان الألم وشدته، والتورم، ومحاذاة المفصل، ومدى الحركة، والقوة العضلية، وطريقة المشي، وصعود السلالم، والاتزان والحركة الوظيفية. وقد تُستخدم اختبارات إكلينيكية خاصة عند الحاجة، كما يمكن أن يطلب الطبيب فحوصات تصويرية إذا لزم الأمر."
-],
-[
-"Physiotherapy Treatment",
-"العلاج الطبيعي",
-"Physiotherapy aims to reduce pain, improve mobility, restore strength and support a safe return to daily activities. Treatment may include education, activity modification, progressive strengthening, flexibility exercises, balance training, movement retraining and manual therapy as an additional option when appropriate.",
-"يهدف العلاج الطبيعي إلى تقليل الألم وتحسين الحركة واستعادة القوة العضلية والمساعدة على العودة الآمنة للأنشطة اليومية. وقد يشمل التثقيف الصحي، وتعديل الأنشطة، وتمارين التقوية التدريجية، وتمارين المرونة، وتدريب الاتزان، وإعادة تدريب الحركة، والعلاج اليدوي كوسيلة إضافية عند الحاجة."
-],
-[
-"Rehabilitation Exercises",
-"تمارين التأهيل",
-"Depending on the assessment, a rehabilitation programme may include quadriceps activation, straight leg raises, hip and gluteal strengthening, sit-to-stand exercises, step-ups and balance training. Exercise selection and progression should be individualized according to symptoms, function and recovery stage.",
-"وفقًا لنتائج التقييم، قد يشمل برنامج التأهيل تنشيط العضلة الرباعية، ورفع الساق مستقيمة، وتقوية عضلات الحوض والأرداف، وتمارين الجلوس والوقوف، والصعود على درجة، وتمارين الاتزان. ويجب اختيار التمارين وتطوير مستواها وفقًا للأعراض والقدرة الوظيفية ومرحلة التعافي."
-],
-[
-"Daily Activity and Prevention",
-"الأنشطة اليومية والوقاية",
-"Avoid sudden increases in activity, warm up before exercise, increase training loads gradually, allow recovery time, maintain appropriate physical activity and follow professional advice. Modify activities that significantly aggravate symptoms rather than stopping all movement unnecessarily.",
-"تجنب الزيادة المفاجئة في النشاط، وقم بالإحماء قبل التمارين، وزد الأحمال التدريبية تدريجيًا، واسمح للجسم بوقت كافٍ للتعافي، وحافظ على النشاط البدني المناسب واتبع إرشادات المتخصص. ويمكن تعديل الأنشطة التي تزيد الأعراض بصورة ملحوظة بدلًا من التوقف عن الحركة تمامًا دون داعٍ."
-],
-[
-"When to Seek Medical Attention",
-"متى يجب طلب الرعاية الطبية؟",
-"Seek urgent medical assessment if there is severe pain after a significant injury, inability to move the knee or bear weight, major swelling or deformity, a locked knee that cannot straighten, or a hot red swollen knee accompanied by fever or feeling unwell.",
-"اطلب التقييم الطبي العاجل عند وجود ألم شديد بعد إصابة قوية، أو عدم القدرة على تحريك الركبة أو تحميل الوزن عليها، أو تورم شديد أو تشوه واضح، أو انغلاق الركبة وعدم القدرة على فردها، أو سخونة واحمرار وتورم الركبة مع ارتفاع الحرارة أو الشعور بالتعب."
-],
-[
-"Conclusion",
-"الخلاصة",
-"Knee pain has many possible causes and requires appropriate assessment. An individualized physiotherapy and rehabilitation programme can help improve strength, mobility and function and support a safe return to daily activities.",
-"لآلام الركبة أسباب متعددة، ولذلك تحتاج إلى تقييم مناسب. ويمكن لبرنامج العلاج الطبيعي والتأهيل المصمم لكل حالة أن يساعد على تحسين القوة والحركة والوظيفة ودعم العودة الآمنة للأنشطة اليومية."
-],
-[
-"Medical Disclaimer",
-"تنويه طبي",
-"This article is for educational purposes only and does not replace professional medical diagnosis or individualized treatment.",
-"هذا المقال لأغراض التثقيف الصحي فقط، ولا يُغني عن التشخيص الطبي المتخصص أو الخطة العلاجية الفردية."
-],
-[
-"References and Further Reading",
-"المراجع ومصادر القراءة",
-"NHS – Knee Pain: https://www.nhs.uk/conditions/knee-pain/ | NICE – Osteoarthritis: https://www.nice.org.uk/guidance/ng226",
-"المراجع: هيئة الخدمات الصحية البريطانية NHS – آلام الركبة، وإرشادات NICE بشأن تشخيص وعلاج خشونة المفاصل."
-]
-]
+  category: ["KNEE PAIN", "آلام الركبة"],
+
+  title: [
+    "Knee Pain: Causes, Assessment, Physiotherapy and Rehabilitation",
+    "آلام الركبة: الأسباب والتقييم والعلاج الطبيعي والتأهيل"
+  ],
+
+  sections: [
+
+    [
+      "Introduction to Knee Pain",
+      "مقدمة عن آلام الركبة",
+      "Knee pain is a common musculoskeletal complaint affecting people of different ages and activity levels. It may develop gradually due to overuse or joint changes, or suddenly following an injury. Pain can affect walking, running, climbing stairs, squatting and sports participation.",
+      "تُعد آلام الركبة من مشكلات الجهاز العضلي الهيكلي الشائعة لدى مختلف الأعمار ومستويات النشاط. وقد تظهر تدريجيًا بسبب الإجهاد المتكرر أو تغيرات المفصل، أو بصورة مفاجئة بعد الإصابة. وقد تؤثر على المشي والجري وصعود السلالم والقرفصاء وممارسة الرياضة."
+    ],
+
+    [
+      "Knee Joint Anatomy",
+      "تشريح مفصل الركبة",
+      "The knee is formed mainly by the femur, tibia and patella. Articular cartilage helps reduce friction, while the medial and lateral menisci help distribute loads. The ACL, PCL, MCL and LCL contribute to stability. Muscles and tendons around the knee control movement and support the joint.",
+      "يتكون مفصل الركبة بشكل أساسي من عظمة الفخذ وعظمة الساق وصابونة الركبة. يساعد الغضروف المفصلي على تقليل الاحتكاك، بينما يساهم الغضروف الهلالي الداخلي والخارجي في توزيع الأحمال. وتساعد الأربطة الصليبية والجانبية على ثبات المفصل، بينما تتحكم العضلات والأوتار المحيطة بالركبة في الحركة وتدعم المفصل."
+    ],
+
+    [
+      "Common Causes",
+      "الأسباب الشائعة",
+      "Knee pain may result from muscle weakness, repetitive overload, sudden increases in training intensity, twisting injuries, ligament injuries, meniscus tears, tendon disorders or osteoarthritis. Previous injuries and reduced movement control may also contribute.",
+      "قد تنتج آلام الركبة عن ضعف العضلات أو زيادة الأحمال المتكررة أو الزيادة المفاجئة في شدة التدريب أو إصابات الالتواء أو إصابات الأربطة أو تمزق الغضروف الهلالي أو مشكلات الأوتار أو خشونة المفصل. وقد تساهم الإصابات السابقة وضعف التحكم الحركي أيضًا في ظهور الألم."
+    ],
+
+    [
+      "Common Knee Conditions",
+      "أشهر مشكلات الركبة",
+      "Patellofemoral pain causes pain around or behind the kneecap. Meniscus injuries may cause joint-line pain and swelling. ACL injuries often occur during twisting or sudden direction changes. Patellar tendinopathy causes pain in the tendon below the kneecap. Osteoarthritis may cause pain, stiffness and reduced function.",
+      "يسبب ألم مفصل الرضفة والفخذ ألمًا حول أو خلف صابونة الركبة. وقد تسبب إصابات الغضروف الهلالي ألمًا على خط المفصل وتورمًا. وغالبًا ما تحدث إصابات الرباط الصليبي الأمامي أثناء الالتواء أو تغيير الاتجاه المفاجئ. ويسبب اعتلال وتر الرضفة ألمًا في الوتر أسفل الصابونة. وقد تؤدي خشونة الركبة إلى الألم والتيبس وضعف الوظيفة."
+    ],
+
+    [
+      "Signs and Symptoms",
+      "العلامات والأعراض",
+      "Symptoms may include pain during activity, swelling, stiffness after rest, reduced range of motion, clicking, weakness, difficulty climbing stairs and a feeling of instability or locking. The pattern of symptoms depends on the underlying condition.",
+      "قد تشمل الأعراض الألم أثناء النشاط والتورم والتيبس بعد الراحة ونقص مدى الحركة والطقطقة والضعف العضلي وصعوبة صعود السلالم والشعور بعدم الثبات أو انغلاق الركبة. ويختلف نمط الأعراض حسب المشكلة الأساسية."
+    ],
+
+    [
+      "Physiotherapy Assessment",
+      "التقييم في العلاج الطبيعي",
+      "Assessment may include injury history, pain location, swelling, range of motion, muscle strength, joint stability, walking pattern, balance and functional movements such as squatting and stair climbing. Specific clinical tests may be used when indicated.",
+      "قد يشمل التقييم تاريخ الإصابة ومكان الألم والتورم ومدى الحركة والقوة العضلية وثبات المفصل وطريقة المشي والاتزان والحركات الوظيفية مثل القرفصاء وصعود السلالم. ويمكن استخدام اختبارات إكلينيكية خاصة عند الحاجة."
+    ],
+
+    [
+      "Physiotherapy Treatment",
+      "العلاج الطبيعي",
+      "Treatment aims to reduce symptoms, improve mobility, restore strength and support a safe return to daily activities. It may include education, activity modification, progressive strengthening, flexibility training, balance exercises and movement retraining.",
+      "يهدف العلاج الطبيعي إلى تقليل الأعراض وتحسين الحركة واستعادة القوة والمساعدة على العودة الآمنة للأنشطة اليومية. وقد يشمل التثقيف الصحي وتعديل الأنشطة والتقوية التدريجية وتمارين المرونة والاتزان وإعادة تدريب الحركة."
+    ],
+
+    [
+      "Rehabilitation Exercises",
+      "تمارين التأهيل",
+      "Depending on assessment, exercises may include quadriceps activation, straight leg raises, bridges, hip strengthening, sit-to-stand, step-ups, calf raises and balance training. Exercise selection should match the person's condition and tolerance.",
+      "وفقًا لنتائج التقييم، قد تشمل التمارين تنشيط العضلة الرباعية ورفع الساق مستقيمة ورفع الحوض وتقوية عضلات الفخذ والحوض وتمارين الجلوس والوقوف والصعود على درجة ورفع الكعب وتمارين الاتزان. ويجب اختيار التمارين حسب حالة الشخص وقدرته على التحمل."
+    ],
+
+    [
+      "Return to Sport and Prevention",
+      "العودة للرياضة والوقاية",
+      "Return to sport should be gradual and based on strength, movement control, balance, confidence and sport-specific demands. Warm-ups, gradual training progression, recovery and appropriate technique may help reduce injury risk.",
+      "يجب أن تكون العودة إلى الرياضة تدريجية وتعتمد على القوة والتحكم الحركي والاتزان والثقة ومتطلبات الرياضة. وقد يساعد الإحماء والتدرج في التدريب والتعافي الكافي واستخدام التقنية المناسبة على تقليل خطر الإصابة."
+    ],
+
+    [
+      "When to Seek Medical Attention",
+      "متى يجب طلب الرعاية الطبية؟",
+      "Seek urgent assessment if there is severe pain after injury, inability to bear weight, major swelling or deformity, a locked knee that cannot straighten, or a hot red swollen knee with fever. Sudden instability after an injury also needs prompt assessment.",
+      "اطلب التقييم الطبي العاجل عند وجود ألم شديد بعد الإصابة أو عدم القدرة على تحميل الوزن أو تورم شديد أو تشوه واضح أو انغلاق الركبة وعدم القدرة على فردها أو سخونة واحمرار وتورم الركبة مع الحمى. كما يحتاج عدم الثبات المفاجئ بعد الإصابة إلى تقييم سريع."
+    ],
+
+    [
+      "References and Further Reading",
+      "المراجع ومصادر القراءة",
+      "NHS: Knee Pain. NICE Guideline NG226: Osteoarthritis in over 16s. American Academy of Orthopaedic Surgeons: Knee Conditioning Program and patient education resources.",
+      "هيئة الخدمات الصحية البريطانية NHS: آلام الركبة. إرشادات NICE رقم NG226 بشأن خشونة المفاصل لدى الأشخاص فوق 16 عامًا. الأكاديمية الأمريكية لجراحي العظام: برنامج تهيئة الركبة والمصادر التثقيفية للمرضى."
+    ]
+  ]
 },
+
+/* =====================================================
+   3. SHOULDER PAIN - آلام الكتف
+===================================================== */
 
 "shoulder-pain": {
-category:["SHOULDER PAIN","آلام الكتف"],
-title:[
-"Shoulder Pain: Causes, Symptoms, Assessment and Physiotherapy",
-"آلام الكتف: الأسباب والأعراض والتقييم والعلاج الطبيعي"
-],
-sections:[
-[
-"Introduction to Shoulder Pain",
-"مقدمة عن آلام الكتف",
-"Shoulder pain is a common musculoskeletal problem that may affect lifting, reaching, dressing, sleeping and daily activities. It may develop gradually through repetitive activities or suddenly after an injury.",
-"تُعد آلام الكتف من مشكلات الجهاز العضلي الهيكلي الشائعة، وقد تؤثر على رفع الذراع والوصول للأشياء وارتداء الملابس والنوم والأنشطة اليومية. وقد تظهر تدريجيًا نتيجة الأنشطة المتكررة أو بصورة مفاجئة بعد الإصابة."
-],
-[
-"Shoulder Anatomy and Function",
-"تشريح الكتف ووظيفته",
-"The shoulder involves the humerus, scapula and clavicle. The rotator cuff muscles, tendons, ligaments and shoulder blade muscles work together to provide stability and allow a wide range of movement.",
-"يشمل الكتف عظمة العضد ولوح الكتف والترقوة. وتعمل عضلات وأوتار الكفة المدورة والأربطة وعضلات لوح الكتف معًا لتوفير الثبات والسماح بمدى واسع من الحركة."
-],
-[
-"Common Causes of Shoulder Pain",
-"الأسباب الشائعة لآلام الكتف",
-"Common causes include repetitive overhead activities, muscle weakness, rotator cuff disorders, tendon irritation, sudden injuries, shoulder instability and age-related joint changes. Neck problems may also cause pain around the shoulder or arm.",
-"تشمل الأسباب الشائعة الأنشطة المتكررة فوق مستوى الرأس، وضعف العضلات، ومشكلات الكفة المدورة، وتهيج الأوتار، والإصابات المفاجئة، وعدم ثبات مفصل الكتف والتغيرات المرتبطة بالعمر. كما قد تسبب مشكلات الرقبة ألمًا حول الكتف أو الذراع."
-],
-[
-"Common Shoulder Conditions",
-"أشهر مشكلات الكتف",
-"Rotator cuff tendinopathy: Changes or irritation in the tendons. Rotator cuff tear: Partial or complete tendon damage. Frozen shoulder: Pain and progressive restriction of movement. Shoulder instability: Reduced control of the joint. AC joint problems: Pain around the joint between the collarbone and shoulder blade.",
-"اعتلال أوتار الكفة المدورة: تغيرات أو تهيج في الأوتار. تمزق الكفة المدورة: تلف جزئي أو كامل في الأوتار. الكتف المتجمد: ألم ونقص تدريجي في الحركة. عدم ثبات الكتف: ضعف التحكم في المفصل. مشكلات المفصل الأخرمي الترقوي: ألم حول المفصل بين الترقوة ولوح الكتف."
-],
-[
-"Signs and Symptoms",
-"العلامات والأعراض",
-"Symptoms may include pain when lifting the arm, discomfort during overhead activities, pain when reaching behind the back, weakness, reduced range of motion, night pain and difficulty sleeping on the affected side.",
-"قد تشمل الأعراض الألم عند رفع الذراع، والانزعاج أثناء الأنشطة فوق مستوى الرأس، والألم عند الوصول خلف الظهر، وضعف العضلات، ونقص مدى الحركة، والألم أثناء الليل وصعوبة النوم على الجانب المصاب."
-],
-[
-"Shoulder Assessment",
-"تقييم الكتف",
-"Assessment may include medical history, pain behavior, posture, shoulder blade movement, active and passive range of motion, muscle strength, neck assessment and functional movement tests. Imaging may be requested when clinically necessary.",
-"قد يشمل التقييم التاريخ المرضي وطبيعة الألم ووضعية الجسم وحركة لوح الكتف ومدى الحركة النشط والسلبي والقوة العضلية وفحص الرقبة واختبارات الحركة الوظيفية. وقد يطلب الطبيب فحوصات تصويرية عند الضرورة الطبية."
-],
-[
-"Physiotherapy Treatment",
-"العلاج الطبيعي",
-"Physiotherapy aims to reduce pain, restore movement, improve strength and coordination and support a return to daily activities. Treatment may include education, activity modification, progressive strengthening, mobility exercises, rotator cuff training and shoulder blade control exercises.",
-"يهدف العلاج الطبيعي إلى تقليل الألم واستعادة الحركة وتحسين القوة والتناسق العضلي والمساعدة على العودة للأنشطة اليومية. وقد يشمل التثقيف الصحي وتعديل الأنشطة وتمارين التقوية التدريجية وتمارين الحركة وتدريب الكفة المدورة والتحكم في لوح الكتف."
-],
-[
-"Shoulder Rehabilitation Exercises",
-"تمارين تأهيل الكتف",
-"Depending on assessment, rehabilitation may include pendulum exercises, assisted shoulder movement, isometric exercises, resistance band external rotation, shoulder blade setting, rowing exercises and progressive functional strengthening.",
-"وفقًا لنتائج التقييم، قد يشمل التأهيل تمارين البندول والحركة المساعدة للكتف والانقباض العضلي الثابت والدوران الخارجي باستخدام شريط المقاومة وتمارين التحكم في لوح الكتف وتمارين السحب والتقوية الوظيفية التدريجية."
-],
-[
-"Daily Activity Management",
-"التعامل مع آلام الكتف في الحياة اليومية",
-"Avoid sudden increases in overhead activities, modify painful movements, take breaks when needed and gradually return to exercise. Comfortable sleep positions and pillow support may improve comfort.",
-"تجنب الزيادة المفاجئة في الأنشطة التي تتطلب رفع الذراع فوق مستوى الرأس، وعدّل الحركات المؤلمة وخذ فترات راحة عند الحاجة وعد تدريجيًا للتمارين. وقد تساعد وضعية النوم المريحة واستخدام وسادة مناسبة على تحسين الراحة."
-],
-[
-"When to Seek Medical Attention",
-"متى يجب طلب الرعاية الطبية؟",
-"Seek urgent medical assessment after a significant injury, visible shoulder deformity, inability to move the arm, sudden severe pain or major swelling. A hot or red shoulder with fever requires urgent assessment. Shoulder pain with chest pain or shortness of breath may indicate a medical emergency.",
-"اطلب التقييم الطبي العاجل بعد إصابة قوية أو ظهور تشوه واضح في الكتف أو عدم القدرة على تحريك الذراع أو حدوث ألم شديد مفاجئ أو تورم كبير. كما تتطلب سخونة أو احمرار الكتف مع ارتفاع الحرارة تقييمًا عاجلًا. وقد يشير ألم الكتف المصحوب بألم الصدر أو ضيق التنفس إلى حالة طبية طارئة."
-],
-[
-"Conclusion",
-"الخلاصة",
-"Accurate assessment and an individualized physiotherapy programme can help restore shoulder mobility, strength and confidence in movement.",
-"يساعد التقييم الدقيق وبرنامج العلاج الطبيعي المصمم لكل حالة على استعادة حركة الكتف وقوته والثقة في استخدامه."
-],
-[
-"Medical Disclaimer",
-"تنويه طبي",
-"This article is for educational purposes only and does not replace professional medical diagnosis or individualized treatment.",
-"هذا المقال لأغراض التثقيف الصحي فقط، ولا يُغني عن التشخيص الطبي المتخصص أو الخطة العلاجية الفردية."
-]
-]
+  category: ["SHOULDER PAIN", "آلام الكتف"],
+
+  title: [
+    "Shoulder Pain: Causes, Assessment and Physiotherapy",
+    "آلام الكتف: الأسباب والتقييم والعلاج الطبيعي"
+  ],
+
+  sections: [
+
+    [
+      "Introduction",
+      "مقدمة",
+      "Shoulder pain can affect reaching, lifting, dressing, sleeping and sports activities. It may begin after an injury or develop gradually due to repetitive loading or changes in shoulder tissues. The shoulder has a wide range of movement, which depends on coordinated action of muscles, tendons, joints and the shoulder blade.",
+      "قد تؤثر آلام الكتف على مد الذراع وحمل الأشياء وارتداء الملابس والنوم والأنشطة الرياضية. وقد تبدأ بعد إصابة أو تظهر تدريجيًا بسبب الإجهاد المتكرر أو التغيرات التي تحدث في أنسجة الكتف. يتميز الكتف بمدى حركة واسع يعتمد على التنسيق بين العضلات والأوتار والمفاصل ولوح الكتف."
+    ],
+
+    [
+      "Shoulder Anatomy",
+      "تشريح الكتف",
+      "The shoulder complex includes the glenohumeral joint, acromioclavicular joint, sternoclavicular joint and scapulothoracic articulation. The rotator cuff muscles help control the shoulder joint, while the deltoid and surrounding muscles contribute to arm movement and stability.",
+      "يتكون مركب الكتف من المفصل الحقاني العضدي والمفصل الأخرمي الترقوي والمفصل القصي الترقوي وحركة لوح الكتف على القفص الصدري. تساعد عضلات الكفة المدورة على التحكم في مفصل الكتف، بينما تساهم العضلة الدالية والعضلات المحيطة في حركة الذراع وثباته."
+    ],
+
+    [
+      "Common Causes",
+      "الأسباب الشائعة",
+      "Possible causes include rotator cuff related pain, tendon disorders, shoulder stiffness, instability, muscle strain, acromioclavicular joint problems and traumatic injuries. Neck conditions may also refer pain into the shoulder or arm.",
+      "تشمل الأسباب المحتملة الألم المرتبط بالكفة المدورة ومشكلات الأوتار وتيبس الكتف وعدم الثبات والشد العضلي ومشكلات المفصل الأخرمي الترقوي والإصابات الناتجة عن الحوادث. وقد تسبب مشكلات الرقبة أيضًا ألمًا ممتدًا إلى الكتف أو الذراع."
+    ],
+
+    [
+      "Signs and Symptoms",
+      "العلامات والأعراض",
+      "Symptoms may include pain during overhead movements, difficulty reaching behind the back, weakness, stiffness, night pain and reduced ability to lift objects. Numbness or tingling may suggest involvement of nerves and should be assessed.",
+      "قد تشمل الأعراض الألم أثناء رفع الذراع فوق الرأس وصعوبة وضع اليد خلف الظهر والضعف والتيبس والألم أثناء النوم وانخفاض القدرة على حمل الأشياء. وقد يشير التنميل أو الوخز إلى تأثر الأعصاب ويحتاج إلى التقييم."
+    ],
+
+    [
+      "Physiotherapy Assessment",
+      "التقييم في العلاج الطبيعي",
+      "Assessment may include pain history, active and passive range of motion, strength testing, shoulder blade movement, neck screening and functional tasks. Clinical tests can help guide the assessment but should not be interpreted in isolation.",
+      "قد يشمل التقييم تاريخ الألم ومدى الحركة النشط والسلبي واختبار القوة وحركة لوح الكتف وفحص الرقبة والمهام الوظيفية. ويمكن أن تساعد الاختبارات الإكلينيكية في توجيه التقييم، لكن لا ينبغي الاعتماد على اختبار واحد بمعزل عن باقي النتائج."
+    ],
+
+    [
+      "Physiotherapy Treatment",
+      "العلاج الطبيعي",
+      "Management may include education, temporary activity modification, progressive strengthening, mobility exercises and movement retraining. Manual therapy may be used when appropriate as an addition to active rehabilitation.",
+      "قد يشمل العلاج التثقيف الصحي والتعديل المؤقت للأنشطة وتمارين التقوية التدريجية وتحسين الحركة وإعادة تدريب الحركة. ويمكن استخدام العلاج اليدوي عند الحاجة كوسيلة إضافية إلى جانب التأهيل النشط."
+    ],
+
+    [
+      "Therapeutic Exercises",
+      "التمارين العلاجية",
+      "Depending on the assessment, exercises may include pendulum movements, assisted shoulder elevation, external rotation strengthening, rows, wall slides and scapular control exercises. Exercises should be progressed according to comfort, strength and function.",
+      "وفقًا للتقييم، قد تشمل التمارين حركة البندول ورفع الذراع بمساعدة وتمارين تقوية الدوران الخارجي وتمارين السحب والانزلاق على الحائط وتمارين التحكم في لوح الكتف. ويجب تطوير التمارين حسب الراحة والقوة والقدرة الوظيفية."
+    ],
+
+    [
+      "Rehabilitation and Prevention",
+      "التأهيل والوقاية",
+      "Rehabilitation focuses on restoring comfortable movement, strength, endurance and the ability to perform work and sports tasks. Gradual loading, appropriate recovery and balanced upper-body training may help reduce recurrence.",
+      "يركز التأهيل على استعادة الحركة المريحة والقوة والتحمل والقدرة على أداء مهام العمل والرياضة. وقد يساعد التدرج في الأحمال والتعافي المناسب والتدريب المتوازن للجزء العلوي من الجسم على تقليل تكرار المشكلة."
+    ],
+
+    [
+      "When to Seek Medical Attention",
+      "متى يجب طلب الرعاية الطبية؟",
+      "Urgent assessment is needed after major trauma, visible deformity, inability to move the arm, sudden significant weakness or a hot swollen joint with fever. Shoulder pain accompanied by chest pain, shortness of breath or sweating requires emergency medical attention.",
+      "يلزم التقييم العاجل بعد الإصابات القوية أو وجود تشوه واضح أو عدم القدرة على تحريك الذراع أو ضعف شديد ومفاجئ أو سخونة وتورم المفصل مع الحمى. وإذا صاحب ألم الكتف ألم في الصدر أو ضيق في التنفس أو تعرق، فيجب طلب الطوارئ فورًا."
+    ],
+
+    [
+      "References and Further Reading",
+      "المراجع ومصادر القراءة",
+      "NHS: Shoulder Pain. American Academy of Orthopaedic Surgeons: Shoulder Conditioning Program. British Elbow and Shoulder Society: Patient information resources.",
+      "هيئة الخدمات الصحية البريطانية NHS: آلام الكتف. الأكاديمية الأمريكية لجراحي العظام: برنامج تهيئة الكتف. الجمعية البريطانية للكوع والكتف: المصادر التثقيفية للمرضى."
+    ]
+  ]
 },
+
+/* =====================================================
+   4. SPORTS INJURIES - الإصابات الرياضية
+===================================================== */
 
 "sports-injuries": {
-category:["SPORTS INJURIES","الإصابات الرياضية"],
-title:[
-"Sports Injuries: Causes, Prevention and Rehabilitation",
-"الإصابات الرياضية: الأسباب والوقاية والتأهيل"
-],
-sections:[
-[
-"Introduction to Sports Injuries",
-"مقدمة عن الإصابات الرياضية",
-"Sports injuries may occur during training, competition or recreational activity. They can affect muscles, tendons, ligaments, bones and joints. Some injuries happen suddenly, while others develop gradually due to repeated loading.",
-"قد تحدث الإصابات الرياضية أثناء التدريب أو المنافسات أو الأنشطة الترفيهية. ويمكن أن تصيب العضلات والأوتار والأربطة والعظام والمفاصل. وتحدث بعض الإصابات بصورة مفاجئة، بينما تتطور أخرى تدريجيًا نتيجة الأحمال المتكررة."
-],
-[
-"Common Types of Sports Injuries",
-"أنواع الإصابات الرياضية الشائعة",
-"Common injuries include muscle strains, ligament sprains, tendon problems, joint injuries, fractures and overuse conditions. Examples include ankle sprains, hamstring strains, knee ligament injuries and tendon pain.",
-"تشمل الإصابات الشائعة الشد العضلي والتواء الأربطة ومشكلات الأوتار وإصابات المفاصل والكسور وإصابات الإجهاد المتكرر. ومن أمثلتها التواء الكاحل وشد العضلات الخلفية للفخذ وإصابات أربطة الركبة وآلام الأوتار."
-],
-[
-"Causes and Risk Factors",
-"الأسباب وعوامل الخطورة",
-"Risk factors may include sudden increases in training load, inadequate recovery, fatigue, previous injuries, insufficient preparation, unsuitable equipment and reduced strength or movement control.",
-"قد تشمل عوامل الخطورة الزيادة المفاجئة في الحمل التدريبي وعدم كفاية التعافي والإجهاد والإصابات السابقة وعدم الاستعداد الكافي والمعدات غير المناسبة وضعف القوة أو التحكم الحركي."
-],
-[
-"Signs and Symptoms",
-"العلامات والأعراض",
-"Symptoms may include pain, swelling, bruising, weakness, reduced movement and difficulty performing sport-specific activities. Severe injuries may cause deformity or inability to bear weight.",
-"قد تشمل الأعراض الألم والتورم والكدمات والضعف ونقص الحركة وصعوبة أداء المهارات الرياضية. وقد تسبب الإصابات الشديدة تشوهًا واضحًا أو عدم القدرة على تحميل الوزن."
-],
-[
-"Assessment of Sports Injuries",
-"تقييم الإصابات الرياضية",
-"Assessment includes understanding how the injury occurred, pain and swelling, movement, strength, balance and sport-specific function. Medical referral or imaging may be needed when a serious injury is suspected.",
-"يشمل التقييم معرفة كيفية حدوث الإصابة والألم والتورم والحركة والقوة والاتزان والقدرة على أداء المهارات الرياضية. وقد تكون الإحالة الطبية أو الفحوصات التصويرية ضرورية عند الاشتباه في إصابة خطيرة."
-],
-[
-"Physiotherapy and Rehabilitation",
-"العلاج الطبيعي والتأهيل",
-"Rehabilitation may include managing activity, restoring movement, progressive strengthening, balance training, coordination exercises and sport-specific drills. The programme should match the injury and the athlete's goals.",
-"قد يشمل التأهيل تنظيم النشاط واستعادة الحركة والتقوية التدريجية وتدريب الاتزان وتمارين التناسق الحركي والتدريبات الخاصة بالرياضة. ويجب أن يتناسب البرنامج مع نوع الإصابة وأهداف الرياضي."
-],
-[
-"Returning to Sport",
-"العودة إلى الرياضة",
-"Return to sport should be gradual and based on symptoms, strength, movement quality, confidence and sport-specific performance. Returning too early may increase the risk of further injury.",
-"يجب أن تكون العودة إلى الرياضة تدريجية وتعتمد على الأعراض والقوة وجودة الحركة والثقة والقدرة على أداء المهارات الرياضية. فالعودة المبكرة جدًا قد تزيد خطر تكرار الإصابة."
-],
-[
-"Prevention",
-"الوقاية",
-"Gradual training progression, suitable warm-ups, strength training, recovery time, appropriate footwear and attention to early symptoms may help reduce injury risk.",
-"قد يساعد التدرج في التدريب والإحماء المناسب وتمارين القوة ووقت التعافي والأحذية المناسبة والانتباه للأعراض المبكرة على تقليل خطر الإصابات."
-],
-[
-"When to Seek Medical Attention",
-"متى يجب طلب الرعاية الطبية؟",
-"Seek urgent assessment for severe pain, suspected fracture, major deformity, inability to bear weight, significant swelling or numbness after an injury.",
-"اطلب التقييم الطبي العاجل عند وجود ألم شديد أو اشتباه في كسر أو تشوه واضح أو عدم القدرة على تحميل الوزن أو تورم كبير أو تنميل بعد الإصابة."
-],
-[
-"Medical Disclaimer",
-"تنويه طبي",
-"This article is educational and does not replace an individual medical assessment or treatment plan.",
-"هذا المقال للتثقيف الصحي ولا يُغني عن التقييم الطبي الفردي أو الخطة العلاجية المناسبة."
-]
-]
+  category: ["SPORTS INJURIES", "الإصابات الرياضية"],
+
+  title: [
+    "Sports Injuries: Causes, Treatment and Safe Return to Sport",
+    "الإصابات الرياضية: الأسباب والعلاج والعودة الآمنة للرياضة"
+  ],
+
+  sections: [
+
+    [
+      "Introduction",
+      "مقدمة",
+      "Sports injuries may occur during training, competition or recreational activity. They can affect muscles, tendons, ligaments, bones and joints. Some injuries happen suddenly after a fall or collision, while others develop gradually due to repeated loading.",
+      "قد تحدث الإصابات الرياضية أثناء التدريب أو المنافسات أو الأنشطة الترفيهية. ويمكن أن تصيب العضلات والأوتار والأربطة والعظام والمفاصل. تحدث بعض الإصابات بصورة مفاجئة بعد السقوط أو الاصطدام، بينما تتطور إصابات أخرى تدريجيًا بسبب الأحمال المتكررة."
+    ],
+
+    [
+      "Types of Sports Injuries",
+      "أنواع الإصابات الرياضية",
+      "Common injuries include muscle strains, ligament sprains, tendon disorders, joint injuries, fractures and overuse conditions. Examples include hamstring strain, ankle sprain, ACL injury, Achilles tendon problems and stress injuries.",
+      "تشمل الإصابات الشائعة الشد العضلي والتواء الأربطة ومشكلات الأوتار وإصابات المفاصل والكسور وإصابات الإجهاد المتكرر. ومن أمثلتها شد العضلة الخلفية للفخذ والتواء الكاحل وإصابة الرباط الصليبي ومشكلات وتر أكيلس وإصابات الإجهاد."
+    ],
+
+    [
+      "Causes and Risk Factors",
+      "الأسباب وعوامل الخطورة",
+      "Risk factors may include sudden increases in training volume, inadequate recovery, fatigue, previous injury, reduced strength, limited mobility and poor movement control. Equipment, playing surface and sport-specific demands may also influence injury risk.",
+      "قد تشمل عوامل الخطورة الزيادة المفاجئة في حجم التدريب وعدم كفاية التعافي والإجهاد والإصابات السابقة وضعف القوة ومحدودية الحركة وضعف التحكم الحركي. كما قد تؤثر المعدات وأرضية اللعب ومتطلبات الرياضة نفسها في خطر الإصابة."
+    ],
+
+    [
+      "Signs and Symptoms",
+      "العلامات والأعراض",
+      "Symptoms vary according to the injured tissue and may include pain, swelling, bruising, weakness, reduced movement, instability or difficulty bearing weight. Sudden severe pain or loss of function requires prompt assessment.",
+      "تختلف الأعراض حسب النسيج المصاب، وقد تشمل الألم والتورم والكدمات والضعف ونقص الحركة وعدم الثبات أو صعوبة تحميل الوزن. ويحتاج الألم الشديد المفاجئ أو فقدان القدرة الوظيفية إلى تقييم سريع."
+    ],
+
+    [
+      "Sports Injury Assessment",
+      "تقييم الإصابة الرياضية",
+      "Assessment includes the injury mechanism, training history, pain pattern, swelling, range of motion, strength, balance and sport-specific movement. The clinician may request imaging when a fracture or significant structural injury is suspected.",
+      "يشمل التقييم كيفية حدوث الإصابة وتاريخ التدريب ونمط الألم والتورم ومدى الحركة والقوة والاتزان والحركات الخاصة بالرياضة. وقد يطلب الطبيب فحوصات تصويرية عند الاشتباه في كسر أو إصابة تركيبية مهمة."
+    ],
+
+    [
+      "Physiotherapy Treatment",
+      "العلاج الطبيعي",
+      "Treatment depends on the injury and stage of recovery. It may include education, appropriate load management, mobility work, progressive strengthening, balance training and sport-specific exercises. A structured rehabilitation plan helps restore physical capacity safely.",
+      "يعتمد العلاج على نوع الإصابة ومرحلة التعافي. وقد يشمل التثقيف الصحي وإدارة الأحمال بصورة مناسبة وتمارين الحركة والتقوية التدريجية وتدريب الاتزان والتمارين الخاصة بالرياضة. تساعد خطة التأهيل المنظمة على استعادة القدرة البدنية بأمان."
+    ],
+
+    [
+      "Rehabilitation Stages",
+      "مراحل التأهيل",
+      "Rehabilitation may progress from symptom management and basic movement to strength development, balance, running, jumping, agility and sport-specific drills. Progression should be based on function and response to loading rather than time alone.",
+      "قد يتدرج التأهيل من التحكم في الأعراض واستعادة الحركة الأساسية إلى تطوير القوة والاتزان والجري والقفز والرشاقة والتمارين الخاصة بالرياضة. ويجب أن يعتمد التدرج على القدرة الوظيفية واستجابة الجسم للأحمال، وليس على الوقت وحده."
+    ],
+
+    [
+      "Return to Sport",
+      "العودة إلى الرياضة",
+      "Return to sport should consider pain, swelling, strength, range of motion, balance, confidence and the demands of the sport. Athletes should demonstrate adequate function during sport-specific tasks before returning to unrestricted participation.",
+      "يجب أن تراعي العودة إلى الرياضة الألم والتورم والقوة ومدى الحركة والاتزان والثقة ومتطلبات النشاط الرياضي. وينبغي أن يُظهر اللاعب قدرة وظيفية مناسبة أثناء المهام الخاصة بالرياضة قبل العودة الكاملة للمشاركة."
+    ],
+
+    [
+      "Injury Prevention",
+      "الوقاية من الإصابات",
+      "Gradual training progression, proper warm-ups, strength training, adequate sleep, recovery and appropriate technique can help reduce injury risk. Training should be adjusted when fatigue or persistent pain develops.",
+      "قد يساعد التدرج في التدريب والإحماء المناسب وتمارين القوة والنوم الكافي والتعافي واستخدام التقنية الصحيحة على تقليل خطر الإصابة. ويجب تعديل التدريب عند ظهور الإجهاد أو الألم المستمر."
+    ],
+
+    [
+      "When to Seek Medical Attention",
+      "متى يجب طلب الرعاية الطبية؟",
+      "Seek urgent assessment for suspected fractures, major deformity, inability to bear weight, severe swelling, loss of sensation, rapidly worsening pain or suspected serious head or neck injury. Do not return to play while a serious injury is being assessed.",
+      "اطلب التقييم الطبي العاجل عند الاشتباه في كسر أو وجود تشوه واضح أو عدم القدرة على تحميل الوزن أو تورم شديد أو فقدان الإحساس أو تزايد الألم بسرعة أو الاشتباه في إصابة خطيرة بالرأس أو الرقبة. لا تعد للعب أثناء تقييم الإصابة الخطيرة."
+    ],
+
+    [
+      "References and Further Reading",
+      "المراجع ومصادر القراءة",
+      "International Olympic Committee: Sports Injury Prevention and Rehabilitation Resources. NHS: Sports Injuries. American College of Sports Medicine: Exercise and Training Guidance.",
+      "اللجنة الأولمبية الدولية: مصادر الوقاية من الإصابات الرياضية والتأهيل. هيئة الخدمات الصحية البريطانية NHS: الإصابات الرياضية. الكلية الأمريكية للطب الرياضي: إرشادات التمرين والتدريب."
+    ]
+  ]
 },
+
+/* =====================================================
+   5. REHABILITATION - التأهيل
+===================================================== */
 
 "rehabilitation": {
-category:["REHABILITATION","التأهيل"],
-title:[
-"Physiotherapy Rehabilitation: Principles and Goals",
-"التأهيل بالعلاج الطبيعي: المبادئ والأهداف"
-],
-sections:[
-[
-"Introduction to Rehabilitation",
-"مقدمة عن التأهيل",
-"Rehabilitation is a structured process that helps people improve physical function after injury, surgery, illness or periods of reduced activity. It focuses on meaningful goals and safe progress.",
-"التأهيل عملية منظمة تساعد الأشخاص على تحسين القدرة البدنية بعد الإصابة أو الجراحة أو المرض أو فترات قلة النشاط. ويركز على الأهداف المهمة والتقدم الآمن."
-],
-[
-"Goals of Rehabilitation",
-"أهداف التأهيل",
-"Goals may include reducing activity limitations, improving mobility, restoring strength, balance and coordination, increasing independence and supporting a return to work, daily activities or sport.",
-"قد تشمل الأهداف تقليل صعوبات الحركة وتحسين مدى الحركة واستعادة القوة والاتزان والتناسق الحركي وزيادة الاستقلالية ودعم العودة للعمل والأنشطة اليومية أو الرياضة."
-],
-[
-"Initial Assessment",
-"التقييم الأولي",
-"An individualized assessment considers medical history, current symptoms, movement, strength, balance, daily function and personal goals. The findings guide the rehabilitation plan.",
-"يراعي التقييم الفردي التاريخ المرضي والأعراض الحالية والحركة والقوة والاتزان والقدرة الوظيفية والأهداف الشخصية. وتساعد النتائج على وضع خطة التأهيل."
-],
-[
-"Rehabilitation Programme",
-"برنامج التأهيل",
-"A programme may include mobility exercises, progressive strengthening, balance and coordination training, functional practice, education and activity modification. The content depends on the person's condition.",
-"قد يتضمن البرنامج تمارين الحركة والتقوية التدريجية وتدريب الاتزان والتناسق الحركي والتدريب الوظيفي والتثقيف الصحي وتعديل الأنشطة. ويعتمد محتوى البرنامج على حالة الشخص."
-],
-[
-"Progress and Monitoring",
-"متابعة التقدم",
-"Progress can be monitored through symptoms, movement, strength, endurance and functional goals. Exercise difficulty and activity levels should be adjusted according to response and recovery.",
-"يمكن متابعة التقدم من خلال الأعراض والحركة والقوة والتحمل والأهداف الوظيفية. ويجب تعديل صعوبة التمارين ومستوى النشاط وفقًا لاستجابة الجسم والتعافي."
-],
-[
-"Importance of Consistency",
-"أهمية الاستمرارية",
-"Regular participation and gradual progression are important parts of rehabilitation. Recovery differs between individuals, and the plan may need adjustments over time.",
-"تُعد المشاركة المنتظمة والتدرج التدريجي من العناصر المهمة في التأهيل. ويختلف التعافي من شخص لآخر، وقد تحتاج الخطة إلى تعديلات مع مرور الوقت."
-],
-[
-"Conclusion",
-"الخلاصة",
-"Effective rehabilitation is individualized, goal-oriented and based on regular reassessment. It aims to improve function and support safe participation in everyday life.",
-"يعتمد التأهيل الفعال على احتياجات كل شخص وأهدافه وإعادة التقييم بانتظام. ويهدف إلى تحسين الوظيفة ودعم المشاركة الآمنة في الحياة اليومية."
-],
-[
-"Medical Disclaimer",
-"تنويه طبي",
-"This article is educational and does not replace professional assessment or an individualized rehabilitation programme.",
-"هذا المقال للتثقيف الصحي ولا يُغني عن التقييم المتخصص أو برنامج التأهيل الفردي."
-]
-]
+  category: ["REHABILITATION", "التأهيل"],
+
+  title: [
+    "Physiotherapy and Rehabilitation: A Complete Guide",
+    "العلاج الطبيعي والتأهيل: دليل شامل"
+  ],
+
+  sections: [
+
+    [
+      "Introduction to Rehabilitation",
+      "مقدمة عن التأهيل",
+      "Rehabilitation is a structured process that helps people improve movement, strength, independence and participation in daily life. It may be needed after injury, surgery, illness or periods of reduced physical activity. The programme should be based on individual needs and functional goals.",
+      "التأهيل هو عملية منظمة تساعد الأشخاص على تحسين الحركة والقوة والاستقلالية والمشاركة في الحياة اليومية. وقد يكون مطلوبًا بعد الإصابة أو الجراحة أو المرض أو فترات قلة النشاط البدني. ويجب أن يعتمد البرنامج على احتياجات كل شخص وأهدافه الوظيفية."
+    ],
+
+    [
+      "Goals of Physiotherapy",
+      "أهداف العلاج الطبيعي",
+      "Physiotherapy aims to reduce the impact of pain, improve mobility, restore muscle performance, develop balance and coordination, and support safe participation in daily and sporting activities.",
+      "يهدف العلاج الطبيعي إلى تقليل تأثير الألم وتحسين الحركة واستعادة كفاءة العضلات وتطوير الاتزان والتناسق الحركي والمساعدة على المشاركة الآمنة في الأنشطة اليومية والرياضية."
+    ],
+
+    [
+      "Initial Assessment",
+      "التقييم الأولي",
+      "The initial assessment may include medical history, current symptoms, previous treatment, movement ability, strength, balance, endurance and functional limitations. The therapist and patient should agree on realistic and measurable goals.",
+      "قد يشمل التقييم الأولي التاريخ المرضي والأعراض الحالية والعلاج السابق والقدرة على الحركة والقوة والاتزان والتحمل والقيود الوظيفية. وينبغي أن يتفق أخصائي العلاج الطبيعي والمريض على أهداف واقعية وقابلة للقياس."
+    ],
+
+    [
+      "Individual Rehabilitation Plan",
+      "خطة التأهيل الفردية",
+      "A rehabilitation plan is designed according to diagnosis, assessment findings, personal goals and activity demands. It may include exercise, education, mobility training, strengthening, balance work and functional practice. The plan should be reviewed and adjusted as progress occurs.",
+      "يتم تصميم خطة التأهيل وفقًا للتشخيص ونتائج التقييم والأهداف الشخصية ومتطلبات النشاط. وقد تشمل التمارين والتثقيف الصحي وتحسين الحركة وتقوية العضلات وتدريب الاتزان والتدريب الوظيفي. ويجب مراجعة الخطة وتعديلها مع حدوث التقدم."
+    ],
+
+    [
+      "Therapeutic Exercise",
+      "التمارين العلاجية",
+      "Therapeutic exercise may improve strength, flexibility, endurance, coordination and movement confidence. Exercises should be selected according to the person's condition and progressed gradually with appropriate monitoring.",
+      "قد تساعد التمارين العلاجية على تحسين القوة والمرونة والتحمل والتناسق والثقة في الحركة. ويجب اختيار التمارين وفقًا لحالة الشخص وتطويرها تدريجيًا مع المتابعة المناسبة."
+    ],
+
+    [
+      "Balance and Functional Training",
+      "تدريب الاتزان والحركة الوظيفية",
+      "Balance and functional training help people perform activities such as standing, walking, climbing stairs, reaching and changing direction. Training should reflect the activities that matter most to the individual.",
+      "يساعد تدريب الاتزان والحركة الوظيفية الأشخاص على أداء أنشطة مثل الوقوف والمشي وصعود السلالم ومد الذراع وتغيير الاتجاه. وينبغي أن يعكس التدريب الأنشطة الأكثر أهمية بالنسبة لكل شخص."
+    ],
+
+    [
+      "Post-Surgical Rehabilitation",
+      "التأهيل بعد العمليات الجراحية",
+      "Post-surgical rehabilitation follows the surgeon's precautions and the procedure-specific protocol. It may progress from early movement and swelling management to strength, mobility and functional training. Recovery timelines vary and should not be assumed to be the same for everyone.",
+      "يتبع التأهيل بعد الجراحة احتياطات الجراح والبروتوكول الخاص بالعملية. وقد يتدرج من الحركة المبكرة والتحكم في التورم إلى القوة والحركة والتدريب الوظيفي. وتختلف مدة التعافي ولا ينبغي افتراض أنها واحدة لجميع الأشخاص."
+    ],
+
+    [
+      "Monitoring Progress",
+      "متابعة التقدم",
+      "Progress can be monitored through symptoms, range of motion, strength, walking ability, balance, functional tests and personal goals. Temporary changes in symptoms may occur, and the programme should be adjusted according to the overall response.",
+      "يمكن متابعة التقدم من خلال الأعراض ومدى الحركة والقوة والقدرة على المشي والاتزان والاختبارات الوظيفية والأهداف الشخصية. وقد تحدث تغيرات مؤقتة في الأعراض، ويجب تعديل البرنامج وفقًا للاستجابة العامة."
+    ],
+
+    [
+      "Patient Education and Self-Management",
+      "تثقيف المريض والتعامل الذاتي",
+      "Understanding the condition, following a suitable home programme, maintaining activity and communicating changes to the healthcare team are important parts of rehabilitation. Self-management helps people take an active role in recovery.",
+      "يُعد فهم الحالة والالتزام ببرنامج منزلي مناسب والحفاظ على النشاط وإبلاغ الفريق العلاجي بالتغيرات من الأجزاء المهمة في التأهيل. ويساعد التعامل الذاتي الأشخاص على المشاركة الفعالة في التعافي."
+    ],
+
+    [
+      "References and Further Reading",
+      "المراجع ومصادر القراءة",
+      "World Health Organization: Rehabilitation. World Physiotherapy: What is Physiotherapy? National health service rehabilitation and recovery resources.",
+      "منظمة الصحة العالمية: التأهيل. الاتحاد العالمي للعلاج الطبيعي: ما هو العلاج الطبيعي؟ المصادر الصحية الوطنية الخاصة بالتأهيل والتعافي."
+    ]
+  ]
 },
 
+/* =====================================================
+   6. POSTURE - وضعية الجسم
+===================================================== */
+
 "posture": {
-category:["POSTURE & ERGONOMICS","وضعية الجسم وبيئة العمل"],
-title:[
-"Posture and Ergonomics: Healthy Movement at Work and Home",
-"وضعية الجسم وبيئة العمل: الحركة الصحية في العمل والمنزل"
-],
-sections:[
-[
-"Introduction to Posture",
-"مقدمة عن وضعية الجسم",
-"Posture describes how the body is positioned during sitting, standing and movement. People naturally use different postures, and there is no single perfect posture that everyone must maintain.",
-"تصف وضعية الجسم الطريقة التي يكون عليها الجسم أثناء الجلوس والوقوف والحركة. ويستخدم الأشخاص وضعيات مختلفة بصورة طبيعية، ولا توجد وضعية مثالية واحدة يجب على الجميع الالتزام بها طوال الوقت."
-],
-[
-"Why Does Posture Matter?",
-"لماذا نهتم بوضعية الجسم؟",
-"Comfort, movement variety and the ability to change positions are important. Remaining in one position for long periods may contribute to discomfort in some people, especially when combined with high physical or work demands.",
-"تُعد الراحة وتنوع الحركة والقدرة على تغيير الوضعيات أمورًا مهمة. وقد يساهم البقاء في وضعية واحدة لفترات طويلة في الشعور بعدم الراحة لدى بعض الأشخاص، خاصة مع المتطلبات البدنية أو المهنية المرتفعة."
-],
-[
-"Common Factors Affecting Posture",
-"العوامل التي تؤثر على وضعية الجسم",
-"Workstation setup, screen position, chair comfort, activity levels, fatigue, habits and individual physical characteristics may influence posture and comfort.",
-"قد يؤثر إعداد مكان العمل وموضع الشاشة وراحة الكرسي ومستوى النشاط والإجهاد والعادات والخصائص البدنية الفردية على وضعية الجسم والراحة."
-],
-[
-"Ergonomics at Work",
-"بيئة العمل المريحة",
-"Keep frequently used items within comfortable reach, adjust screen height and seating where possible, support the feet and change positions regularly. A comfortable workstation should allow movement rather than force one rigid position.",
-"ضع الأدوات المستخدمة باستمرار في نطاق يسهل الوصول إليه، واضبط ارتفاع الشاشة والكرسي قدر الإمكان، ووفّر دعمًا مناسبًا للقدمين وغيّر وضعيتك بانتظام. ويجب أن يسمح مكان العمل المريح بالحركة بدلًا من فرض وضعية جامدة واحدة."
-],
-[
-"Movement Breaks and Daily Habits",
-"فترات الحركة والعادات اليومية",
-"Short movement breaks, regular walking, gentle mobility exercises and changing tasks can help reduce long periods of static positioning. Choose habits that are realistic and easy to maintain.",
-"قد تساعد فترات الحركة القصيرة والمشي المنتظم وتمارين الحركة البسيطة وتغيير المهام على تقليل فترات الثبات الطويلة. اختر عادات واقعية يسهل الاستمرار عليها."
-],
-[
-"Role of Physiotherapy",
-"دور العلاج الطبيعي",
-"Physiotherapy may help people understand symptoms, improve movement options, develop strength and endurance and adapt work or daily activities. Advice should be based on individual needs rather than posture rules alone.",
-"قد يساعد العلاج الطبيعي الأشخاص على فهم الأعراض وتحسين خيارات الحركة وتطوير القوة والتحمل وتعديل أنشطة العمل والحياة اليومية. ويجب أن تعتمد الإرشادات على الاحتياجات الفردية وليس على قواعد وضعية الجسم وحدها."
-],
-[
-"When to Seek Assessment",
-"متى تحتاج إلى التقييم؟",
-"Seek professional assessment if pain persists, worsens, causes significant limitations or is accompanied by unusual symptoms such as progressive weakness or numbness.",
-"اطلب التقييم المتخصص إذا استمر الألم أو ازداد أو تسبب في قيود واضحة، أو صاحبه أعراض غير معتادة مثل الضعف المتزايد أو التنميل."
-],
-[
-"Conclusion",
-"الخلاصة",
-"Healthy posture is not about holding one rigid position. Comfortable movement, regular position changes and suitable activity are important parts of everyday wellbeing.",
-"لا تعني وضعية الجسم الصحية الحفاظ على وضعية جامدة واحدة. فالحركة المريحة وتغيير الوضعيات بانتظام والنشاط المناسب من العناصر المهمة للصحة اليومية."
-],
-[
-"Medical Disclaimer",
-"تنويه طبي",
-"This article is for educational purposes only and does not replace professional medical assessment or individualized advice.",
-"هذا المقال لأغراض التثقيف الصحي فقط، ولا يُغني عن التقييم الطبي المتخصص أو الإرشادات الفردية."
-]
-]
+  category: ["POSTURE", "وضعية الجسم"],
+
+  title: [
+    "Posture and Ergonomics: Healthy Movement at Work and Home",
+    "وضعية الجسم وبيئة العمل: الحركة الصحية في المنزل والعمل"
+  ],
+
+  sections: [
+
+    [
+      "Introduction to Posture",
+      "مقدمة عن وضعية الجسم",
+      "Posture describes how the body is positioned during standing, sitting and movement. People naturally use different postures throughout the day. Discomfort may be influenced by prolonged positions, low activity, workload, stress and individual factors. There is no single perfect posture that suits everyone.",
+      "تصف وضعية الجسم الطريقة التي يكون عليها الجسم أثناء الوقوف والجلوس والحركة. ويستخدم الأشخاص بطبيعتهم وضعيات مختلفة خلال اليوم. وقد يتأثر الشعور بعدم الراحة بالبقاء في وضعية واحدة لفترات طويلة وقلة النشاط والمجهود والضغوط النفسية وعوامل فردية أخرى. ولا توجد وضعية مثالية واحدة تناسب الجميع."
+    ],
+
+    [
+      "Spinal Curves and Body Alignment",
+      "انحناءات العمود الفقري ومحاذاة الجسم",
+      "The spine has natural cervical, thoracic and lumbar curves. These curves help distribute loads and support movement. Body alignment changes during different activities, and variation is normal. Comfort, movement ability and physical capacity are more useful goals than trying to maintain one rigid position.",
+      "يمتلك العمود الفقري انحناءات طبيعية في المناطق العنقية والصدرية والقطنية. وتساعد هذه الانحناءات على توزيع الأحمال ودعم الحركة. وتتغير محاذاة الجسم أثناء الأنشطة المختلفة، وهذا أمر طبيعي. وتُعد الراحة والقدرة على الحركة والقدرة البدنية أهدافًا أكثر فائدة من محاولة الحفاظ على وضعية جامدة واحدة."
+    ],
+
+    [
+      "Common Posture-Related Discomfort",
+      "المشكلات الشائعة المرتبطة بالوضعية",
+      "Some people report neck, shoulder or back discomfort during prolonged sitting, standing or screen use. These symptoms may be influenced by several factors and should not automatically be attributed to posture alone.",
+      "يشعر بعض الأشخاص بعدم الراحة في الرقبة أو الكتف أو الظهر أثناء الجلوس أو الوقوف لفترات طويلة أو استخدام الشاشات. وقد تتأثر هذه الأعراض بعوامل متعددة، ولا ينبغي إرجاعها تلقائيًا إلى وضعية الجسم وحدها."
+    ],
+
+    [
+      "Ergonomics at Work",
+      "بيئة العمل المريحة",
+      "A comfortable workstation allows frequently used items to be reached easily. Screen height, chair support, desk arrangement and lighting can be adjusted according to the individual. Regular position changes and short movement breaks may improve comfort.",
+      "تسمح بيئة العمل المريحة بالوصول بسهولة إلى الأدوات المستخدمة باستمرار. ويمكن ضبط ارتفاع الشاشة ودعم الكرسي وترتيب المكتب والإضاءة حسب احتياجات الشخص. وقد يساعد تغيير الوضعية بانتظام وأخذ فترات قصيرة للحركة على تحسين الراحة."
+    ],
+
+    [
+      "Healthy Sitting and Standing Habits",
+      "عادات الجلوس والوقوف الصحية",
+      "Try to vary sitting and standing positions throughout the day. Keep frequently used objects within comfortable reach and avoid remaining in one position for too long. Choose a position that allows relaxed breathing and comfortable movement.",
+      "حاول تغيير وضعيات الجلوس والوقوف خلال اليوم. وضع الأدوات المستخدمة باستمرار في مكان يسهل الوصول إليه، وتجنب البقاء في وضعية واحدة لفترات طويلة. اختر وضعية تسمح بالتنفس المريح والحركة دون إجهاد."
+    ],
+
+    [
+      "Mobility and Strength Exercises",
+      "تمارين الحركة وتقوية العضلات",
+      "A general exercise routine may include walking, upper-back mobility, shoulder movements, hip mobility, trunk strengthening and general resistance training. Exercise selection should reflect individual needs and any existing symptoms.",
+      "قد يتضمن البرنامج العام المشي وتمارين حركة الجزء العلوي من الظهر وحركة الكتف وحركة مفصل الفخذ وتقوية عضلات الجذع وتمارين المقاومة العامة. ويجب اختيار التمارين وفقًا لاحتياجات الشخص وأي أعراض موجودة."
+    ],
+
+    [
+      "Screen and Smartphone Use",
+      "استخدام الشاشات والهاتف",
+      "During screen use, position the device so that it can be viewed comfortably. Avoid holding the neck in one position for long periods. Take regular breaks, change position and include movement during the day.",
+      "أثناء استخدام الشاشات، ضع الجهاز في مستوى يسمح برؤيته براحة. وتجنب تثبيت الرقبة في وضعية واحدة لفترات طويلة. خذ فترات راحة منتظمة وغيّر وضعيتك وأضف الحركة إلى يومك."
+    ],
+
+    [
+      "When to Seek Professional Advice",
+      "متى تطلب المشورة المتخصصة؟",
+      "Seek professional assessment if pain is persistent, worsening or associated with numbness, weakness, significant movement limitation or symptoms following an injury. Sudden severe symptoms or neurological changes may require urgent medical assessment.",
+      "اطلب التقييم المتخصص إذا كان الألم مستمرًا أو يزداد سوءًا أو يصاحبه تنميل أو ضعف أو محدودية كبيرة في الحركة أو ظهر بعد إصابة. وقد تحتاج الأعراض الشديدة المفاجئة أو التغيرات العصبية إلى تقييم طبي عاجل."
+    ],
+
+    [
+      "References and Further Reading",
+      "المراجع ومصادر القراءة",
+      "World Health Organization: Physical Activity Guidelines. NHS: Back Pain and Neck Pain Resources. Occupational health and ergonomics guidance from recognized health organizations.",
+      "منظمة الصحة العالمية: إرشادات النشاط البدني. هيئة الخدمات الصحية البريطانية NHS: مصادر آلام الظهر والرقبة. إرشادات الصحة المهنية وبيئة العمل المريحة الصادرة عن المؤسسات الصحية المعتمدة."
+    ]
+  ]
 }
 
-};
+}; // END OF ARTICLES
+
+
+/* =====================================================
+   LANGUAGE AND ARTICLE RENDERING
+===================================================== */
 
 let language = "en";
 
-function renderArticle(){
+function renderArticle() {
+
   const params = new URLSearchParams(window.location.search);
-  const id = params.get("id");
-  const article = articles[id];
+
+  const articleId = params.get("id") || "back-pain";
+
+  const article = articles[articleId];
 
   const title = document.getElementById("title");
   const content = document.getElementById("content");
   const category = document.getElementById("category");
+  const languageButton = document.getElementById("languageButton");
+  const backLink = document.getElementById("backLink");
+  const disclaimer = document.getElementById("disclaimer");
 
-  if(!article){
-    title.textContent = language === "en"
-      ? "Article not found"
-      : "المقال غير موجود";
+  if (!article) {
+
+    document.documentElement.lang = language;
+    document.documentElement.dir =
+      language === "ar" ? "rtl" : "ltr";
+
     category.textContent = "";
-    content.textContent = language === "en"
-      ? "Please return to the articles page and choose an article."
-      : "من فضلك ارجع إلى صفحة المقالات واختر مقالًا.";
+
+    title.textContent =
+      language === "en"
+        ? "Article not found"
+        : "المقال غير موجود";
+
+    content.textContent =
+      language === "en"
+        ? "Please return to the articles page."
+        : "من فضلك ارجع إلى صفحة المقالات.";
+
     return;
   }
 
-  const i = language === "en" ? 0 : 1;
+  const index = language === "en" ? 0 : 1;
 
   document.documentElement.lang = language;
-  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
 
-  category.textContent = article.category[i];
-  title.textContent = article.title[i];
-  document.title = article.title[i] + " | Pure Physio";
+  document.documentElement.dir =
+    language === "ar" ? "rtl" : "ltr";
+
+  category.textContent = article.category[index];
+
+  title.textContent = article.title[index];
 
   content.replaceChildren();
 
-  article.sections.forEach(section => {
+  article.sections.forEach(function(section) {
+
     const heading = document.createElement("h2");
-    heading.textContent = section[i];
+    heading.textContent = section[index];
 
     const paragraph = document.createElement("p");
-    paragraph.textContent = section[i + 2];
+    paragraph.textContent = section[index + 2];
 
     content.appendChild(heading);
     content.appendChild(paragraph);
+
   });
 
-  document.getElementById("languageButton").textContent =
+  languageButton.textContent =
     language === "en" ? "العربية" : "English";
 
-  document.getElementById("backLink").textContent =
-    language === "en" ? "← Back to articles" : "العودة إلى المقالات ←";
+  backLink.textContent =
+    language === "en"
+      ? "← Back to articles"
+      : "العودة إلى المقالات ←";
 
-  document.getElementById("backLink").href = "index.html#articles";
+  disclaimer.textContent =
+    language === "en"
+      ? "Medical Disclaimer: This article is for educational purposes only. It does not replace professional medical assessment, diagnosis or individualized treatment."
+      : "تنويه طبي: هذا المقال مخصص للتثقيف الصحي فقط، ولا يُغني عن التقييم الطبي المتخصص أو التشخيص أو الخطة العلاجية الفردية.";
+
+  document.title = article.title[index] + " | Pure Physio";
+
 }
 
-document.getElementById("languageButton").addEventListener("click", () => {
-  language = language === "en" ? "ar" : "en";
-  renderArticle();
-});
 
-document.getElementById("year").textContent = new Date().getFullYear();
+/* =====================================================
+   LANGUAGE BUTTON
+===================================================== */
+
+document
+  .getElementById("languageButton")
+  .addEventListener("click", function() {
+
+    language = language === "en" ? "ar" : "en";
+
+    renderArticle();
+
+  });
+
+
+/* =====================================================
+   FOOTER YEAR
+===================================================== */
+
+document.getElementById("year").textContent =
+  new Date().getFullYear();
+
+
+/* =====================================================
+   INITIAL RENDER
+===================================================== */
 
 renderArticle();
+
 </script>
+
 </body>
 </html>
