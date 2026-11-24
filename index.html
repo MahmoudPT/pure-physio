@@ -195,4 +195,53 @@ function setLang(next){lang=next;document.documentElement.lang=lang;document.doc
 document.getElementById('langBtn').addEventListener('click',()=>setLang(lang==='en'?'ar':'en'));
 document.getElementById('year').textContent=new Date().getFullYear();
 </script>
-</body></html>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const search = document.getElementById("articleSearch");
+  const cards = document.querySelectorAll(".article-card");
+  const filters = document.querySelectorAll(".article-filter");
+  const noArticles = document.getElementById("noArticles");
+
+  if (!search || !cards.length) return;
+
+  let activeCategory = "all";
+
+  function updateArticles() {
+    const query = search.value.trim().toLowerCase();
+    let visibleCount = 0;
+
+    cards.forEach(function (card) {
+      const category = card.dataset.category;
+      const searchableText =
+        (card.innerText + " " + (card.dataset.search || "")).toLowerCase();
+
+      const matchesCategory =
+        activeCategory === "all" || category === activeCategory;
+
+      const matchesSearch = searchableText.includes(query);
+      const show = matchesCategory && matchesSearch;
+
+      card.hidden = !show;
+      if (show) visibleCount++;
+    });
+
+    noArticles.style.display = visibleCount ? "none" : "block";
+  }
+
+  search.addEventListener("input", updateArticles);
+
+  filters.forEach(function (button) {
+    button.addEventListener("click", function () {
+      filters.forEach(function (item) {
+        item.classList.remove("active");
+      });
+
+      button.classList.add("active");
+      activeCategory = button.dataset.filter;
+      updateArticles();
+    });
+  });
+
+  updateArticles();
+});
+</script></body></html>
