@@ -1,0 +1,243 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Educational physiotherapy and health articles from Pure Physio.">
+  <title>Medical Article | Pure Physio</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4faf9;
+      color: #12344a;
+      line-height: 1.9;
+    }
+    header {
+      background: #12344a;
+      color: white;
+      padding: 18px 6%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    header a { color: white; text-decoration: none; }
+    header button {
+      padding: 9px 16px;
+      border: 1px solid white;
+      border-radius: 20px;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+    }
+    main {
+      max-width: 850px;
+      margin: 45px auto;
+      padding: 35px;
+      background: white;
+      border-radius: 20px;
+    }
+    .tag { color: #159e9a; font-weight: bold; }
+    h1 { line-height: 1.4; }
+    h2 { margin-top: 28px; }
+    .back-link { color: #159e9a; font-weight: bold; }
+    footer { text-align: center; padding: 25px; color: #647987; }
+    @media(max-width:600px) {
+      main { margin: 20px 12px; padding: 22px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="index.html">← Pure Physio</a>
+  <button id="languageButton" type="button">العربية</button>
+</header>
+
+<main>
+  <span class="tag" id="category"></span>
+  <h1 id="title">Loading article...</h1>
+  <div id="content"></div>
+  <p>
+    <a class="back-link" href="index.html#articles" id="backLink">
+      ← Back to all articles
+    </a>
+  </p>
+</main>
+
+<footer>© Pure Physio</footer>
+
+<script>
+const articles = {
+  "back-pain": {
+    category: ["BACK PAIN", "آلام الظهر"],
+    title: ["Understanding Lower Back Pain", "فهم آلام أسفل الظهر"],
+    paragraphs: [
+      [
+        "Lower back pain is a common problem that can affect daily activities, work and movement.",
+        "آلام أسفل الظهر من المشكلات الشائعة التي قد تؤثر على الأنشطة اليومية والعمل والحركة."
+      ],
+      [
+        "Possible causes include muscle strain, prolonged sitting, sudden increases in activity and some spinal conditions.",
+        "قد تشمل الأسباب إجهاد العضلات، والجلوس لفترات طويلة، وزيادة النشاط بشكل مفاجئ، وبعض مشكلات العمود الفقري."
+      ],
+      [
+        "Staying gently active and getting an appropriate professional assessment can help guide recovery. Treatment should be based on the individual's condition.",
+        "قد يساعد الحفاظ على الحركة بشكل مناسب والحصول على تقييم متخصص في توجيه التعافي. ويجب أن يعتمد العلاج على حالة كل شخص."
+      ]
+    ]
+  },
+
+  "knee-pain": {
+    category: ["KNEE HEALTH", "صحة الركبة"],
+    title: ["Understanding Knee Pain", "التعرف على آلام الركبة"],
+    paragraphs: [
+      [
+        "Knee pain can occur during walking, climbing stairs, exercise or even while resting.",
+        "قد تظهر آلام الركبة أثناء المشي أو صعود السلالم أو ممارسة الرياضة أو حتى أثناء الراحة."
+      ],
+      [
+        "Common causes include overuse, muscle weakness, injuries and joint conditions. The cause cannot be identified from pain alone.",
+        "تشمل الأسباب الشائعة الإجهاد المتكرر وضعف العضلات والإصابات ومشكلات المفاصل. ولا يمكن تحديد السبب من الألم وحده."
+      ],
+      [
+        "A proper assessment helps identify contributing factors and guide a suitable rehabilitation plan.",
+        "يساعد التقييم الصحيح على تحديد العوامل المؤثرة ووضع خطة تأهيل مناسبة."
+      ]
+    ]
+  },
+
+  "shoulder-pain": {
+    category: ["SHOULDER", "الكتف"],
+    title: ["Common Causes of Shoulder Pain", "أسباب آلام الكتف الشائعة"],
+    paragraphs: [
+      [
+        "Shoulder pain may affect reaching overhead, dressing, lifting and sleeping comfortably.",
+        "قد تؤثر آلام الكتف على رفع الذراع لأعلى وارتداء الملابس وحمل الأشياء والنوم براحة."
+      ],
+      [
+        "Possible causes include tendon problems, muscle strain, stiffness and injuries.",
+        "قد تشمل الأسباب مشكلات الأوتار وإجهاد العضلات والتيبس والإصابات."
+      ],
+      [
+        "A physiotherapy assessment can examine shoulder movement, strength and function to help guide treatment.",
+        "يمكن لتقييم العلاج الطبيعي فحص حركة الكتف وقوته ووظيفته للمساعدة في توجيه العلاج."
+      ]
+    ]
+  },
+
+  "sports-injuries": {
+    category: ["SPORTS INJURIES", "الإصابات الرياضية"],
+    title: ["Sports Injury Prevention", "الوقاية من الإصابات الرياضية"],
+    paragraphs: [
+      [
+        "Sports injuries can happen during training, competition or recreational activity.",
+        "قد تحدث الإصابات الرياضية أثناء التدريب أو المنافسات أو ممارسة الأنشطة الترفيهية."
+      ],
+      [
+        "A gradual increase in training, appropriate warm-ups, recovery time and suitable equipment can help reduce some injury risks.",
+        "قد يساعد التدرج في زيادة التدريب والإحماء المناسب ووقت التعافي واستخدام المعدات الملائمة في تقليل بعض مخاطر الإصابة."
+      ],
+      [
+        "Persistent pain or reduced function should be assessed by a qualified healthcare professional.",
+        "ينبغي تقييم الألم المستمر أو ضعف القدرة على الحركة بواسطة متخصص رعاية صحية مؤهل."
+      ]
+    ]
+  },
+
+  "rehabilitation": {
+    category: ["REHABILITATION", "التأهيل"],
+    title: ["The Role of Physiotherapy", "دور العلاج الطبيعي"],
+    paragraphs: [
+      [
+        "Physiotherapy aims to improve movement, physical function and participation in daily activities.",
+        "يهدف العلاج الطبيعي إلى تحسين الحركة والقدرة البدنية والمشاركة في الأنشطة اليومية."
+      ],
+      [
+        "A rehabilitation plan may include exercises, movement training, education and other approaches selected after assessment.",
+        "قد تتضمن خطة التأهيل التمارين والتدريب على الحركة والتوعية وأساليب أخرى يتم اختيارها بعد التقييم."
+      ],
+      [
+        "Progress is individual, and the plan may change according to goals and response to treatment.",
+        "يختلف التقدم من شخص لآخر، وقد تتغير الخطة وفقًا للأهداف والاستجابة للعلاج."
+      ]
+    ]
+  },
+
+  "posture": {
+    category: ["POSTURE", "وضعية الجسم"],
+    title: ["Better Posture at Work", "تحسين وضعية الجسم أثناء العمل"],
+    paragraphs: [
+      [
+        "Long periods in one position may contribute to discomfort for some people.",
+        "قد تساهم البقاء لفترات طويلة في وضعية واحدة في الشعور بعدم الراحة لدى بعض الأشخاص."
+      ],
+      [
+        "Changing positions regularly, taking movement breaks and adjusting your workstation may improve comfort.",
+        "قد يساعد تغيير الوضعية بانتظام وأخذ فترات للحركة وضبط مكان العمل على تحسين الراحة."
+      ],
+      [
+        "There is no single perfect posture for everyone. Comfortable movement and regular position changes are useful habits.",
+        "لا توجد وضعية مثالية واحدة تناسب الجميع. وتُعد الحركة المريحة وتغيير الوضعية بانتظام من العادات المفيدة."
+      ]
+    ]
+  }
+};
+
+let language = "en";
+
+function renderArticle() {
+  const id = new URLSearchParams(window.location.search).get("id");
+  const article = articles[id];
+
+  if (!article) {
+    document.getElementById("title").textContent =
+      language === "en" ? "Article not found" : "المقال غير موجود";
+    document.getElementById("category").textContent = "";
+    document.getElementById("content").textContent =
+      language === "en"
+        ? "Please return to the articles page."
+        : "من فضلك ارجع إلى صفحة المقالات.";
+    return;
+  }
+
+  const index = language === "en" ? 0 : 1;
+  document.documentElement.lang = language;
+  document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+
+  document.getElementById("category").textContent = article.category[index];
+  document.getElementById("title").textContent = article.title[index];
+
+  const content = document.getElementById("content");
+  content.replaceChildren();
+
+  article.paragraphs.forEach(function (paragraph) {
+    const p = document.createElement("p");
+    p.textContent = paragraph[index];
+    content.appendChild(p);
+  });
+
+  document.getElementById("backLink").textContent =
+    language === "en"
+      ? "← Back to all articles"
+      : "العودة إلى جميع المقالات ←";
+
+  document.getElementById("languageButton").textContent =
+    language === "en" ? "العربية" : "English";
+
+  document.title = article.title[index] + " | Pure Physio";
+}
+
+document.getElementById("languageButton").addEventListener("click", function () {
+  language = language === "en" ? "ar" : "en";
+  renderArticle();
+});
+
+renderArticle();
+</script>
+
+</body>
+</html>
