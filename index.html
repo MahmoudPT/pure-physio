@@ -6,7 +6,44 @@
 <meta name="description" content="Pure Physio — clear, evidence-informed guides to movement, physiotherapy, rehabilitation and wellbeing.">
 <meta name="theme-color" content="#12344a">
 <title>Pure Physio | Move Better. Live Better.</title>
-<style>
+
+/* Pure Physio Articles */
+.articles-section {
+  background: #f4faf9;
+  padding: 76px 20px;
+}
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 35px;
+}
+.article-card {
+  background: white;
+  border: 1px solid #e0ebed;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: 0 8px 25px #12344a0a;
+}
+.article-card h3 {
+  color: #12344a;
+  margin-bottom: 12px;
+}
+.article-card p {
+  color: #647987;
+  line-height: 1.8;
+}
+.article-tag {
+  color: #159e9a;
+  font-weight: bold;
+  font-size: 13px;
+}
+@media(max-width:700px) {
+  .articles-grid {
+    grid-template-columns: 1fr;
+  }
+}
+ <style> 
 :root{--navy:#12344a;--teal:#159e9a;--mint:#eaf7f5;--ink:#203746;--muted:#647783;--paper:#fff;--line:#e4ecee;--soft:#f6f9fa}
 *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.65}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
 header{position:sticky;top:0;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:10}.nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:10px;font-weight:850;font-size:1.28rem;color:var(--navy);letter-spacing:-.6px}.mark{width:38px;height:38px;border-radius:13px;background:linear-gradient(145deg,var(--navy),var(--teal));display:grid;place-items:center;color:white;font-weight:900;font-size:20px}.brand span span{color:var(--teal)}nav{display:flex;align-items:center;gap:24px;color:#48606e;font-size:.92rem}.nav-actions{display:flex;gap:10px;align-items:center}.lang,.menu-btn{border:1px solid var(--line);background:white;border-radius:999px;padding:9px 14px;font-weight:700;color:var(--navy);cursor:pointer}.menu-btn{display:none}
@@ -58,7 +95,99 @@ footer{background:#102f43;color:#d7e6eb;padding:48px 0 22px}.foot-grid{display:g
 <section id="about"><div class="wrap about-grid"><div class="about-copy"><div class="kicker" data-en="About Pure Physio" data-ar="عن Pure Physio">About Pure Physio</div><h2 data-en="Knowledge that helps you move with confidence." data-ar="معرفة تساعدك على الحركة بثقة.">Knowledge that helps you move with confidence.</h2><p data-en="Pure Physio is an educational project designed to make physiotherapy and movement-health information easier to understand. Our goal is to share useful, responsible content in Arabic and English." data-ar="Pure Physio مشروع تثقيفي يهدف إلى تبسيط المعلومات المتعلقة بالعلاج الطبيعي وصحة الحركة، وتقديم محتوى مفيد ومسؤول باللغتين العربية والإنجليزية.">Pure Physio is an educational project designed to make physiotherapy and movement-health information easier to understand. Our goal is to share useful, responsible content in Arabic and English.</p></div>
 <div class="about-panel"><h3 data-en="Our content promise" data-ar="التزامنا تجاه القارئ">Our content promise</h3><p data-en="Clear explanations. Credible sources. Respect for individual differences. No miracle cures or one-size-fits-all treatment claims." data-ar="شرح واضح، ومصادر موثوقة، واحترام لاختلاف الحالات. لا نعد بعلاجات سحرية ولا نقدم خطة واحدة تناسب الجميع.">Clear explanations. Credible sources. Respect for individual differences. No miracle cures or one-size-fits-all treatment claims.</p><div class="notice" data-en="Health information on this site is for education only. It is not a diagnosis or a substitute for assessment and advice from a qualified healthcare professional." data-ar="المعلومات الصحية في هذا الموقع للتثقيف فقط، ولا تمثل تشخيصًا أو بديلًا عن التقييم واستشارة مختص صحي مؤهل.">Health information on this site is for education only. It is not a diagnosis or a substitute for assessment and advice from a qualified healthcare professional.</div></div></div></section>
 <section id="contact" class="feature"><div class="wrap"><div class="section-head"><div class="kicker" data-en="Stay connected" data-ar="ابقَ على تواصل">Stay connected</div><h2 data-en="Have a topic suggestion?" data-ar="لديك اقتراح لموضوع؟">Have a topic suggestion?</h2><p data-en="We’ll add the official contact details here once they’re ready." data-ar="سنضيف بيانات التواصل الرسمية هنا بعد تجهيزها.">We’ll add the official contact details here once they’re ready.</p></div></div></section>
-</main>
+
+<section class="articles-section" id="articles">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">KNOWLEDGE & HEALTH</span>
+      <h2 data-en="Latest Medical Articles"
+          data-ar="أحدث المقالات الطبية">
+        Latest Medical Articles
+      </h2>
+      <p data-en="Reliable guides for better movement and recovery."
+         data-ar="دليلك الصحي لحركة أفضل وتعافٍ آمن.">
+        Reliable guides for better movement and recovery.
+      </p>
+    </div>
+
+    <div class="articles-grid">
+
+      <article class="article-card">
+        <span class="article-tag">BACK PAIN</span>
+        <h3 data-en="Understanding Lower Back Pain"
+            data-ar="فهم آلام أسفل الظهر">
+          Understanding Lower Back Pain
+        </h3>
+        <p data-en="Learn about common causes, symptoms and when to seek professional assessment."
+           data-ar="تعرف على الأسباب الشائعة والأعراض ومتى تحتاج إلى تقييم متخصص.">
+          Learn about common causes, symptoms and when to seek professional assessment.
+        </p>
+      </article>
+
+      <article class="article-card">
+        <span class="article-tag">SPORTS INJURIES</span>
+        <h3 data-en="Sports Injury Prevention"
+            data-ar="الوقاية من الإصابات الرياضية">
+          Sports Injury Prevention
+        </h3>
+        <p data-en="Practical ways to prepare your body and reduce injury risks."
+           data-ar="طرق عملية لتجهيز جسمك وتقليل احتمالية الإصابات.">
+          Practical ways to prepare your body and reduce injury risks.
+        </p>
+      </article>
+
+      <article class="article-card">
+        <span class="article-tag">REHABILITATION</span>
+        <h3 data-en="The Role of Physiotherapy"
+            data-ar="دور العلاج الطبيعي في التأهيل">
+          The Role of Physiotherapy
+        </h3>
+        <p data-en="Discover how rehabilitation supports movement and functional recovery."
+           data-ar="اكتشف كيف يساعد التأهيل على تحسين الحركة واستعادة الوظائف اليومية.">
+          Discover how rehabilitation supports movement and functional recovery.
+        </p>
+      </article>
+
+      <article class="article-card">
+        <span class="article-tag">POSTURE</span>
+        <h3 data-en="Better Posture at Work"
+            data-ar="تحسين وضعية الجسم أثناء العمل">
+          Better Posture at Work
+        </h3>
+        <p data-en="Simple ergonomic habits for a healthier working day."
+           data-ar="عادات بسيطة لتحسين وضعية الجسم خلال يوم العمل.">
+          Simple ergonomic habits for a healthier working day.
+        </p>
+      </article>
+
+      <article class="article-card">
+        <span class="article-tag">KNEE HEALTH</span>
+        <h3 data-en="Understanding Knee Pain"
+            data-ar="التعرف على آلام الركبة">
+          Understanding Knee Pain
+        </h3>
+        <p data-en="Learn about common knee problems and the importance of proper assessment."
+           data-ar="تعرف على مشكلات الركبة الشائعة وأهمية التقييم الصحيح.">
+          Learn about common knee problems and the importance of proper assessment.
+        </p>
+      </article>
+
+      <article class="article-card">
+        <span class="article-tag">HEALTHY MOVEMENT</span>
+        <h3 data-en="Benefits of Daily Movement"
+            data-ar="فوائد الحركة اليومية">
+          Benefits of Daily Movement
+        </h3>
+        <p data-en="Explore how regular movement supports overall health."
+           data-ar="اكتشف كيف تدعم الحركة المنتظمة صحتك العامة.">
+          Explore how regular movement supports overall health.
+        </p>
+      </article>
+
+    </div>
+  </div>
+</section>
+ </main>
 <footer><div class="wrap"><div class="foot-grid"><div><div class="foot-brand">Pure Physio</div><p data-en="Move better. Live better. Reliable learning for healthier movement." data-ar="اتحرك بشكل أفضل. عِش بصحة أفضل. معرفة موثوقة لحركة أكثر صحة.">Move better. Live better. Reliable learning for healthier movement.</p></div><div><h4 data-en="Explore" data-ar="استكشف">Explore</h4><div class="foot-links"><a href="#topics" data-en="Topics" data-ar="الأقسام">Topics</a><a href="#articles" data-en="Articles" data-ar="المقالات">Articles</a><a href="#about" data-en="About" data-ar="عن الموقع">About</a></div></div><div><h4 data-en="Site information" data-ar="معلومات الموقع">Site information</h4><div class="foot-links"><a href="#about" data-en="Medical disclaimer" data-ar="إخلاء المسؤولية الطبية">Medical disclaimer</a><a href="#contact" data-en="Contact" data-ar="تواصل معنا">Contact</a></div></div></div><div class="copyright">© <span id="year"></span> Pure Physio. <span data-en="For education, not personal medical advice." data-ar="للتثقيف وليس بديلًا عن الاستشارة الطبية الشخصية.">For education, not personal medical advice.</span></div></div></footer>
 <script>
 let lang='en';
