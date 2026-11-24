@@ -1,8 +1,27 @@
-https://mahmoudpt.github.io/pure-physio/
-https://mahmoudpt.github.io/pure-physio/about.html
-https://mahmoudpt.github.io/pure-physio/article.html?id=back-pain
-https://mahmoudpt.github.io/pure-physio/article.html?id=knee-pain
-https://mahmoudpt.github.io/pure-physio/article.html?id=shoulder-pain
-https://mahmoudpt.github.io/pure-physio/article.html?id=sports-injuries
-https://mahmoudpt.github.io/pure-physio/article.html?id=rehabilitation
-https://mahmoudpt.github.io/pure-physio/article.html?id=posture
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://mahmoudpt.github.io/pure-physio/</loc>
+  </url>
+  <url>
+    <loc>https://mahmoudpt.github.io/pure-physio/about.html</loc>
+  </url>
+  <url>
+    <loc>https://mahmoudpt.github.io/pure-physio/article.html?id=back-pain</loc>
+  </url>
+  <url>
+    <loc>https://mahmoudpt.github.io/pure-physio/article.html?id=knee-pain</loc>
+  </url>
+  <url>
+    <loc>https://mahmoudpt.github.io/pure-physio/article.html?id=shoulder-pain</loc>
+  </url>
+  <url>
+    <loc>https://mahmoudpt.github.io/pure-physio/article.html?id=sports-injuries</loc>
+  </url>
+  <url>
+    <loc>https://mahmoudpt.github.io/pure-physio/article.html?id=rehabilitation</loc>
+  </url>
+  <url>
+    <loc>https://mahmoudpt.github.io/pure-physio/article.html?id=posture</loc>
+  </url>
+</urlset>
