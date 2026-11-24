@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mahmoudpt.github.io/pure-physio/sitemap.xml
