@@ -98,10 +98,10 @@ footer{background:#102f43;color:#d7e6eb;padding:48px 0 22px}.foot-grid{display:g
 
 <section class="articles-section" id="articles">
   <div class="wrap">
+
     <div class="section-head">
       <span class="eyebrow">KNOWLEDGE & HEALTH</span>
-      <h2 data-en="Latest Medical Articles"
-          data-ar="أحدث المقالات الطبية">
+      <h2 data-en="Latest Medical Articles" data-ar="أحدث المقالات الطبية">
         Latest Medical Articles
       </h2>
       <p data-en="Reliable guides for better movement and recovery."
@@ -110,81 +110,109 @@ footer{background:#102f43;color:#d7e6eb;padding:48px 0 22px}.foot-grid{display:g
       </p>
     </div>
 
-    <div class="articles-grid">
+    <div class="articles-tools">
+      <input
+        type="search"
+        id="articleSearch"
+        class="articles-search"
+        placeholder="Search articles..."
+        aria-label="Search articles"
+      >
 
-      <article class="article-card">
+      <div class="article-filters">
+        <button class="article-filter active" data-filter="all">All</button>
+        <button class="article-filter" data-filter="back">Back</button>
+        <button class="article-filter" data-filter="knee">Knee</button>
+        <button class="article-filter" data-filter="shoulder">Shoulder</button>
+        <button class="article-filter" data-filter="sports">Sports Injuries</button>
+        <button class="article-filter" data-filter="rehab">Rehabilitation</button>
+      </div>
+    </div>
+
+    <div class="articles-grid" id="articlesGrid">
+
+      <article class="article-card" data-category="back"
+        data-search="back pain lower back ألم الظهر أسفل الظهر">
         <span class="article-tag">BACK PAIN</span>
-        <h3 data-en="Understanding Lower Back Pain"
-            data-ar="فهم آلام أسفل الظهر">
+        <h3 data-en="Understanding Lower Back Pain" data-ar="فهم آلام أسفل الظهر">
           Understanding Lower Back Pain
         </h3>
-        <p data-en="Learn about common causes, symptoms and when to seek professional assessment."
-           data-ar="تعرف على الأسباب الشائعة والأعراض ومتى تحتاج إلى تقييم متخصص.">
-          Learn about common causes, symptoms and when to seek professional assessment.
+        <p data-en="Learn about common causes of lower back pain and when to seek assessment."
+           data-ar="تعرف على الأسباب الشائعة لآلام أسفل الظهر ومتى تحتاج إلى تقييم متخصص.">
+          Learn about common causes of lower back pain and when to seek assessment.
         </p>
+        <a class="read-more" href="article.html?id=back-pain">Read More →</a>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-category="knee"
+        data-search="knee pain knee health ألم الركبة">
+        <span class="article-tag">KNEE HEALTH</span>
+        <h3 data-en="Understanding Knee Pain" data-ar="التعرف على آلام الركبة">
+          Understanding Knee Pain
+        </h3>
+        <p data-en="Explore common reasons for knee pain and the importance of proper assessment."
+           data-ar="تعرف على الأسباب الشائعة لآلام الركبة وأهمية التقييم الصحيح.">
+          Explore common reasons for knee pain and the importance of proper assessment.
+        </p>
+        <a class="read-more" href="article.html?id=knee-pain">Read More →</a>
+      </article>
+
+      <article class="article-card" data-category="shoulder"
+        data-search="shoulder pain shoulder ألم الكتف">
+        <span class="article-tag">SHOULDER</span>
+        <h3 data-en="Common Causes of Shoulder Pain" data-ar="أسباب آلام الكتف الشائعة">
+          Common Causes of Shoulder Pain
+        </h3>
+        <p data-en="Understand common shoulder problems and why movement assessment matters."
+           data-ar="افهم مشكلات الكتف الشائعة وأهمية تقييم الحركة.">
+          Understand common shoulder problems and why movement assessment matters.
+        </p>
+        <a class="read-more" href="article.html?id=shoulder-pain">Read More →</a>
+      </article>
+
+      <article class="article-card" data-category="sports"
+        data-search="sports injuries injury prevention إصابات رياضية">
         <span class="article-tag">SPORTS INJURIES</span>
-        <h3 data-en="Sports Injury Prevention"
-            data-ar="الوقاية من الإصابات الرياضية">
+        <h3 data-en="Sports Injury Prevention" data-ar="الوقاية من الإصابات الرياضية">
           Sports Injury Prevention
         </h3>
         <p data-en="Practical ways to prepare your body and reduce injury risks."
            data-ar="طرق عملية لتجهيز جسمك وتقليل احتمالية الإصابات.">
           Practical ways to prepare your body and reduce injury risks.
         </p>
+        <a class="read-more" href="article.html?id=sports-injuries">Read More →</a>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-category="rehab"
+        data-search="physiotherapy rehabilitation recovery تأهيل علاج طبيعي">
         <span class="article-tag">REHABILITATION</span>
-        <h3 data-en="The Role of Physiotherapy"
-            data-ar="دور العلاج الطبيعي في التأهيل">
+        <h3 data-en="The Role of Physiotherapy" data-ar="دور العلاج الطبيعي في التأهيل">
           The Role of Physiotherapy
         </h3>
-        <p data-en="Discover how rehabilitation supports movement and functional recovery."
+        <p data-en="Discover how rehabilitation can support movement and functional recovery."
            data-ar="اكتشف كيف يساعد التأهيل على تحسين الحركة واستعادة الوظائف اليومية.">
-          Discover how rehabilitation supports movement and functional recovery.
+          Discover how rehabilitation can support movement and functional recovery.
         </p>
+        <a class="read-more" href="article.html?id=rehabilitation">Read More →</a>
       </article>
 
-      <article class="article-card">
+      <article class="article-card" data-category="rehab"
+        data-search="posture work sitting وضعية الجسم الجلوس">
         <span class="article-tag">POSTURE</span>
-        <h3 data-en="Better Posture at Work"
-            data-ar="تحسين وضعية الجسم أثناء العمل">
+        <h3 data-en="Better Posture at Work" data-ar="تحسين وضعية الجسم أثناء العمل">
           Better Posture at Work
         </h3>
-        <p data-en="Simple ergonomic habits for a healthier working day."
+        <p data-en="Simple ergonomic habits for a more comfortable working day."
            data-ar="عادات بسيطة لتحسين وضعية الجسم خلال يوم العمل.">
-          Simple ergonomic habits for a healthier working day.
+          Simple ergonomic habits for a more comfortable working day.
         </p>
-      </article>
-
-      <article class="article-card">
-        <span class="article-tag">KNEE HEALTH</span>
-        <h3 data-en="Understanding Knee Pain"
-            data-ar="التعرف على آلام الركبة">
-          Understanding Knee Pain
-        </h3>
-        <p data-en="Learn about common knee problems and the importance of proper assessment."
-           data-ar="تعرف على مشكلات الركبة الشائعة وأهمية التقييم الصحيح.">
-          Learn about common knee problems and the importance of proper assessment.
-        </p>
-      </article>
-
-      <article class="article-card">
-        <span class="article-tag">HEALTHY MOVEMENT</span>
-        <h3 data-en="Benefits of Daily Movement"
-            data-ar="فوائد الحركة اليومية">
-          Benefits of Daily Movement
-        </h3>
-        <p data-en="Explore how regular movement supports overall health."
-           data-ar="اكتشف كيف تدعم الحركة المنتظمة صحتك العامة.">
-          Explore how regular movement supports overall health.
-        </p>
+        <a class="read-more" href="article.html?id=posture">Read More →</a>
       </article>
 
     </div>
+
+    <p id="noArticles">No articles found.</p>
+
   </div>
 </section>
  </main>
