@@ -636,5 +636,215 @@ renderQuestion();
 <!-- Pure Physio Supabase Connection -->
 <script src="supabase.js"></script>
 
+<!-- PURE PHYSIO STUDENT ACCOUNT SYSTEM -->
+
+<style>
+.account-section {
+  max-width: 650px;
+  margin: 35px auto;
+  padding: 25px;
+  background: #10263d;
+  border: 1px solid #20d6c2;
+  border-radius: 16px;
+  color: white;
+  text-align: center;
+}
+.account-section h2 {
+  color: #20d6c2;
+}
+.account-section input {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin: 12px 0;
+  border: 1px solid #456078;
+  border-radius: 8px;
+  background: #071a2e;
+  color: white;
+  font-size: 16px;
+}
+.account-section button {
+  padding: 12px 20px;
+  margin: 7px;
+  border: none;
+  border-radius: 8px;
+  background: #20d6c2;
+  color: #071a2e;
+  font-weight: bold;
+  cursor: pointer;
+}
+#accountMessage {
+  margin-top: 15px;
+  line-height: 1.8;
+}
+#studentDashboard {
+  display: none;
+  padding: 15px;
+  background: #0b3548;
+  border-radius: 10px;
+  margin-top: 15px;
+}
+</style>
+
+<section class="account-section" id="studentAccount">
+
+  <h2>Pure Physio Student Account</h2>
+
+  <p>أنشئ حسابك وابدأ رحلتك التعليمية معنا</p>
+
+  <div id="accountForms">
+
+    <input
+      type="email"
+      id="studentEmail"
+      placeholder="البريد الإلكتروني"
+      autocomplete="email"
+    >
+
+    <input
+      type="password"
+      id="studentPassword"
+      placeholder="كلمة المرور"
+      autocomplete="new-password"
+    >
+
+    <button type="button" id="registerStudent">
+      إنشاء حساب جديد
+    </button>
+
+    <button type="button" id="loginStudent">
+      تسجيل الدخول
+    </button>
+
+  </div>
+
+  <div id="studentDashboard">
+    <h3>أهلاً بك في Pure Physio Academy ❤️</h3>
+    <p id="studentInfo"></p>
+    <button type="button" id="logoutStudent">
+      تسجيل الخروج
+    </button>
+  </div>
+
+  <p id="accountMessage" aria-live="polite"></p>
+
+</section>
+
+<script>
+(function () {
+
+  const emailInput = document.getElementById("studentEmail");
+  const passwordInput = document.getElementById("studentPassword");
+  const message = document.getElementById("accountMessage");
+  const forms = document.getElementById("accountForms");
+  const dashboard = document.getElementById("studentDashboard");
+  const studentInfo = document.getElementById("studentInfo");
+
+  function showMessage(text, success = false) {
+    message.textContent = text;
+    message.style.color = success ? "#20d6c2" : "#ffb4b4";
+  }
+
+  function getCredentials() {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+
+    if (!email || !password) {
+      showMessage("من فضلك أدخل البريد الإلكتروني وكلمة المرور.");
+      return null;
+    }
+
+    if (password.length < 6) {
+      showMessage("كلمة المرور يجب ألا تقل عن 6 أحرف.");
+      return null;
+    }
+
+    return { email, password };
+  }
+
+  async function updateStudentView() {
+    try {
+      const user = await getCurrentStudent();
+
+      if (user) {
+        forms.style.display = "none";
+        dashboard.style.display = "block";
+        studentInfo.textContent = user.email;
+      } else {
+        forms.style.display = "block";
+        dashboard.style.display = "none";
+      }
+    } catch (error) {
+      showMessage(error.message);
+    }
+  }
+
+  document.getElementById("registerStudent")
+    .addEventListener("click", async function () {
+      const credentials = getCredentials();
+      if (!credentials) return;
+
+      try {
+        showMessage("جاري إنشاء الحساب...", true);
+
+        const result = await signUpStudent(
+          credentials.email,
+          credentials.password
+        );
+
+        if (result.user && !result.session) {
+          showMessage(
+            "تم إنشاء الحساب! راجع بريدك الإلكتروني لتأكيد الحساب.",
+            true
+          );
+        } else {
+          showMessage("تم إنشاء حسابك بنجاح!", true);
+          await updateStudentView();
+        }
+
+      } catch (error) {
+        showMessage(error.message);
+      }
+    });
+
+  document.getElementById("loginStudent")
+    .addEventListener("click", async function () {
+      const credentials = getCredentials();
+      if (!credentials) return;
+
+      try {
+        showMessage("جاري تسجيل الدخول...", true);
+
+        await loginStudent(
+          credentials.email,
+          credentials.password
+        );
+
+        showMessage("تم تسجيل الدخول بنجاح!", true);
+        await updateStudentView();
+
+      } catch (error) {
+        showMessage(error.message);
+      }
+    });
+
+  document.getElementById("logoutStudent")
+    .addEventListener("click", async function () {
+      try {
+        await logoutStudent();
+        showMessage("تم تسجيل الخروج بنجاح.", true);
+        await updateStudentView();
+      } catch (error) {
+        showMessage(error.message);
+      }
+    });
+
+  updateStudentView();
+
+})();
+</script>
+
+<!-- END STUDENT ACCOUNT SYSTEM -->
+
 </body>
 </html>
