@@ -1,0 +1,634 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071a2e">
+<title>Pure Physio Academy | أكاديمية العلاج الطبيعي</title>
+<meta name="description" content="Pure Physio Academy - ملخصات وشرح محاضرات العلاج الطبيعي وبنك أسئلة واختبارات للطلاب.">
+
+<style>
+:root {
+  --bg:#071a2e;
+  --bg2:#0c243b;
+  --card:#102b43;
+  --teal:#19d5c1;
+  --white:#f4f9ff;
+  --muted:#a9bdce;
+  --gold:#f6c66a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Tahoma,sans-serif;
+  background:var(--bg);
+  color:var(--white);
+  line-height:1.8;
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+.container{width:min(1100px,92%);margin:auto}
+
+/* NAVBAR */
+header{
+  background:#091e33;
+  border-bottom:1px solid #234157;
+  position:sticky;top:0;z-index:20;
+}
+nav{
+  min-height:72px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:15px;
+}
+.logo{font-size:23px;font-weight:800;color:var(--teal)}
+.logo span{color:white}
+.nav-links{display:flex;gap:22px;align-items:center}
+.nav-links a{font-size:14px;color:var(--muted)}
+.nav-links a:hover{color:var(--teal)}
+.menu-btn{
+  display:none;background:none;border:0;color:white;font-size:25px;
+}
+
+/* HERO */
+.hero{
+  padding:85px 0 75px;
+  background:
+    radial-gradient(circle at 15% 30%,#123d5266,transparent 35%),
+    linear-gradient(135deg,#071a2e,#0b2940);
+  text-align:center;
+}
+.tag{
+  display:inline-block;
+  color:var(--teal);
+  border:1px solid #19d5c155;
+  border-radius:30px;
+  padding:5px 17px;
+  font-size:13px;
+  margin-bottom:20px;
+}
+.hero h1{font-size:clamp(32px,6vw,54px);line-height:1.35}
+.hero h1 span{color:var(--teal)}
+.hero p{
+  max-width:650px;margin:20px auto;
+  color:var(--muted);font-size:17px;
+}
+.actions{
+  display:flex;justify-content:center;
+  gap:12px;flex-wrap:wrap;margin-top:28px;
+}
+.btn{
+  padding:12px 25px;border-radius:10px;
+  border:1px solid transparent;font-weight:bold;
+  display:inline-block;
+}
+.primary{background:var(--teal);color:#062438}
+.secondary{border-color:#527087;color:white;background:transparent}
+.primary:hover{background:#65eee0}
+.secondary:hover{border-color:var(--teal)}
+
+/* SECTIONS */
+section{padding:65px 0}
+.section-title{text-align:center;margin-bottom:35px}
+.section-title h2{font-size:29px}
+.section-title p{color:var(--muted);margin-top:8px}
+.section-title span{color:var(--teal)}
+
+/* FEATURES */
+.features{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+}
+.feature{
+  background:var(--card);padding:23px 16px;
+  border:1px solid #28475d;border-radius:15px;
+  text-align:center;
+}
+.feature .emoji{font-size:32px}
+.feature h3{margin:8px 0;color:var(--teal);font-size:17px}
+.feature p{font-size:13px;color:var(--muted)}
+
+/* SEARCH */
+.search-area{margin-bottom:25px}
+.search-area input{
+  width:100%;padding:15px 18px;
+  background:#102b43;border:1px solid #31546b;
+  border-radius:12px;color:white;font-size:15px;
+  outline:none;
+}
+.search-area input:focus{border-color:var(--teal)}
+.filters{
+  display:flex;justify-content:center;gap:10px;
+  flex-wrap:wrap;margin:20px 0;
+}
+.filter{
+  border:1px solid #36546b;color:white;
+  background:transparent;padding:8px 17px;
+  border-radius:25px;
+}
+.filter.active,.filter:hover{
+  background:var(--teal);color:#062438;
+  border-color:var(--teal);
+}
+
+/* COURSES */
+.course-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:20px;
+}
+.course{
+  background:var(--card);border:1px solid #28475d;
+  border-radius:16px;overflow:hidden;
+  transition:.25s;
+}
+.course:hover{transform:translateY(-5px);border-color:var(--teal)}
+.course-top{
+  height:125px;display:grid;place-items:center;
+  font-size:48px;
+  background:linear-gradient(135deg,#123b51,#0d293f);
+}
+.course-body{padding:19px}
+.course-label{font-size:11px;color:var(--teal)}
+.course h3{font-size:19px;margin:6px 0}
+.course p{color:var(--muted);font-size:13px;min-height:48px}
+.course-footer{
+  display:flex;justify-content:space-between;
+  align-items:center;margin-top:17px;
+}
+.free{color:var(--teal);font-size:13px;font-weight:bold}
+.course-btn{
+  border:0;background:#19d5c1;color:#062438;
+  padding:8px 14px;border-radius:8px;font-weight:bold;
+}
+.course-btn:hover{background:#7af3e7}
+.empty{text-align:center;color:var(--muted);display:none;padding:25px}
+
+/* QUIZ */
+.quiz-box{
+  max-width:650px;margin:auto;padding:25px;
+  background:var(--card);border:1px solid #31546b;
+  border-radius:16px;
+}
+.quiz-question{font-size:19px;margin:12px 0 18px}
+.option{
+  display:block;width:100%;text-align:right;
+  padding:12px 15px;margin:9px 0;
+  background:#0a2035;color:white;
+  border:1px solid #31546b;border-radius:9px;
+}
+.option:hover{border-color:var(--teal)}
+.option.correct{background:#14513f;border-color:#36d69d}
+.option.wrong{background:#572b35;border-color:#ff697b}
+.quiz-result{margin-top:16px;color:var(--teal);font-weight:bold}
+#nextBtn{margin-top:18px;display:none}
+
+/* PRICING */
+.pricing-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:20px;max-width:750px;margin:auto;
+}
+.price-card{
+  background:var(--card);border:1px solid #31546b;
+  padding:28px;border-radius:16px;
+}
+.price-card.featured{border:2px solid var(--teal)}
+.price-card h3{font-size:21px}
+.price{font-size:34px;color:var(--teal);margin:15px 0}
+.price small{font-size:13px;color:var(--muted)}
+.price-card ul{list-style:none;color:var(--muted);margin:20px 0}
+.price-card li{padding:6px 0}
+.price-card li::before{content:"✓ ";color:var(--teal)}
+.price-card button{width:100%}
+.notice{
+  text-align:center;color:var(--muted);
+  font-size:12px;margin:20px auto 0;max-width:650px;
+}
+
+/* FOOTER */
+footer{
+  background:#041321;border-top:1px solid #234157;
+  padding:35px 0;text-align:center;
+}
+footer .logo{margin-bottom:10px}
+footer p{color:var(--muted);font-size:13px}
+
+/* RESPONSIVE */
+@media(max-width:800px){
+  .features{grid-template-columns:repeat(2,1fr)}
+  .course-grid{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .menu-btn{display:block}
+  .nav-links{
+    display:none;position:absolute;top:72px;
+    right:0;left:0;background:#091e33;
+    padding:20px;flex-direction:column;
+    align-items:stretch;
+  }
+  .nav-links.show{display:flex}
+  .hero{padding:65px 0}
+  .course-grid,.pricing-grid{grid-template-columns:1fr}
+  .features{gap:10px}
+  .feature{padding:16px 9px}
+  .section-title h2{font-size:25px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <nav>
+      <a class="logo" href="index.html">PURE <span>PHYSIO</span></a>
+      <button class="menu-btn" onclick="toggleMenu()" aria-label="القائمة">☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="index.html">الرئيسية</a>
+        <a href="#features">مميزات الأكاديمية</a>
+        <a href="#courses">المحاضرات</a>
+        <a href="#quiz">الاختبارات</a>
+        <a href="#pricing">الاشتراكات</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="container">
+    <div class="tag">PURE PHYSIO ACADEMY</div>
+    <h1>طوّر مستواك في <span>العلاج الطبيعي</span></h1>
+    <p>
+      منصتك التعليمية لمساعدتك على فهم المحاضرات،
+      مراجعة المعلومات الطبية، والتدرب على الأسئلة
+      والاختبارات بطريقة منظمة وسهلة.
+    </p>
+    <div class="actions">
+      <a href="#courses" class="btn primary">اكتشف المحاضرات</a>
+      <a href="#quiz" class="btn secondary">جرّب اختبارًا مجانيًا</a>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section id="features">
+  <div class="container">
+    <div class="section-title">
+      <h2>كل ما تحتاجه في <span>مكان واحد</span></h2>
+      <p>أدوات تعليمية مصممة لطلاب العلاج الطبيعي</p>
+    </div>
+
+    <div class="features">
+      <div class="feature">
+        <div class="emoji">📚</div>
+        <h3>ملخصات المحاضرات</h3>
+        <p>معلومات منظمة ونقاط مهمة للمراجعة.</p>
+      </div>
+      <div class="feature">
+        <div class="emoji">🎓</div>
+        <h3>شرح المواد</h3>
+        <p>شرح مبسط للمفاهيم والمصطلحات الطبية.</p>
+      </div>
+      <div class="feature">
+        <div class="emoji">📝</div>
+        <h3>بنك الأسئلة</h3>
+        <p>تدرب على أسئلة متنوعة واختبر فهمك.</p>
+      </div>
+      <div class="feature">
+        <div class="emoji">🏆</div>
+        <h3>الاختبارات</h3>
+        <p>اختبارات تفاعلية لمعرفة مستواك.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COURSES -->
+<section id="courses" style="background:#091f34">
+  <div class="container">
+    <div class="section-title">
+      <h2>المكتبة <span>التعليمية</span></h2>
+      <p>ابدأ رحلتك التعليمية من هنا</p>
+    </div>
+
+    <div class="search-area">
+      <input id="searchInput" type="search"
+        placeholder="ابحث عن مادة أو محاضرة..."
+        oninput="filterCourses()">
+    </div>
+
+    <div class="filters">
+      <button class="filter active" onclick="setFilter('all',this)">الكل</button>
+      <button class="filter" onclick="setFilter('anatomy',this)">Anatomy</button>
+      <button class="filter" onclick="setFilter('physiology',this)">Physiology</button>
+      <button class="filter" onclick="setFilter('therapy',this)">Physical Therapy</button>
+    </div>
+
+    <div class="course-grid" id="courseGrid">
+
+      <article class="course" data-category="anatomy">
+        <div class="course-top">🦴</div>
+        <div class="course-body">
+          <div class="course-label">ANATOMY</div>
+          <h3>Human Anatomy</h3>
+          <p>مدخل إلى تشريح جسم الإنسان والمفاهيم الأساسية.</p>
+          <div class="course-footer">
+            <span class="free">نموذج مجاني</span>
+            <button class="course-btn" onclick="showMessage()">استكشف</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="course" data-category="physiology">
+        <div class="course-top">🫀</div>
+        <div class="course-body">
+          <div class="course-label">PHYSIOLOGY</div>
+          <h3>Human Physiology</h3>
+          <p>مقدمة لفهم وظائف أجهزة الجسم المختلفة.</p>
+          <div class="course-footer">
+            <span class="free">نموذج مجاني</span>
+            <button class="course-btn" onclick="showMessage()">استكشف</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="course" data-category="therapy">
+        <div class="course-top">🏃</div>
+        <div class="course-body">
+          <div class="course-label">PHYSICAL THERAPY</div>
+          <h3>Therapeutic Exercise</h3>
+          <p>مقدمة عن التمارين العلاجية وأهدافها.</p>
+          <div class="course-footer">
+            <span class="free">نموذج مجاني</span>
+            <button class="course-btn" onclick="showMessage()">استكشف</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="course" data-category="therapy">
+        <div class="course-top">💪</div>
+        <div class="course-body">
+          <div class="course-label">REHABILITATION</div>
+          <h3>Musculoskeletal PT</h3>
+          <p>مفاهيم أساسية في تأهيل الجهاز العضلي الهيكلي.</p>
+          <div class="course-footer">
+            <span class="free">نموذج مجاني</span>
+            <button class="course-btn" onclick="showMessage()">استكشف</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="course" data-category="anatomy">
+        <div class="course-top">🧠</div>
+        <div class="course-body">
+          <div class="course-label">NEUROANATOMY</div>
+          <h3>Neuroanatomy</h3>
+          <p>مقدمة في تركيب الجهاز العصبي.</p>
+          <div class="course-footer">
+            <span class="free">نموذج مجاني</span>
+            <button class="course-btn" onclick="showMessage()">استكشف</button>
+          </div>
+        </div>
+      </article>
+
+      <article class="course" data-category="physiology">
+        <div class="course-top">🫁</div>
+        <div class="course-body">
+          <div class="course-label">EXERCISE PHYSIOLOGY</div>
+          <h3>Exercise Physiology</h3>
+          <p>مبادئ استجابة الجسم للنشاط البدني.</p>
+          <div class="course-footer">
+            <span class="free">نموذج مجاني</span>
+            <button class="course-btn" onclick="showMessage()">استكشف</button>
+          </div>
+        </div>
+      </article>
+
+    </div>
+    <p class="empty" id="emptyMessage">لا توجد نتائج مطابقة لبحثك.</p>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz">
+  <div class="container">
+    <div class="section-title">
+      <h2>اختبر <span>معلوماتك</span></h2>
+      <p>سؤال تجريبي مجاني لطلاب العلاج الطبيعي</p>
+    </div>
+
+    <div class="quiz-box">
+      <div style="color:var(--teal);font-size:13px">
+        FREE SAMPLE QUIZ
+      </div>
+      <div id="questionNumber">السؤال 1 من 3</div>
+      <div class="quiz-question" id="questionText"></div>
+      <div id="options"></div>
+      <div class="quiz-result" id="quizResult"></div>
+      <button class="btn primary" id="nextBtn" onclick="nextQuestion()">
+        السؤال التالي
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background:#091f34">
+  <div class="container">
+    <div class="section-title">
+      <h2>خطط <span>الاشتراك</span></h2>
+      <p>تعلم بطريقة تناسب احتياجاتك</p>
+    </div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h3>الخطة المجانية</h3>
+        <div class="price">0 <small>جنيه</small></div>
+        <ul>
+          <li>نماذج من الملخصات</li>
+          <li>أسئلة تجريبية</li>
+          <li>التعرف على الأكاديمية</li>
+        </ul>
+        <a href="#courses" class="btn secondary" style="text-align:center">
+          ابدأ مجانًا
+        </a>
+      </div>
+
+      <div class="price-card featured">
+        <h3>الخطة المميزة</h3>
+        <div class="price">قريبًا <small>شهريًا</small></div>
+        <ul>
+          <li>ملخصات المحاضرات الكاملة</li>
+          <li>شرح المواد التعليمية</li>
+          <li>بنك أسئلة متنوع</li>
+          <li>اختبارات ومراجعات</li>
+          <li>محتوى إضافي للأعضاء</li>
+        </ul>
+        <button class="btn primary" onclick="showMessage()">
+          الاشتراك قريبًا
+        </button>
+      </div>
+    </div>
+
+    <p class="notice">
+      الأسعار والاشتراكات المدفوعة سيتم تفعيلها بعد تجهيز نظام
+      العضويات والدفع الإلكتروني.
+    </p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="logo">PURE PHYSIO <span>ACADEMY</span></div>
+    <p>Learn Better. Understand Deeper. Move Forward.</p>
+    <p style="margin-top:12px">© 2026 Pure Physio. All Rights Reserved.</p>
+    <p><a href="index.html" style="color:var(--teal)">العودة إلى الموقع الرئيسي</a></p>
+  </div>
+</footer>
+
+<script>
+// MOBILE MENU
+function toggleMenu(){
+  document.getElementById('navLinks').classList.toggle('show');
+}
+
+// SEARCH AND FILTER
+let currentFilter='all';
+
+function setFilter(filter,button){
+  currentFilter=filter;
+  document.querySelectorAll('.filter').forEach(b=>b.classList.remove('active'));
+  button.classList.add('active');
+  filterCourses();
+}
+
+function filterCourses(){
+  const search=document.getElementById('searchInput').value.toLowerCase();
+  const courses=document.querySelectorAll('.course');
+  let count=0;
+
+  courses.forEach(course=>{
+    const category=course.dataset.category;
+    const text=course.innerText.toLowerCase();
+    const matchesCategory=currentFilter==='all'||category===currentFilter;
+    const matchesSearch=text.includes(search);
+    const show=matchesCategory&&matchesSearch;
+
+    course.style.display=show?'block':'none';
+    if(show)count++;
+  });
+
+  document.getElementById('emptyMessage').style.display=count?'none':'block';
+}
+
+// TEMPORARY NOTICE
+function showMessage(){
+  alert('سيتم إضافة المحتوى الكامل ونظام الاشتراكات قريبًا في Pure Physio Academy.');
+}
+
+// SAMPLE QUIZ
+const questions=[
+  {
+    q:'What is the main function of the skeletal system?',
+    options:[
+      'Produce digestive enzymes',
+      'Support and protect the body',
+      'Pump blood',
+      'Exchange gases'
+    ],
+    answer:1,
+    explanation:'The skeletal system provides support and protection.'
+  },
+  {
+    q:'Which structure connects muscle to bone?',
+    options:['Ligament','Tendon','Cartilage','Nerve'],
+    answer:1,
+    explanation:'A tendon connects muscle to bone.'
+  },
+  {
+    q:'Which plane divides the body into right and left parts?',
+    options:['Frontal plane','Transverse plane','Sagittal plane','Oblique plane'],
+    answer:2,
+    explanation:'The sagittal plane divides the body into right and left portions.'
+  }
+];
+
+let questionIndex=0;
+let score=0;
+let answered=false;
+
+function renderQuestion(){
+  const q=questions[questionIndex];
+  answered=false;
+
+  document.getElementById('questionNumber').innerText=
+    'السؤال '+(questionIndex+1)+' من '+questions.length;
+
+  document.getElementById('questionText').innerText=q.q;
+  document.getElementById('quizResult').innerText='';
+  document.getElementById('nextBtn').style.display='none';
+
+  const options=document.getElementById('options');
+  options.innerHTML='';
+
+  q.options.forEach((option,index)=>{
+    const btn=document.createElement('button');
+    btn.className='option';
+    btn.innerText=option;
+    btn.onclick=()=>selectAnswer(index,btn);
+    options.appendChild(btn);
+  });
+}
+
+function selectAnswer(index,button){
+  if(answered)return;
+  answered=true;
+
+  const q=questions[questionIndex];
+  const buttons=document.querySelectorAll('.option');
+
+  buttons.forEach((btn,i)=>{
+    btn.disabled=true;
+    if(i===q.answer)btn.classList.add('correct');
+  });
+
+  if(index===q.answer){
+    score++;
+    document.getElementById('quizResult').innerText=
+      'إجابة صحيحة! '+q.explanation;
+  }else{
+    button.classList.add('wrong');
+    document.getElementById('quizResult').innerText=
+      'إجابة غير صحيحة. '+q.explanation;
+  }
+
+  const next=document.getElementById('nextBtn');
+  next.style.display='inline-block';
+  next.innerText=questionIndex===questions.length-1?
+    'عرض النتيجة':'السؤال التالي';
+}
+
+function nextQuestion(){
+  if(questionIndex<questions.length-1){
+    questionIndex++;
+    renderQuestion();
+  }else{
+    document.getElementById('questionNumber').innerText='انتهى الاختبار';
+    document.getElementById('questionText').innerText=
+      'نتيجتك: '+score+' من '+questions.length;
+    document.getElementById('options').innerHTML='';
+    document.getElementById('quizResult').innerText=
+      'أحسنت! استمر في التعلم والمراجعة.';
+    document.getElementById('nextBtn').style.display='none';
+  }
+}
+
+renderQuestion();
+</script>
+
+</body>
+</html>
