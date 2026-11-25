@@ -1,0 +1,412 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Human Physiology | Pure Physio Academy</title>
+
+<style>
+:root {
+  --navy:#071a2e;
+  --navy2:#102b46;
+  --teal:#20d6c2;
+  --white:#f4f8fc;
+  --muted:#b7c8d8;
+  --card:#10263d;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Tahoma,sans-serif;
+  background:var(--navy);
+  color:var(--white);
+  line-height:1.9;
+}
+header{
+  padding:45px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#071a2e,#123b56);
+  border-bottom:2px solid var(--teal);
+}
+header h1{
+  color:var(--teal);
+  margin:0 0 10px;
+  font-size:32px;
+}
+header p{color:var(--muted);margin:0}
+.container{max-width:950px;margin:auto;padding:22px}
+section{
+  background:var(--card);
+  padding:23px;
+  margin:20px 0;
+  border-radius:15px;
+  border:1px solid #23445e;
+}
+h2{color:var(--teal);margin-top:0}
+h3{color:#8cebe0}
+.en{
+  direction:ltr;
+  text-align:left;
+  color:#c4d6e7;
+}
+.term{color:var(--teal);font-weight:bold}
+ul{padding-right:25px}
+li{margin:7px 0}
+.note{
+  background:#0b3548;
+  border-right:4px solid var(--teal);
+  padding:12px;
+  border-radius:8px;
+}
+.question{
+  padding:15px 0;
+  border-bottom:1px solid #34516a;
+}
+.question label{
+  display:block;
+  padding:7px;
+  cursor:pointer;
+}
+button{
+  background:var(--teal);
+  color:#06202e;
+  border:0;
+  padding:13px 25px;
+  border-radius:9px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  margin-top:15px;
+}
+button:hover{opacity:.85}
+#result{
+  margin-top:20px;
+  padding:15px;
+  background:#0b3548;
+  border-radius:10px;
+  display:none;
+}
+footer{
+  text-align:center;
+  padding:25px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Human Physiology</h1>
+  <p>علم وظائف الأعضاء | Pure Physio Academy</p>
+  <p class="en">Introduction to Human Physiology</p>
+</header>
+
+<main class="container">
+
+<section>
+<h2>1. Learning Objectives | أهداف المحاضرة</h2>
+<p>بعد الانتهاء من المحاضرة، يُفترض أن تكون قادرًا على:</p>
+<ul>
+<li>تعريف علم وظائف الأعضاء.</li>
+<li>فهم مفهوم الاتزان الداخلي (Homeostasis).</li>
+<li>التعرف على مستويات تنظيم جسم الإنسان.</li>
+<li>فهم آلية التغذية الراجعة السلبية والإيجابية.</li>
+<li>معرفة الوظائف الأساسية لأجهزة الجسم.</li>
+</ul>
+</section>
+
+<section>
+<h2>2. What is Human Physiology?</h2>
+<h3>ما هو علم وظائف الأعضاء؟</h3>
+<p>
+علم وظائف الأعضاء هو العلم الذي يدرس كيفية عمل جسم الإنسان
+وأعضائه وخلاياه، وكيف تتعاون هذه الأجزاء للحفاظ على الحياة.
+</p>
+<p class="en">
+Human Physiology is the study of how the human body and its
+systems, organs, tissues, and cells function.
+</p>
+<div class="note">
+<strong>Remember:</strong>
+Anatomy studies structure, while Physiology studies function.
+<br>
+التشريح يدرس التركيب، بينما الفسيولوجي يدرس الوظيفة.
+</div>
+</section>
+
+<section>
+<h2>3. Levels of Organization</h2>
+<h3>مستويات تنظيم جسم الإنسان</h3>
+<ol>
+<li><span class="term">Chemical Level:</span> المستوى الكيميائي، مثل الذرات والجزيئات.</li>
+<li><span class="term">Cellular Level:</span> المستوى الخلوي، الخلية هي الوحدة الأساسية للحياة.</li>
+<li><span class="term">Tissue Level:</span> المستوى النسيجي، مجموعة خلايا متشابهة تؤدي وظيفة معينة.</li>
+<li><span class="term">Organ Level:</span> مستوى العضو، مثل القلب والرئتين.</li>
+<li><span class="term">System Level:</span> مستوى الأجهزة، مثل الجهاز الدوري.</li>
+<li><span class="term">Organism Level:</span> مستوى الكائن الحي، جسم الإنسان بالكامل.</li>
+</ol>
+</section>
+
+<section>
+<h2>4. Homeostasis | الاتزان الداخلي</h2>
+<p>
+الاتزان الداخلي هو قدرة الجسم على الحفاظ على بيئة داخلية مستقرة
+نسبيًا رغم التغيرات التي تحدث داخل الجسم أو خارجه.
+</p>
+<p class="en">
+Homeostasis is the ability of the body to maintain a relatively
+stable internal environment.
+</p>
+
+<h3>Examples | أمثلة</h3>
+<ul>
+<li>تنظيم درجة حرارة الجسم.</li>
+<li>تنظيم مستوى الجلوكوز في الدم.</li>
+<li>تنظيم ضغط الدم.</li>
+<li>الحفاظ على توازن الماء والأملاح.</li>
+</ul>
+
+<div class="note">
+مثال: عندما ترتفع درجة حرارة الجسم، يبدأ التعرق للمساعدة في
+خفض درجة الحرارة.
+</div>
+</section>
+
+<section>
+<h2>5. Feedback Mechanisms</h2>
+<h3>آليات التغذية الراجعة</h3>
+
+<h3>Negative Feedback | التغذية الراجعة السلبية</h3>
+<p>
+هي الآلية الأكثر شيوعًا، وتعمل على عكس التغير الحاصل لإعادة
+المتغير إلى النطاق الطبيعي.
+</p>
+<p class="en">
+Negative feedback reverses a change and helps maintain
+homeostasis.
+</p>
+<p><strong>Example:</strong> تنظيم درجة حرارة الجسم ومستوى السكر في الدم.</p>
+
+<h3>Positive Feedback | التغذية الراجعة الإيجابية</h3>
+<p>
+تعمل على زيادة أو تعزيز التغير بدلًا من عكسه، وتستمر حتى
+اكتمال حدث معين.
+</p>
+<p class="en">
+Positive feedback amplifies a change until a specific event
+is completed.
+</p>
+<p><strong>Example:</strong> انقباضات الرحم أثناء الولادة، وتجلط الدم.</p>
+
+<div class="note">
+<strong>Exam Tip:</strong>
+Negative feedback maintains stability, while positive feedback
+amplifies the response.
+</div>
+</section>
+
+<section>
+<h2>6. Major Body Systems</h2>
+<h3>أجهزة جسم الإنسان الرئيسية</h3>
+
+<ul>
+<li><strong>Nervous System:</strong> الجهاز العصبي – التحكم السريع والتنسيق.</li>
+<li><strong>Cardiovascular System:</strong> الجهاز الدوري – نقل الدم والأكسجين.</li>
+<li><strong>Respiratory System:</strong> الجهاز التنفسي – تبادل الأكسجين وثاني أكسيد الكربون.</li>
+<li><strong>Digestive System:</strong> الجهاز الهضمي – هضم الطعام وامتصاص العناصر الغذائية.</li>
+<li><strong>Muscular System:</strong> الجهاز العضلي – الحركة وإنتاج القوة.</li>
+<li><strong>Skeletal System:</strong> الجهاز الهيكلي – الدعم والحماية والحركة.</li>
+<li><strong>Endocrine System:</strong> جهاز الغدد الصماء – تنظيم وظائف الجسم بالهرمونات.</li>
+<li><strong>Urinary System:</strong> الجهاز البولي – التخلص من الفضلات وتنظيم السوائل.</li>
+<li><strong>Immune System:</strong> الجهاز المناعي – الدفاع عن الجسم.</li>
+<li><strong>Reproductive System:</strong> الجهاز التناسلي – التكاثر.</li>
+</ul>
+</section>
+
+<section>
+<h2>7. Important Terms | مصطلحات مهمة</h2>
+<ul>
+<li><span class="term">Physiology:</span> علم وظائف الأعضاء.</li>
+<li><span class="term">Homeostasis:</span> الاتزان الداخلي.</li>
+<li><span class="term">Metabolism:</span> الأيض أو التمثيل الغذائي.</li>
+<li><span class="term">Stimulus:</span> مؤثر أو محفز.</li>
+<li><span class="term">Response:</span> استجابة.</li>
+<li><span class="term">Feedback:</span> تغذية راجعة.</li>
+<li><span class="term">Organ:</span> عضو.</li>
+<li><span class="term">Tissue:</span> نسيج.</li>
+</ul>
+</section>
+
+<section>
+<h2>8. Quick Revision | مراجعة سريعة</h2>
+<ul>
+<li>Physiology = Study of function.</li>
+<li>Anatomy = Study of structure.</li>
+<li>Homeostasis = Stable internal environment.</li>
+<li>Negative feedback = Reverses the change.</li>
+<li>Positive feedback = Amplifies the change.</li>
+<li>The cell is the basic structural and functional unit of life.</li>
+</ul>
+</section>
+
+<section id="quiz">
+<h2>9. Interactive MCQ Quiz</h2>
+<p>اختبر فهمك للمحاضرة – اختر إجابة واحدة لكل سؤال.</p>
+
+<form id="quizForm">
+
+<div class="question">
+<strong>1. What does physiology study?</strong>
+<label><input type="radio" name="q1" value="a"> Body structure</label>
+<label><input type="radio" name="q1" value="b"> Body functions</label>
+<label><input type="radio" name="q1" value="c"> Body shape only</label>
+<label><input type="radio" name="q1" value="d"> Bones only</label>
+</div>
+
+<div class="question">
+<strong>2. What is the basic unit of life?</strong>
+<label><input type="radio" name="q2" value="a"> Organ</label>
+<label><input type="radio" name="q2" value="b"> Tissue</label>
+<label><input type="radio" name="q2" value="c"> Cell</label>
+<label><input type="radio" name="q2" value="d"> System</label>
+</div>
+
+<div class="question">
+<strong>3. Homeostasis means:</strong>
+<label><input type="radio" name="q3" value="a"> Internal stability</label>
+<label><input type="radio" name="q3" value="b"> Body movement</label>
+<label><input type="radio" name="q3" value="c"> Digestion only</label>
+<label><input type="radio" name="q3" value="d"> Muscle contraction</label>
+</div>
+
+<div class="question">
+<strong>4. Which feedback mechanism reverses a change?</strong>
+<label><input type="radio" name="q4" value="a"> Positive feedback</label>
+<label><input type="radio" name="q4" value="b"> Negative feedback</label>
+<label><input type="radio" name="q4" value="c"> No feedback</label>
+<label><input type="radio" name="q4" value="d"> None</label>
+</div>
+
+<div class="question">
+<strong>5. Which is an example of positive feedback?</strong>
+<label><input type="radio" name="q5" value="a"> Temperature regulation</label>
+<label><input type="radio" name="q5" value="b"> Blood glucose regulation</label>
+<label><input type="radio" name="q5" value="c"> Labor contractions</label>
+<label><input type="radio" name="q5" value="d"> Water balance</label>
+</div>
+
+<div class="question">
+<strong>6. Which system transports oxygen and nutrients?</strong>
+<label><input type="radio" name="q6" value="a"> Digestive system</label>
+<label><input type="radio" name="q6" value="b"> Cardiovascular system</label>
+<label><input type="radio" name="q6" value="c"> Skeletal system</label>
+<label><input type="radio" name="q6" value="d"> Nervous system</label>
+</div>
+
+<div class="question">
+<strong>7. Which system produces hormones?</strong>
+<label><input type="radio" name="q7" value="a"> Endocrine system</label>
+<label><input type="radio" name="q7" value="b"> Respiratory system</label>
+<label><input type="radio" name="q7" value="c"> Skeletal system</label>
+<label><input type="radio" name="q7" value="d"> Urinary system</label>
+</div>
+
+<div class="question">
+<strong>8. Which system is mainly responsible for gas exchange?</strong>
+<label><input type="radio" name="q8" value="a"> Digestive</label>
+<label><input type="radio" name="q8" value="b"> Nervous</label>
+<label><input type="radio" name="q8" value="c"> Respiratory</label>
+<label><input type="radio" name="q8" value="d"> Muscular</label>
+</div>
+
+<div class="question">
+<strong>9. A group of similar cells forms a:</strong>
+<label><input type="radio" name="q9" value="a"> System</label>
+<label><input type="radio" name="q9" value="b"> Tissue</label>
+<label><input type="radio" name="q9" value="c"> Organism</label>
+<label><input type="radio" name="q9" value="d"> Organ system</label>
+</div>
+
+<div class="question">
+<strong>10. Negative feedback is important because it:</strong>
+<label><input type="radio" name="q10" value="a"> Increases every change</label>
+<label><input type="radio" name="q10" value="b"> Stops all body functions</label>
+<label><input type="radio" name="q10" value="c"> Helps maintain homeostasis</label>
+<label><input type="radio" name="q10" value="d"> Prevents all movement</label>
+</div>
+
+<button type="button" onclick="checkAnswers()">Submit Answers</button>
+</form>
+
+<div id="result"></div>
+</section>
+
+<section>
+<h2>Educational Disclaimer | تنويه تعليمي</h2>
+<p>
+هذه المحاضرة مادة تعليمية تأسيسية للمراجعة، وليست بديلًا عن
+محاضرات الجامعة أو الكتب والمراجع المعتمدة. يُرجى مراجعة
+المحتوى وفقًا لمنهج الكلية.
+</p>
+</section>
+
+</main>
+
+<footer>
+Pure Physio Academy © 2026
+<br>
+Learn • Practice • Improve
+</footer>
+
+<script>
+function checkAnswers(){
+  const answers={
+    q1:"b",q2:"c",q3:"a",q4:"b",q5:"c",
+    q6:"b",q7:"a",q8:"c",q9:"b",q10:"c"
+  };
+
+  const explanations=[
+    "Physiology studies body functions.",
+    "The cell is the basic unit of life.",
+    "Homeostasis maintains internal stability.",
+    "Negative feedback reverses a change.",
+    "Labor contractions are a positive feedback example.",
+    "The cardiovascular system transports blood and nutrients.",
+    "The endocrine system produces hormones.",
+    "The respiratory system performs gas exchange.",
+    "A group of similar cells forms a tissue.",
+    "Negative feedback helps maintain homeostasis."
+  ];
+
+  let score=0;
+  let details="";
+
+  for(let i=1;i<=10;i++){
+    const selected=document.querySelector(
+      'input[name="q'+i+'"]:checked'
+    );
+
+    if(selected && selected.value===answers["q"+i]){
+      score++;
+      details+="<p>Q"+i+": Correct ✓</p>";
+    }else{
+      details+="<p>Q"+i+": Incorrect ✗<br>"+
+      explanations[i-1]+"</p>";
+    }
+  }
+
+  const result=document.getElementById("result");
+  result.style.display="block";
+  result.innerHTML=
+    "<h3>Your Score: "+score+"/10</h3>"+
+    "<p>"+(score>=8?"Excellent work!":"Keep studying and try again!")+"</p>"+
+    details;
+
+  result.scrollIntoView({behavior:"smooth"});
+}
+</script>
+
+</body>
+</html>
