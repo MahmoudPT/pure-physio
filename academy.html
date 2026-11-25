@@ -764,7 +764,7 @@ renderQuestion();
 
   async function updateStudentView() {
     try {
-      const user = await getCurrentStudent();
+      const user = await window.getCurrentStudent();
 
       if (user) {
         forms.style.display = "none";
