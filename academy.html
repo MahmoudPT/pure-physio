@@ -496,6 +496,7 @@ footer p{color:var(--muted);font-size:13px}
     </div>
   </div>
 </section>
+<!-- END ADMIN SUBSCRIPTION DASHBOARD -->
 
 <footer>
   <div class="container">
@@ -653,7 +654,8 @@ renderQuestion();
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase.js"></script>
 
-<!-- STUDENT ACCOUNT AND SUBSCRIPTION SYSTEM -->
+<!-- PURE PHYSIO STUDENT ACCOUNT SYSTEM -->
+
 <style>
 .account-section {
   max-width: 650px;
@@ -665,7 +667,9 @@ renderQuestion();
   color: white;
   text-align: center;
 }
-.account-section h2 {color: #20d6c2}
+.account-section h2 {
+  color: #20d6c2;
+}
 .account-section input {
   display: block;
   width: 100%;
@@ -701,57 +705,84 @@ renderQuestion();
 </style>
 
 <section class="account-section" id="studentAccount">
+
   <h2>Pure Physio Student Account</h2>
+
   <p>أنشئ حسابك وابدأ رحلتك التعليمية معنا</p>
 
   <div id="accountForms">
-    <input type="email" id="studentEmail"
-      placeholder="البريد الإلكتروني" autocomplete="email">
 
-    <input type="password" id="studentPassword"
-      placeholder="كلمة المرور" autocomplete="new-password">
+    <input
+      type="email"
+      id="studentEmail"
+      placeholder="البريد الإلكتروني"
+      autocomplete="email"
+    >
 
-    <button type="button" id="registerStudent">إنشاء حساب جديد</button>
-    <button type="button" id="loginStudent">تسجيل الدخول</button>
+    <input
+      type="password"
+      id="studentPassword"
+      placeholder="كلمة المرور"
+      autocomplete="new-password"
+    >
+
+    <button type="button" id="registerStudent">
+      إنشاء حساب جديد
+    </button>
+
+    <button type="button" id="loginStudent">
+      تسجيل الدخول
+    </button>
+
   </div>
 
   <div id="studentDashboard">
     <h3>أهلاً بك في Pure Physio Academy ❤️</h3>
     <p id="studentInfo"></p>
 
-    <div id="mySubscriptionStatus"
-      style="margin:14px 0;padding:12px;background:#071a2e;border-radius:10px">
+    <div id="mySubscriptionStatus" style="margin:14px 0;padding:12px;background:#071a2e;border-radius:10px">
       جاري فحص حالة اشتراكك...
     </div>
 
-    <div id="subscriptionRequestBox"
-      style="margin-top:18px;padding:18px;background:#071a2e;border:1px solid #31546b;border-radius:12px;text-align:right">
+    <div id="subscriptionRequestBox" style="margin-top:18px;padding:18px;background:#071a2e;border:1px solid #31546b;border-radius:12px;text-align:right">
 
       <h3 style="color:#20d6c2;margin-bottom:8px">طلب الاشتراك المميز</h3>
 
       <p style="margin-bottom:12px;color:#c5d5e2">
-        بعد إتمام التحويل، اكتب بيانات العملية وأرسل الطلب.
-        سيتم تفعيل الاشتراك بعد مراجعة الأدمن.
+        حوّل قيمة الاشتراك أولاً إلى رقم فودافون كاش التالي، ثم اكتب بيانات التحويل وأرسل الطلب. سيتم تفعيل الاشتراك بعد مراجعة الإدارة.
       </p>
 
+      <!-- VODAFONE CASH -->
+      <div style="padding:14px;margin:12px 0;background:#102b43;border:1px solid #20d6c2;border-radius:10px;text-align:center">
+
+        <div style="color:#c5d5e2;margin-bottom:6px">
+          رقم فودافون كاش للتحويل
+        </div>
+
+        <strong id="vodafoneCashNumber" dir="ltr" style="display:block;font-size:25px;letter-spacing:1px;color:#20d6c2">
+          01024743597
+        </strong>
+
+        <button type="button" id="copyVodafoneCash" style="margin-top:10px;padding:9px 18px;border:0;border-radius:8px;background:#20d6c2;color:#071a2e;font-weight:bold;cursor:pointer">
+          نسخ الرقم
+        </button>
+
+        <p id="copyVodafoneMessage" aria-live="polite" style="margin:7px 0 0;font-size:13px"></p>
+      </div>
+
       <label for="subscriptionAmount">المبلغ المدفوع (جنيه)</label>
-      <input type="number" id="subscriptionAmount" min="1" step="0.01"
-        placeholder="اكتب المبلغ الذي حولته" required>
+      <input type="number" id="subscriptionAmount" min="1" step="0.01" placeholder="اكتب المبلغ الذي حولته" required>
 
       <label for="subscriptionPaymentMethod">طريقة الدفع</label>
-      <input type="text" id="subscriptionPaymentMethod"
-        placeholder="مثال: InstaPay / Vodafone Cash" required>
+      <input type="text" id="subscriptionPaymentMethod" placeholder="مثال: InstaPay / Vodafone Cash" required>
 
       <label for="subscriptionReference">رقم العملية / مرجع التحويل</label>
-      <input type="text" id="subscriptionReference"
-        placeholder="رقم العملية" required>
+      <input type="text" id="subscriptionReference" placeholder="رقم العملية" required>
 
       <label for="subscriptionReceiptUrl">رابط صورة الإيصال (اختياري)</label>
-      <input type="url" id="subscriptionReceiptUrl"
-        placeholder="https://...">
+      <input type="url" id="subscriptionReceiptUrl" placeholder="https://...">
 
-      <button type="button" id="sendSubscriptionRequest"
-        style="width:100%;margin:8px 0 0">
+      <button type="button" id="sendSubscriptionRequest" style="width:100%;margin:8px 0 0">
         إرسال طلب الاشتراك
       </button>
 
@@ -762,10 +793,12 @@ renderQuestion();
   </div>
 
   <p id="accountMessage" aria-live="polite"></p>
+
 </section>
 
 <script>
 (function () {
+
   const emailInput = document.getElementById("studentEmail");
   const passwordInput = document.getElementById("studentPassword");
   const message = document.getElementById("accountMessage");
@@ -805,16 +838,14 @@ renderQuestion();
     const { data, error } = await window.supabaseClient.rpc("get_my_subscription");
 
     if (error) {
-      subscriptionStatus.textContent =
-        "تعذر تحميل حالة الاشتراك: " + error.message;
+      subscriptionStatus.textContent = "تعذر تحميل حالة الاشتراك: " + error.message;
       return;
     }
 
     const item = Array.isArray(data) ? data[0] : data;
 
     if (!item) {
-      subscriptionStatus.textContent =
-        "لا يوجد اشتراك نشط حاليًا. يمكنك إرسال طلب اشتراك من النموذج بالأسفل.";
+      subscriptionStatus.textContent = "لا يوجد اشتراك نشط حاليًا. يمكنك إرسال طلب اشتراك من النموذج بالأسفل.";
       return;
     }
 
@@ -829,23 +860,18 @@ renderQuestion();
 
   async function sendSubscriptionRequest() {
     const amount = Number(document.getElementById('subscriptionAmount').value);
-    const paymentMethod =
-      document.getElementById('subscriptionPaymentMethod').value.trim();
-    const reference =
-      document.getElementById('subscriptionReference').value.trim();
-    const receiptUrl =
-      document.getElementById('subscriptionReceiptUrl').value.trim();
+    const paymentMethod = document.getElementById('subscriptionPaymentMethod').value.trim();
+    const reference = document.getElementById('subscriptionReference').value.trim();
+    const receiptUrl = document.getElementById('subscriptionReceiptUrl').value.trim();
 
     if (!Number.isFinite(amount) || amount <= 0 || !paymentMethod || !reference) {
-      subscriptionMessage.textContent =
-        'أدخل المبلغ وطريقة الدفع ورقم العملية بشكل صحيح.';
+      subscriptionMessage.textContent = 'أدخل المبلغ وطريقة الدفع ورقم العملية بشكل صحيح.';
       subscriptionMessage.style.color = '#ffb4b4';
       return;
     }
 
     if (receiptUrl && !/^https?:\/\//i.test(receiptUrl)) {
-      subscriptionMessage.textContent =
-        'رابط الإيصال يجب أن يبدأ بـ https:// أو http://';
+      subscriptionMessage.textContent = 'رابط الإيصال يجب أن يبدأ بـ https:// أو http://';
       subscriptionMessage.style.color = '#ffb4b4';
       return;
     }
@@ -854,34 +880,48 @@ renderQuestion();
     subscriptionMessage.textContent = 'جاري إرسال الطلب...';
     subscriptionMessage.style.color = '#20d6c2';
 
-    const { error } = await window.supabaseClient.rpc(
-      'submit_subscription_request',
-      {
-        p_plan: 'premium_monthly',
-        p_amount: amount,
-        p_payment_method: paymentMethod,
-        p_transaction_reference: reference,
-        p_receipt_url: receiptUrl || null
-      }
-    );
+    const { error } = await window.supabaseClient.rpc('submit_subscription_request', {
+      p_plan: 'premium_monthly',
+      p_amount: amount,
+      p_payment_method: paymentMethod,
+      p_transaction_reference: reference,
+      p_receipt_url: receiptUrl || null
+    });
 
     sendSubscriptionButton.disabled = false;
 
     if (error) {
-      subscriptionMessage.textContent =
-        'تعذر إرسال الطلب: ' + error.message;
+      subscriptionMessage.textContent = 'تعذر إرسال الطلب: ' + error.message;
       subscriptionMessage.style.color = '#ffb4b4';
       return;
     }
 
-    subscriptionMessage.textContent =
-      'تم إرسال طلبك بنجاح. ستتم مراجعته من الإدارة.';
+    subscriptionMessage.textContent = 'تم إرسال طلبك بنجاح. ستتم مراجعته من الإدارة.';
     subscriptionMessage.style.color = '#20d6c2';
 
     await refreshMySubscription();
   }
 
   sendSubscriptionButton.addEventListener('click', sendSubscriptionRequest);
+
+  // COPY VODAFONE CASH NUMBER
+  const copyVodafoneButton = document.getElementById('copyVodafoneCash');
+
+  if (copyVodafoneButton) {
+    copyVodafoneButton.addEventListener('click', async function () {
+      const number = document.getElementById('vodafoneCashNumber').textContent.trim();
+      const copyMessage = document.getElementById('copyVodafoneMessage');
+
+      try {
+        await navigator.clipboard.writeText(number);
+        copyMessage.textContent = 'تم نسخ رقم فودافون كاش.';
+        copyMessage.style.color = '#20d6c2';
+      } catch (error) {
+        copyMessage.textContent = 'انسخ الرقم يدويًا: ' + number;
+        copyMessage.style.color = '#ffcf8a';
+      }
+    });
+  }
 
   async function updateStudentView() {
     try {
@@ -923,6 +963,7 @@ renderQuestion();
           showMessage("تم إنشاء حسابك بنجاح!", true);
           await updateStudentView();
         }
+
       } catch (error) {
         showMessage(error.message);
       }
@@ -943,6 +984,7 @@ renderQuestion();
 
         showMessage("تم تسجيل الدخول بنجاح!", true);
         await updateStudentView();
+
       } catch (error) {
         showMessage(error.message);
       }
@@ -960,10 +1002,13 @@ renderQuestion();
     });
 
   updateStudentView();
+
 })();
 </script>
 
-<!-- ADMIN DASHBOARD -->
+<!-- END STUDENT ACCOUNT SYSTEM -->
+
+<!-- PURE PHYSIO ADMIN DASHBOARD -->
 <script>
 (function () {
   const db = window.supabaseClient;
@@ -982,10 +1027,10 @@ renderQuestion();
 
   function addText(parent, tag, text, style) {
     const node = document.createElement(tag);
-    node.textContent =
-      text == null || text === '' ? '—' : String(text);
+    node.textContent = text == null || text === '' ? '—' : String(text);
 
     if (style) node.style.cssText = style;
+
     parent.appendChild(node);
     return node;
   }
@@ -993,9 +1038,9 @@ renderQuestion();
   function safeReceiptUrl(value) {
     try {
       const url = new URL(value);
-      return (
-        url.protocol === 'https:' || url.protocol === 'http:'
-      ) ? url.href : null;
+      return (url.protocol === 'https:' || url.protocol === 'http:')
+        ? url.href
+        : null;
     } catch (_) {
       return null;
     }
@@ -1021,39 +1066,45 @@ renderQuestion();
 
     rows.forEach((request) => {
       const card = document.createElement('article');
+
       card.style.cssText =
         'background:#0b2035;border:1px solid #31546b;border-radius:12px;padding:16px;overflow-wrap:anywhere';
 
-      addText(
-        card,
-        'h3',
+      addText(card, 'h3',
         'طلب اشتراك — ' + (request.plan || 'بدون خطة'),
         'color:#19d5c1;margin-bottom:8px'
       );
 
       addText(card, 'p',
-        'الطالب: ' + (request.student_email || request.user_id || 'غير معروف'));
+        'الطالب: ' + (request.student_email || request.user_id || 'غير معروف')
+      );
 
       addText(card, 'p',
-        'معرّف الطالب: ' + (request.user_id || '—'));
+        'معرّف الطالب: ' + (request.user_id || '—')
+      );
 
       addText(card, 'p',
-        'المبلغ: ' + (request.amount ?? '—') + ' جنيه');
+        'المبلغ: ' + (request.amount ?? '—') + ' جنيه'
+      );
 
       addText(card, 'p',
-        'طريقة الدفع: ' + (request.payment_method || '—'));
+        'طريقة الدفع: ' + (request.payment_method || '—')
+      );
 
       addText(card, 'p',
-        'رقم العملية: ' + (request.transaction_reference || '—'));
+        'رقم العملية: ' + (request.transaction_reference || '—')
+      );
 
       addText(card, 'p',
-        'الحالة: ' + (request.status || '—'));
+        'الحالة: ' + (request.status || '—')
+      );
 
       addText(card, 'p',
         'تاريخ الطلب: ' +
         (request.created_at
           ? new Date(request.created_at).toLocaleString('ar-EG')
-          : '—'));
+          : '—')
+      );
 
       const receiptUrl = safeReceiptUrl(request.receipt_url);
 
@@ -1065,11 +1116,13 @@ renderQuestion();
         receipt.textContent = 'فتح إيصال الدفع';
         receipt.style.cssText =
           'display:inline-block;color:#19d5c1;margin:10px 0;text-decoration:underline';
+
         card.appendChild(receipt);
       }
 
       if (request.status === 'pending') {
         const actions = document.createElement('div');
+
         actions.style.cssText =
           'display:flex;gap:8px;flex-wrap:wrap;margin-top:12px';
 
@@ -1165,11 +1218,10 @@ renderQuestion();
 
   checkAdmin();
 
-  db.auth.onAuthStateChange(() => {
-    setTimeout(checkAdmin, 0);
-  });
+  db.auth.onAuthStateChange(() => setTimeout(checkAdmin, 0));
 })();
 </script>
+<!-- END PURE PHYSIO ADMIN DASHBOARD -->
 
 </body>
 </html>
