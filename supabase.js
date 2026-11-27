@@ -1,6 +1,10 @@
 const SUPABASE_URL = "https://iymuuxevubftfeuiehse.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_1lrSyB8FJQYzqDZXbpa-FA_BxagcgyA";
 
+if (!window.supabase) {
+  throw new Error("Supabase library did not load.");
+}
+
 const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
