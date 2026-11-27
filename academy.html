@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -336,7 +335,7 @@ footer p{color:var(--muted);font-size:13px}
           <p>مدخل إلى تشريح جسم الإنسان والمفاهيم الأساسية.</p>
           <div class="course-footer">
             <span class="free">نموذج مجاني</span>
-<a href="anatomy.html" class="course-btn">ابدأ المحاضرة</a>
+            <a href="anatomy.html" class="course-btn">ابدأ المحاضرة</a>
           </div>
         </div>
       </article>
@@ -349,7 +348,7 @@ footer p{color:var(--muted);font-size:13px}
           <p>مقدمة لفهم وظائف أجهزة الجسم المختلفة.</p>
           <div class="course-footer">
             <span class="free">نموذج مجاني</span>
-<a href="physiology.html" class="course-btn">ابدأ المحاضرة</a>
+            <a href="physiology.html" class="course-btn">ابدأ المحاضرة</a>
           </div>
         </div>
       </article>
@@ -458,7 +457,7 @@ footer p{color:var(--muted);font-size:13px}
 
       <div class="price-card featured">
         <h3>الخطة المميزة</h3>
-        <div class="price">قريبًا <small>شهريًا</small></div>
+        <div class="price">اشتراك شهري</div>
         <ul>
           <li>ملخصات المحاضرات الكاملة</li>
           <li>شرح المواد التعليمية</li>
@@ -466,20 +465,37 @@ footer p{color:var(--muted);font-size:13px}
           <li>اختبارات ومراجعات</li>
           <li>محتوى إضافي للأعضاء</li>
         </ul>
-        <button class="btn primary" onclick="showMessage()">
-          الاشتراك قريبًا
-        </button>
+        <a class="btn primary" href="#studentAccount" style="text-align:center">
+          اشترك الآن
+        </a>
       </div>
     </div>
 
     <p class="notice">
-      الأسعار والاشتراكات المدفوعة سيتم تفعيلها بعد تجهيز نظام
-      العضويات والدفع الإلكتروني.
+      سجّل الدخول أولًا، ثم أرسل بيانات الدفع لمراجعتها وتفعيل اشتراكك يدويًا.
     </p>
   </div>
 </section>
 
 </main>
+
+<!-- ADMIN SUBSCRIPTION DASHBOARD -->
+<section id="adminPanel" style="display:none;background:#071a2e;padding:55px 0">
+  <div class="container">
+    <div class="section-title">
+      <h2>لوحة <span>إدارة الاشتراكات</span></h2>
+      <p>طلبات الطلاب وإيصالات الدفع وحالة الاشتراكات</p>
+    </div>
+    <div style="background:#102b43;border:1px solid #31546b;border-radius:16px;padding:20px">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:space-between">
+        <strong>طلبات الاشتراك</strong>
+        <button type="button" class="btn primary" id="adminRefresh">تحديث الطلبات</button>
+      </div>
+      <p id="adminStatus" role="status" style="margin:14px 0;color:#19d5c1"></p>
+      <div id="adminRequests" style="display:grid;gap:14px"></div>
+    </div>
+  </div>
+</section>
 
 <footer>
   <div class="container">
@@ -525,9 +541,12 @@ function filterCourses(){
   document.getElementById('emptyMessage').style.display=count?'none':'block';
 }
 
-// TEMPORARY NOTICE
+// توجيه الأزرار التجريبية إلى حساب الطالب بدل رسالة "قريبًا"
 function showMessage(){
-  alert('سيتم إضافة المحتوى الكامل ونظام الاشتراكات قريبًا في Pure Physio Academy.');
+  const account = document.getElementById('studentAccount');
+  if (account) account.scrollIntoView({behavior:'smooth', block:'center'});
+  const message = document.getElementById('accountMessage');
+  if (message) message.textContent = 'سجّل الدخول أو أنشئ حسابًا أولًا للوصول إلى خدمات الأكاديمية.';
 }
 
 // SAMPLE QUIZ
@@ -633,12 +652,8 @@ renderQuestion();
 <!-- Supabase Library -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="supabase.js"></script>
-<script>
-<script src="supabase.js"></script>
-</script>
 
-<!-- PURE PHYSIO STUDENT ACCOUNT SYSTEM -->
-
+<!-- STUDENT ACCOUNT AND SUBSCRIPTION SYSTEM -->
 <style>
 .account-section {
   max-width: 650px;
@@ -650,9 +665,7 @@ renderQuestion();
   color: white;
   text-align: center;
 }
-.account-section h2 {
-  color: #20d6c2;
-}
+.account-section h2 {color: #20d6c2}
 .account-section input {
   display: block;
   width: 100%;
@@ -688,52 +701,71 @@ renderQuestion();
 </style>
 
 <section class="account-section" id="studentAccount">
-
   <h2>Pure Physio Student Account</h2>
-
   <p>أنشئ حسابك وابدأ رحلتك التعليمية معنا</p>
 
   <div id="accountForms">
+    <input type="email" id="studentEmail"
+      placeholder="البريد الإلكتروني" autocomplete="email">
 
-    <input
-      type="email"
-      id="studentEmail"
-      placeholder="البريد الإلكتروني"
-      autocomplete="email"
-    >
+    <input type="password" id="studentPassword"
+      placeholder="كلمة المرور" autocomplete="new-password">
 
-    <input
-      type="password"
-      id="studentPassword"
-      placeholder="كلمة المرور"
-      autocomplete="new-password"
-    >
-
-    <button type="button" id="registerStudent">
-      إنشاء حساب جديد
-    </button>
-
-    <button type="button" id="loginStudent">
-      تسجيل الدخول
-    </button>
-
+    <button type="button" id="registerStudent">إنشاء حساب جديد</button>
+    <button type="button" id="loginStudent">تسجيل الدخول</button>
   </div>
 
   <div id="studentDashboard">
     <h3>أهلاً بك في Pure Physio Academy ❤️</h3>
     <p id="studentInfo"></p>
-    <button type="button" id="logoutStudent">
-      تسجيل الخروج
-    </button>
+
+    <div id="mySubscriptionStatus"
+      style="margin:14px 0;padding:12px;background:#071a2e;border-radius:10px">
+      جاري فحص حالة اشتراكك...
+    </div>
+
+    <div id="subscriptionRequestBox"
+      style="margin-top:18px;padding:18px;background:#071a2e;border:1px solid #31546b;border-radius:12px;text-align:right">
+
+      <h3 style="color:#20d6c2;margin-bottom:8px">طلب الاشتراك المميز</h3>
+
+      <p style="margin-bottom:12px;color:#c5d5e2">
+        بعد إتمام التحويل، اكتب بيانات العملية وأرسل الطلب.
+        سيتم تفعيل الاشتراك بعد مراجعة الأدمن.
+      </p>
+
+      <label for="subscriptionAmount">المبلغ المدفوع (جنيه)</label>
+      <input type="number" id="subscriptionAmount" min="1" step="0.01"
+        placeholder="اكتب المبلغ الذي حولته" required>
+
+      <label for="subscriptionPaymentMethod">طريقة الدفع</label>
+      <input type="text" id="subscriptionPaymentMethod"
+        placeholder="مثال: InstaPay / Vodafone Cash" required>
+
+      <label for="subscriptionReference">رقم العملية / مرجع التحويل</label>
+      <input type="text" id="subscriptionReference"
+        placeholder="رقم العملية" required>
+
+      <label for="subscriptionReceiptUrl">رابط صورة الإيصال (اختياري)</label>
+      <input type="url" id="subscriptionReceiptUrl"
+        placeholder="https://...">
+
+      <button type="button" id="sendSubscriptionRequest"
+        style="width:100%;margin:8px 0 0">
+        إرسال طلب الاشتراك
+      </button>
+
+      <p id="subscriptionMessage" aria-live="polite" style="margin-top:10px"></p>
+    </div>
+
+    <button type="button" id="logoutStudent">تسجيل الخروج</button>
   </div>
 
   <p id="accountMessage" aria-live="polite"></p>
-
 </section>
 
 <script>
 (function () {
-
   const emailInput = document.getElementById("studentEmail");
   const passwordInput = document.getElementById("studentPassword");
   const message = document.getElementById("accountMessage");
@@ -763,6 +795,94 @@ renderQuestion();
     return { email, password };
   }
 
+  const subscriptionStatus = document.getElementById("mySubscriptionStatus");
+  const subscriptionMessage = document.getElementById("subscriptionMessage");
+  const sendSubscriptionButton = document.getElementById("sendSubscriptionRequest");
+
+  async function refreshMySubscription() {
+    if (!window.supabaseClient || !subscriptionStatus) return;
+
+    const { data, error } = await window.supabaseClient.rpc("get_my_subscription");
+
+    if (error) {
+      subscriptionStatus.textContent =
+        "تعذر تحميل حالة الاشتراك: " + error.message;
+      return;
+    }
+
+    const item = Array.isArray(data) ? data[0] : data;
+
+    if (!item) {
+      subscriptionStatus.textContent =
+        "لا يوجد اشتراك نشط حاليًا. يمكنك إرسال طلب اشتراك من النموذج بالأسفل.";
+      return;
+    }
+
+    const endDate = item.ends_at
+      ? new Date(item.ends_at).toLocaleDateString('ar-EG')
+      : 'غير محدد';
+
+    subscriptionStatus.textContent = item.status === 'active'
+      ? 'اشتراكك نشط حتى: ' + endDate
+      : 'حالة الاشتراك: ' + (item.status || 'غير نشط');
+  }
+
+  async function sendSubscriptionRequest() {
+    const amount = Number(document.getElementById('subscriptionAmount').value);
+    const paymentMethod =
+      document.getElementById('subscriptionPaymentMethod').value.trim();
+    const reference =
+      document.getElementById('subscriptionReference').value.trim();
+    const receiptUrl =
+      document.getElementById('subscriptionReceiptUrl').value.trim();
+
+    if (!Number.isFinite(amount) || amount <= 0 || !paymentMethod || !reference) {
+      subscriptionMessage.textContent =
+        'أدخل المبلغ وطريقة الدفع ورقم العملية بشكل صحيح.';
+      subscriptionMessage.style.color = '#ffb4b4';
+      return;
+    }
+
+    if (receiptUrl && !/^https?:\/\//i.test(receiptUrl)) {
+      subscriptionMessage.textContent =
+        'رابط الإيصال يجب أن يبدأ بـ https:// أو http://';
+      subscriptionMessage.style.color = '#ffb4b4';
+      return;
+    }
+
+    sendSubscriptionButton.disabled = true;
+    subscriptionMessage.textContent = 'جاري إرسال الطلب...';
+    subscriptionMessage.style.color = '#20d6c2';
+
+    const { error } = await window.supabaseClient.rpc(
+      'submit_subscription_request',
+      {
+        p_plan: 'premium_monthly',
+        p_amount: amount,
+        p_payment_method: paymentMethod,
+        p_transaction_reference: reference,
+        p_receipt_url: receiptUrl || null
+      }
+    );
+
+    sendSubscriptionButton.disabled = false;
+
+    if (error) {
+      subscriptionMessage.textContent =
+        'تعذر إرسال الطلب: ' + error.message;
+      subscriptionMessage.style.color = '#ffb4b4';
+      return;
+    }
+
+    subscriptionMessage.textContent =
+      'تم إرسال طلبك بنجاح. ستتم مراجعته من الإدارة.';
+    subscriptionMessage.style.color = '#20d6c2';
+
+    await refreshMySubscription();
+  }
+
+  sendSubscriptionButton.addEventListener('click', sendSubscriptionRequest);
+
   async function updateStudentView() {
     try {
       const user = await window.getCurrentStudent();
@@ -771,6 +891,7 @@ renderQuestion();
         forms.style.display = "none";
         dashboard.style.display = "block";
         studentInfo.textContent = user.email;
+        await refreshMySubscription();
       } else {
         forms.style.display = "block";
         dashboard.style.display = "none";
@@ -788,7 +909,7 @@ renderQuestion();
       try {
         showMessage("جاري إنشاء الحساب...", true);
 
-        const result = await signUpStudent(
+        const result = await window.signUpStudent(
           credentials.email,
           credentials.password
         );
@@ -802,7 +923,6 @@ renderQuestion();
           showMessage("تم إنشاء حسابك بنجاح!", true);
           await updateStudentView();
         }
-
       } catch (error) {
         showMessage(error.message);
       }
@@ -816,14 +936,13 @@ renderQuestion();
       try {
         showMessage("جاري تسجيل الدخول...", true);
 
-        await loginStudent(
+        await window.loginStudent(
           credentials.email,
           credentials.password
         );
 
         showMessage("تم تسجيل الدخول بنجاح!", true);
         await updateStudentView();
-
       } catch (error) {
         showMessage(error.message);
       }
@@ -832,7 +951,7 @@ renderQuestion();
   document.getElementById("logoutStudent")
     .addEventListener("click", async function () {
       try {
-        await logoutStudent();
+        await window.logoutStudent();
         showMessage("تم تسجيل الخروج بنجاح.", true);
         await updateStudentView();
       } catch (error) {
@@ -841,141 +960,216 @@ renderQuestion();
     });
 
   updateStudentView();
-
 })();
 </script>
 
-<!-- END STUDENT ACCOUNT SYSTEM -->
-<section id="adminPanel" style="display:none;padding:30px;background:#071a2e;color:white">
-  <h2 style="color:#20d6c2">لوحة إدارة الاشتراكات</h2>
-  <button id="refreshRequests">تحديث الطلبات</button>
-  <p id="adminMessage"></p>
-  <div id="requestsList"></div>
-</section>
-
+<!-- ADMIN DASHBOARD -->
 <script>
-(async function () {
+(function () {
   const db = window.supabaseClient;
-  const panel = document.getElementById("adminPanel");
-  const list = document.getElementById("requestsList");
-  const message = document.getElementById("adminMessage");
+  const panel = document.getElementById('adminPanel');
 
-  function say(text) {
-    message.textContent = text;
+  if (!db || !panel) return;
+
+  const statusBox = document.getElementById('adminStatus');
+  const requestsBox = document.getElementById('adminRequests');
+  const refreshButton = document.getElementById('adminRefresh');
+
+  function status(message, isError = false) {
+    statusBox.textContent = message;
+    statusBox.style.color = isError ? '#ff9999' : '#19d5c1';
+  }
+
+  function addText(parent, tag, text, style) {
+    const node = document.createElement(tag);
+    node.textContent =
+      text == null || text === '' ? '—' : String(text);
+
+    if (style) node.style.cssText = style;
+    parent.appendChild(node);
+    return node;
+  }
+
+  function safeReceiptUrl(value) {
+    try {
+      const url = new URL(value);
+      return (
+        url.protocol === 'https:' || url.protocol === 'http:'
+      ) ? url.href : null;
+    } catch (_) {
+      return null;
+    }
   }
 
   async function loadRequests() {
-    say("جاري تحميل الطلبات...");
+    status('جاري تحميل الطلبات...');
+    requestsBox.replaceChildren();
 
-    const { data, error } = await db
-      .from("subscription_requests")
-      .select("*")
-      .order("created_at", { ascending: false });
+    const { data, error } = await db.rpc('admin_list_subscription_requests');
 
     if (error) {
-      say("خطأ: " + error.message);
+      status('تعذر تحميل الطلبات: ' + error.message, true);
       return;
     }
 
-    list.innerHTML = "";
+    const rows = Array.isArray(data) ? data : [];
 
-    if (!data.length) {
-      say("لا توجد طلبات حالياً.");
+    if (!rows.length) {
+      status('لا توجد طلبات اشتراك حاليًا.');
       return;
     }
 
-    data.forEach(req => {
-      const card = document.createElement("div");
+    rows.forEach((request) => {
+      const card = document.createElement('article');
       card.style.cssText =
-        "background:#10263d;padding:18px;margin:15px 0;border-radius:12px";
+        'background:#0b2035;border:1px solid #31546b;border-radius:12px;padding:16px;overflow-wrap:anywhere';
 
-      const info = document.createElement("pre");
-      info.style.cssText = "white-space:pre-wrap;color:white";
-      info.textContent =
-        "الطالب: " + req.user_id +
-        "\nالخطة: " + req.plan +
-        "\nالمبلغ: " + req.amount +
-        "\nطريقة الدفع: " + req.payment_method +
-        "\nرقم العملية: " + (req.transaction_reference || "غير محدد") +
-        "\nالحالة: " + req.status;
+      addText(
+        card,
+        'h3',
+        'طلب اشتراك — ' + (request.plan || 'بدون خطة'),
+        'color:#19d5c1;margin-bottom:8px'
+      );
 
-      card.appendChild(info);
+      addText(card, 'p',
+        'الطالب: ' + (request.student_email || request.user_id || 'غير معروف'));
 
-      if (req.receipt_url) {
-        const link = document.createElement("a");
-        link.href = req.receipt_url;
-        link.target = "_blank";
-        link.rel = "noopener noreferrer";
-        link.textContent = "عرض إيصال الدفع";
-        link.style.color = "#20d6c2";
-        card.appendChild(link);
+      addText(card, 'p',
+        'معرّف الطالب: ' + (request.user_id || '—'));
+
+      addText(card, 'p',
+        'المبلغ: ' + (request.amount ?? '—') + ' جنيه');
+
+      addText(card, 'p',
+        'طريقة الدفع: ' + (request.payment_method || '—'));
+
+      addText(card, 'p',
+        'رقم العملية: ' + (request.transaction_reference || '—'));
+
+      addText(card, 'p',
+        'الحالة: ' + (request.status || '—'));
+
+      addText(card, 'p',
+        'تاريخ الطلب: ' +
+        (request.created_at
+          ? new Date(request.created_at).toLocaleString('ar-EG')
+          : '—'));
+
+      const receiptUrl = safeReceiptUrl(request.receipt_url);
+
+      if (receiptUrl) {
+        const receipt = document.createElement('a');
+        receipt.href = receiptUrl;
+        receipt.target = '_blank';
+        receipt.rel = 'noopener noreferrer';
+        receipt.textContent = 'فتح إيصال الدفع';
+        receipt.style.cssText =
+          'display:inline-block;color:#19d5c1;margin:10px 0;text-decoration:underline';
+        card.appendChild(receipt);
       }
 
-      if (req.status === "pending") {
-        ["approved", "rejected"].forEach(decision => {
-          const btn = document.createElement("button");
-          btn.textContent = decision === "approved" ? "موافقة وتفعيل" : "رفض";
-          btn.style.margin = "10px";
+      if (request.status === 'pending') {
+        const actions = document.createElement('div');
+        actions.style.cssText =
+          'display:flex;gap:8px;flex-wrap:wrap;margin-top:12px';
 
-          btn.onclick = async () => {
-            if (!confirm("هل أنت متأكد؟")) return;
+        const approve = document.createElement('button');
+        approve.type = 'button';
+        approve.className = 'btn primary';
+        approve.textContent = 'موافقة وتفعيل 30 يومًا';
 
-            say("جاري تنفيذ العملية...");
+        const reject = document.createElement('button');
+        reject.type = 'button';
+        reject.className = 'btn secondary';
+        reject.textContent = 'رفض الطلب';
 
-            const { error } = await db.rpc(
-              "admin_review_subscription_request",
-              {
-                p_request_id: req.id,
-                p_decision: decision
-              }
-            );
+        approve.addEventListener('click', () =>
+          review(request.id, 'approved', approve, reject)
+        );
 
-            if (error) {
-              say("خطأ: " + error.message);
-              return;
-            }
+        reject.addEventListener('click', () =>
+          review(request.id, 'rejected', approve, reject)
+        );
 
-            say("تم تنفيذ العملية بنجاح.");
-            await loadRequests();
-          };
-
-          card.appendChild(btn);
-        });
+        actions.append(approve, reject);
+        card.appendChild(actions);
       }
 
-      list.appendChild(card);
+      requestsBox.appendChild(card);
     });
 
-    say("عدد الطلبات: " + data.length);
+    status('تم تحميل ' + rows.length + ' طلب.');
   }
 
-  async function checkAdmin() {
-    const { data: { user }, error } = await db.auth.getUser();
-    if (error || !user) return;
+  async function review(requestId, decision, approveButton, rejectButton) {
+    const confirmation = decision === 'approved'
+      ? 'تأكيد الدفع وتفعيل اشتراك الطالب لمدة 30 يومًا؟'
+      : 'هل تريد رفض طلب الاشتراك؟';
 
-    const { data, error: adminError } = await db
-      .from("admin_users")
-      .select("user_id")
-      .eq("user_id", user.id)
-      .maybeSingle();
+    if (!window.confirm(confirmation)) return;
 
-    if (adminError) {
-      say("تعذر التحقق من صلاحيات الأدمن: " + adminError.message);
+    approveButton.disabled = true;
+    rejectButton.disabled = true;
+
+    status('جاري تنفيذ القرار...');
+
+    const { error } = await db.rpc('admin_review_subscription_request', {
+      p_request_id: requestId,
+      p_decision: decision
+    });
+
+    if (error) {
+      approveButton.disabled = false;
+      rejectButton.disabled = false;
+      status('لم يتم تنفيذ القرار: ' + error.message, true);
       return;
     }
 
-    if (!data) return;
+    status(
+      decision === 'approved'
+        ? 'تمت الموافقة وتفعيل الاشتراك.'
+        : 'تم رفض الطلب.'
+    );
 
-    panel.style.display = "block";
     await loadRequests();
   }
 
-  document.getElementById("refreshRequests")
-    .addEventListener("click", loadRequests);
+  async function checkAdmin() {
+    const {
+      data: { user },
+      error: userError
+    } = await db.auth.getUser();
 
-  await checkAdmin();
-  db.auth.onAuthStateChange(() => setTimeout(checkAdmin, 0));
+    if (userError || !user) {
+      panel.style.display = 'none';
+      return;
+    }
+
+    const { data, error } = await db.rpc('admin_is_user');
+
+    if (error) {
+      panel.style.display = 'none';
+      console.error('Admin check failed:', error.message);
+      return;
+    }
+
+    if (data === true) {
+      panel.style.display = 'block';
+      await loadRequests();
+    } else {
+      panel.style.display = 'none';
+    }
+  }
+
+  refreshButton.addEventListener('click', loadRequests);
+
+  checkAdmin();
+
+  db.auth.onAuthStateChange(() => {
+    setTimeout(checkAdmin, 0);
+  });
 })();
 </script>
+
 </body>
 </html>
