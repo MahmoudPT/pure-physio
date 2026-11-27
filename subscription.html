@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>اشتراكات Pure Physio</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f2f7fa;color:#12344a}
@@ -15,35 +16,39 @@ h1,h2{text-align:center}
 button{background:#078c91;color:white;border:0;padding:14px;border-radius:9px;width:100%;font-size:17px;cursor:pointer}
 input,select{width:100%;padding:13px;margin:9px 0;border:1px solid #ccd8df;border-radius:8px}
 .note{background:#e8f7f7;padding:15px;border-radius:9px;line-height:1.8}
+#message{line-height:1.8;text-align:center;font-weight:bold}
 </style>
 </head>
 <body>
+
 <header>
 <h1>Pure Physio</h1>
 <p>اشترك وافتح المحتوى التعليمي المميز</p>
 </header>
 
 <div class="container">
+
 <div class="card">
 <h2>الباقة الشهرية</h2>
 <div class="price">200 جنيه</div>
-<button onclick="choosePlan('monthly',200)">اختيار الباقة الشهرية</button>
+<button onclick="choosePlan('monthly')">اختيار الباقة الشهرية</button>
 </div>
 
 <div class="card">
 <h2>الباقة السنوية</h2>
 <div class="price">2000 جنيه</div>
 <p style="text-align:center">وفّر 400 جنيه سنويًا</p>
-<button onclick="choosePlan('yearly',2000)">اختيار الباقة السنوية</button>
+<button onclick="choosePlan('yearly')">اختيار الباقة السنوية</button>
 </div>
 
 <div class="card">
 <h2>إتمام الاشتراك</h2>
+
 <div class="note">
 <strong>طريقة الدفع: Vodafone Cash</strong><br>
 حوّل المبلغ إلى رقم المحفظة التالي:<br>
-<strong>أضف رقم محفظتك هنا</strong><br>
-بعد التحويل، املأ البيانات وارفع صورة الإيصال.
+<strong>أضف رقم محفظتك هنا بنفسك</strong><br>
+بعد التحويل، اكتب رقم العملية وارفع صورة الإيصال.
 </div>
 
 <form id="paymentForm">
@@ -54,23 +59,109 @@ input,select{width:100%;padding:13px;margin:9px 0;border:1px solid #ccd8df;borde
 </select>
 
 <input id="reference" placeholder="رقم العملية" required>
-<input id="receipt" type="file" accept="image/*" required>
-<button type="submit">إرسال طلب الاشتراك</button>
+<input id="receipt" type="file" accept="image/jpeg,image/png,image/webp" required>
+
+<button id="submitButton" type="submit">إرسال طلب الاشتراك</button>
 </form>
+
 <p id="message"></p>
 </div>
 </div>
 
 <script>
-function choosePlan(plan,amount){
-document.getElementById('plan').value=plan;
-window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+const SUPABASE_URL = "https://iymuuxevubftfeuiehse.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_1lrSyB8FJQYzqDZXbpa-FA_BxagcgyA";
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+function choosePlan(plan) {
+  document.getElementById("plan").value = plan;
+  document.getElementById("paymentForm").scrollIntoView({behavior:"smooth"});
 }
-document.getElementById('paymentForm').addEventListener('submit',function(e){
-e.preventDefault();
-document.getElementById('message').textContent=
-'الصفحة لم تُربط بقاعدة البيانات بعد. لا ترسل إيصالك من هنا الآن.';
+
+document.getElementById("paymentForm").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const message = document.getElementById("message");
+  const button = document.getElementById("submitButton");
+  const plan = document.getElementById("plan").value;
+  const reference = document.getElementById("reference").value.trim();
+  const file = document.getElementById("receipt").files[0];
+
+  if (!file || !reference || !plan) {
+    message.textContent = "من فضلك أكمل جميع البيانات.";
+    return;
+  }
+
+  if (file.size > 5 * 1024 * 1024) {
+    message.textContent = "حجم الصورة يجب ألا يتجاوز 5 ميجابايت.";
+    return;
+  }
+
+  button.disabled = true;
+  message.textContent = "جاري إرسال الطلب...";
+
+  try {
+    const { data: sessionData, error: sessionError } =
+      await supabaseClient.auth.getSession();
+
+    if (sessionError) throw sessionError;
+
+    const user = sessionData.session?.user;
+
+    if (!user) {
+      message.textContent = "سجّل الدخول من صفحة الأكاديمية أولاً، ثم ارجع هنا.";
+      return;
+    }
+
+    const requestId = crypto.randomUUID();
+    const extension = file.type === "image/png" ? "png" :
+                      file.type === "image/webp" ? "webp" : "jpg";
+
+    const filePath = `${user.id}/${requestId}.${extension}`;
+
+    const { error: uploadError } = await supabaseClient.storage
+      .from("payment-receipts")
+      .upload(filePath, file, {
+        contentType: file.type,
+        upsert: false
+      });
+
+    if (uploadError) throw uploadError;
+
+    const amount = plan === "monthly" ? 200 : 2000;
+
+    const { error: insertError } = await supabaseClient
+      .from("subscription_requests")
+      .insert({
+        id: requestId,
+        user_id: user.id,
+        plan: plan,
+        amount: amount,
+        payment_method: "vodafone_cash",
+        transaction_reference: reference,
+        receipt_url: filePath,
+        status: "pending"
+      });
+
+    if (insertError) throw insertError;
+
+    message.textContent =
+      "تم إرسال طلبك بنجاح. سيتم مراجعة التحويل وتفعيل الاشتراك بعد التأكد من الدفع.";
+
+    document.getElementById("paymentForm").reset();
+
+  } catch (error) {
+    console.error(error);
+    message.textContent = "حصل خطأ أثناء الإرسال: " + error.message;
+  } finally {
+    button.disabled = false;
+  }
 });
 </script>
+
 </body>
 </html>
