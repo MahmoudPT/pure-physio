@@ -846,6 +846,136 @@ renderQuestion();
 </script>
 
 <!-- END STUDENT ACCOUNT SYSTEM -->
+<section id="adminPanel" style="display:none;padding:30px;background:#071a2e;color:white">
+  <h2 style="color:#20d6c2">لوحة إدارة الاشتراكات</h2>
+  <button id="refreshRequests">تحديث الطلبات</button>
+  <p id="adminMessage"></p>
+  <div id="requestsList"></div>
+</section>
 
+<script>
+(async function () {
+  const db = window.supabaseClient;
+  const panel = document.getElementById("adminPanel");
+  const list = document.getElementById("requestsList");
+  const message = document.getElementById("adminMessage");
+
+  function say(text) {
+    message.textContent = text;
+  }
+
+  async function loadRequests() {
+    say("جاري تحميل الطلبات...");
+
+    const { data, error } = await db
+      .from("subscription_requests")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+    if (error) {
+      say("خطأ: " + error.message);
+      return;
+    }
+
+    list.innerHTML = "";
+
+    if (!data.length) {
+      say("لا توجد طلبات حالياً.");
+      return;
+    }
+
+    data.forEach(req => {
+      const card = document.createElement("div");
+      card.style.cssText =
+        "background:#10263d;padding:18px;margin:15px 0;border-radius:12px";
+
+      const info = document.createElement("pre");
+      info.style.cssText = "white-space:pre-wrap;color:white";
+      info.textContent =
+        "الطالب: " + req.user_id +
+        "\nالخطة: " + req.plan +
+        "\nالمبلغ: " + req.amount +
+        "\nطريقة الدفع: " + req.payment_method +
+        "\nرقم العملية: " + (req.transaction_reference || "غير محدد") +
+        "\nالحالة: " + req.status;
+
+      card.appendChild(info);
+
+      if (req.receipt_url) {
+        const link = document.createElement("a");
+        link.href = req.receipt_url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+        link.textContent = "عرض إيصال الدفع";
+        link.style.color = "#20d6c2";
+        card.appendChild(link);
+      }
+
+      if (req.status === "pending") {
+        ["approved", "rejected"].forEach(decision => {
+          const btn = document.createElement("button");
+          btn.textContent = decision === "approved" ? "موافقة وتفعيل" : "رفض";
+          btn.style.margin = "10px";
+
+          btn.onclick = async () => {
+            if (!confirm("هل أنت متأكد؟")) return;
+
+            say("جاري تنفيذ العملية...");
+
+            const { error } = await db.rpc(
+              "admin_review_subscription_request",
+              {
+                p_request_id: req.id,
+                p_decision: decision
+              }
+            );
+
+            if (error) {
+              say("خطأ: " + error.message);
+              return;
+            }
+
+            say("تم تنفيذ العملية بنجاح.");
+            await loadRequests();
+          };
+
+          card.appendChild(btn);
+        });
+      }
+
+      list.appendChild(card);
+    });
+
+    say("عدد الطلبات: " + data.length);
+  }
+
+  async function checkAdmin() {
+    const { data: { user }, error } = await db.auth.getUser();
+    if (error || !user) return;
+
+    const { data, error: adminError } = await db
+      .from("admin_users")
+      .select("user_id")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (adminError) {
+      say("تعذر التحقق من صلاحيات الأدمن: " + adminError.message);
+      return;
+    }
+
+    if (!data) return;
+
+    panel.style.display = "block";
+    await loadRequests();
+  }
+
+  document.getElementById("refreshRequests")
+    .addEventListener("click", loadRequests);
+
+  await checkAdmin();
+  db.auth.onAuthStateChange(() => setTimeout(checkAdmin, 0));
+})();
+</script>
 </body>
 </html>
