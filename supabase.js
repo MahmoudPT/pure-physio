@@ -35,3 +35,4 @@ window.getCurrentStudent = async function() {
   if (error) throw error;
   return data.user;
 };
+window.supabaseClient = supabaseClient;
