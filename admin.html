@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إدارة الاشتراكات - Pure Physio</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+body{font-family:Arial;background:#f2f7fa;color:#12344a;margin:0}
+header{background:#12344a;color:white;padding:22px;text-align:center}
+main{max-width:850px;margin:25px auto;padding:15px}
+.card{background:white;padding:18px;margin:15px 0;border-radius:12px;box-shadow:0 3px 12px #0001}
+button{background:#078c91;color:white;border:0;padding:12px 18px;border-radius:8px;cursor:pointer;margin:5px}
+.receipt{max-width:100%;max-height:350px;display:block;margin:15px auto}
+#message{text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+<header>
+<h1>Pure Physio</h1>
+<p>لوحة إدارة الاشتراكات</p>
+</header>
+
+<main>
+<div class="card">
+<h2>طلبات الاشتراك المعلقة</h2>
+<button onclick="loadRequests()">تحديث الطلبات</button>
+<p id="message">جاري التحقق من صلاحيات المسؤول...</p>
+</div>
+<div id="requests"></div>
+</main>
+
+<script>
+const SUPABASE_URL = "https://iymuuxevubftfeuiehse.supabase.co/rest/v1/";
+const SUPABASE_KEY = "sb_publishable_1lrSyB8FJQYzqDZXbpa-FA_BxagcgyA";
+
+const db = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+async function start() {
+  const {data:{session}, error} = await db.auth.getSession();
+
+  if(error) {
+    document.getElementById("message").textContent = error.message;
+    return;
+  }
+
+  if(!session) {
+    document.getElementById("message").textContent =
+      "سجّل الدخول من صفحة الأكاديمية أولاً، ثم ارجع هنا.";
+    return;
+  }
+
+  const {data:isAdmin, error:adminError} =
+    await db.rpc("is_admin");
+
+  if(adminError || !isAdmin) {
+    document.getElementById("message").textContent =
+      "ليس لديك صلاحية دخول لوحة المسؤول.";
+    return;
+  }
+
+  document.getElementById("message").textContent =
+    "تم التحقق من حساب المسؤول.";
+
+  loadRequests();
+}
+
+async function loadRequests() {
+  const message = document.getElementById("message");
+  const container = document.getElementById("requests");
+
+  message.textContent = "جاري تحميل الطلبات...";
+  container.innerHTML = "";
+
+  const {data, error} = await db
+    .from("subscription_requests")
+    .select("*")
+    .eq("status", "pending")
+    .order("created_at", {ascending:false});
+
+  if(error) {
+    message.textContent = "خطأ: " + error.message;
+    return;
+  }
+
+  if(!data.length) {
+    message.textContent = "لا توجد طلبات معلقة حاليًا.";
+    return;
+  }
+
+  message.textContent = "عدد الطلبات: " + data.length;
+
+  for(const request of data) {
+    const {data:fileData, error:fileError} = await db.storage
+      .from("payment-receipts")
+      .createSignedUrl(request.receipt_url, 300);
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    const title = document.createElement("h3");
+    title.textContent = request.plan === "monthly"
+      ? "باقة شهرية - 200 جنيه"
+      : "باقة سنوية - 2000 جنيه";
+    card.appendChild(title);
+
+    const details = document.createElement("p");
+    details.textContent =
+      "رقم الطالب: " + request.user_id +
+      " | رقم العملية: " + request.transaction_reference;
+    card.appendChild(details);
+
+    if(!fileError && fileData?.signedUrl) {
+      const image = document.createElement("img");
+      image.src = fileData.signedUrl;
+      image.className = "receipt";
+      image.alt = "إيصال الدفع";
+      card.appendChild(image);
+    } else {
+      const warning = document.createElement("p");
+      warning.textContent = "تعذر عرض الإيصال: " +
+        (fileError?.message || "مسار الإيصال غير متاح");
+      card.appendChild(warning);
+    }
+
+    const approve = document.createElement("button");
+    approve.textContent = "تأكيد الدفع وتفعيل الاشتراك";
+    approve.onclick = () => approveRequest(request.id);
+    card.appendChild(approve);
+
+    container.appendChild(card);
+  }
+}
+
+async function approveRequest(id) {
+  if(!confirm("هل راجعت التحويل وتأكدت من وصول المبلغ فعلًا؟")) {
+    return;
+  }
+
+  const {error} = await db.rpc("approve_subscription_request", {
+    request_id: id
+  });
+
+  if(error) {
+    alert("تعذر تفعيل الاشتراك: " + error.message);
+    return;
+  }
+
+  alert("تم تفعيل الاشتراك بنجاح.");
+  loadRequests();
+}
+
+start();
+</script>
+</body>
+</html>
