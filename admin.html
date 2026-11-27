@@ -130,7 +130,32 @@ async function loadRequests() {
     approve.textContent = "تأكيد الدفع وتفعيل الاشتراك";
     approve.onclick = () => approveRequest(request.id);
     card.appendChild(approve);
+const reject = document.createElement("button");
+reject.textContent = "رفض الطلب";
+reject.style.background = "#c0392b";
 
+reject.onclick = async () => {
+  if (!confirm("هل أنت متأكد من رفض الطلب؟")) return;
+
+  const { error } = await db
+    .from("subscription_requests")
+    .update({
+      status: "rejected",
+      reviewed_at: new Date().toISOString()
+    })
+    .eq("id", request.id)
+    .eq("status", "pending");
+
+  if (error) {
+    alert("حدث خطأ: " + error.message);
+    return;
+  }
+
+  alert("تم رفض الطلب.");
+  loadRequests();
+};
+
+card.appendChild(reject);
     container.appendChild(card);
   }
 }
