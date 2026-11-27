@@ -1,4 +1,3 @@
-
 const SUPABASE_URL = "https://iymuuxevubftfeuiehse.supabase.co";
 const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_1lrSyB8FJQYzqDZXbpa-FA_BxagcgyA";
 
@@ -6,6 +5,8 @@ const supabaseClient = window.supabase.createClient(
   SUPABASE_URL,
   SUPABASE_PUBLISHABLE_KEY
 );
+
+window.supabaseClient = supabaseClient;
 
 window.signUpStudent = async function(email, password) {
   const { data, error } = await supabaseClient.auth.signUp({
@@ -35,4 +36,3 @@ window.getCurrentStudent = async function() {
   if (error) throw error;
   return data.user;
 };
-window.supabaseClient = supabaseClient;
