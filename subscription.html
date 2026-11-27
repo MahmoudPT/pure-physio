@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>اشتراكات Pure Physio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f7fa;color:#12344a}
+header{background:#12344a;color:white;padding:25px;text-align:center}
+.container{max-width:650px;margin:30px auto;padding:15px}
+.card{background:white;padding:22px;margin:15px 0;border-radius:15px;box-shadow:0 4px 15px #0001}
+h1,h2{text-align:center}
+.price{font-size:30px;font-weight:bold;color:#078c91;text-align:center}
+button{background:#078c91;color:white;border:0;padding:14px;border-radius:9px;width:100%;font-size:17px;cursor:pointer}
+input,select{width:100%;padding:13px;margin:9px 0;border:1px solid #ccd8df;border-radius:8px}
+.note{background:#e8f7f7;padding:15px;border-radius:9px;line-height:1.8}
+</style>
+</head>
+<body>
+<header>
+<h1>Pure Physio</h1>
+<p>اشترك وافتح المحتوى التعليمي المميز</p>
+</header>
+
+<div class="container">
+<div class="card">
+<h2>الباقة الشهرية</h2>
+<div class="price">200 جنيه</div>
+<button onclick="choosePlan('monthly',200)">اختيار الباقة الشهرية</button>
+</div>
+
+<div class="card">
+<h2>الباقة السنوية</h2>
+<div class="price">2000 جنيه</div>
+<p style="text-align:center">وفّر 400 جنيه سنويًا</p>
+<button onclick="choosePlan('yearly',2000)">اختيار الباقة السنوية</button>
+</div>
+
+<div class="card">
+<h2>إتمام الاشتراك</h2>
+<div class="note">
+<strong>طريقة الدفع: Vodafone Cash</strong><br>
+حوّل المبلغ إلى رقم المحفظة التالي:<br>
+<strong>أضف رقم محفظتك هنا</strong><br>
+بعد التحويل، املأ البيانات وارفع صورة الإيصال.
+</div>
+
+<form id="paymentForm">
+<select id="plan" required>
+<option value="">اختر الباقة</option>
+<option value="monthly">شهرية - 200 جنيه</option>
+<option value="yearly">سنوية - 2000 جنيه</option>
+</select>
+
+<input id="reference" placeholder="رقم العملية" required>
+<input id="receipt" type="file" accept="image/*" required>
+<button type="submit">إرسال طلب الاشتراك</button>
+</form>
+<p id="message"></p>
+</div>
+</div>
+
+<script>
+function choosePlan(plan,amount){
+document.getElementById('plan').value=plan;
+window.scrollTo({top:document.body.scrollHeight,behavior:'smooth'});
+}
+document.getElementById('paymentForm').addEventListener('submit',function(e){
+e.preventDefault();
+document.getElementById('message').textContent=
+'الصفحة لم تُربط بقاعدة البيانات بعد. لا ترسل إيصالك من هنا الآن.';
+});
+</script>
+</body>
+</html>
